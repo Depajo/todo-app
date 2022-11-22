@@ -1,23 +1,40 @@
 {
-  "comments": [
+  "koti": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "newtask": [
-    {
-      "id": 1,
-      "nimi": "tapaaminen"
+      "tehtävä": "Imuroi"
     },
     {
       "id": 2,
-      "nimi": "tapaaminen"
+      "tehtävä": "käy kaupassa"
+    }
+  ],
+  "kissanhoito": [
+    {
+      "id": 1,
+      "tehtävä": "ruoki kissa"
+    },
+    {
+      "id": 2,
+      "tehtävä": "pese kissa"
     },
     {
       "id": 3,
-      "nimi": "tapaaminen"
+      "tehtävä": "osta leluja"
+    }
+  ],
+  "koulu": [
+    {
+      "id": 1,
+      "tehtävä": "tee backen"
+    },
+    {
+      "id": 2,
+      "tehtävä": "tee fronted"
+    },
+    {
+      "id": 3,
+      "tehtävä": "koodaa"
     }
   ]
 }

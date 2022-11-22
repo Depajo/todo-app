@@ -1,24 +1,30 @@
 import "./App.css";
 import React, { useState } from "react";
-import Server from "./server";
+import Data from "./data";
 
 function Etusivu(props) {
-  const [inputValue, setInputValue] = useState("newtask");
+  const [inputValue, setInputValue] = useState([
+    "koulu",
+    "kissanhoito",
+    "koti",
+  ]);
 
-  const call = (event) => {
+  const callChange = (event) => {
     setInputValue(event.target.value);
   };
 
   return (
     <div className="content">
-      <div className="container-1">
-        <select onChange={call} id="selection">
-          <option value={"newtask"}>Tasks</option>
-          <option value={"comments"}>Comments</option>
+      <div className="select">
+        <select onChange={callChange} id="selection">
+          <option value={["koulu", "kissanhoito", "koti"]}>All</option>
+          <option value={["koulu"]}>Koulu</option>
+          <option value={["koti"]}>Koti</option>
+          <option value={["kissanhoito"]}>Kissanhoito</option>
         </select>
       </div>
       <div className="container-1">
-        <Server dataType={{ inputValue }} />
+        <Data dataType={{ inputValue }} />
       </div>
     </div>
   );

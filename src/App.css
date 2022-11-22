@@ -1,0 +1,52 @@
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.mobileMenu {
+  position: fixed;
+  margin-top: 60px;
+  margin-left: 10px;
+  order: 1;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.navIcon {
+  width: 50px;
+}
+
+.navButton {
+  position: fixed;
+  margin: 10px;
+  border: 0px;
+  border-radius: 1000px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.menuButton {
+  display: flex;
+  margin: 10px;
+  text-decoration: none;
+  background-color: black;
+  color: aliceblue;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  margin-top: 0px;
+}
+.container-1 {
+  margin: 50px;
+}
+
+#selection {
+  margin-top: 10px;
+  font-size: 15px;
+  padding: 5px;
+  border: 0px;
+}

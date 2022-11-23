@@ -1,40 +1,61 @@
 {
-  "koti": [
+  "tasks": [
     {
       "id": 1,
-      "tehtävä": "Imuroi"
+      "tehtävä": "Imuroi",
+      "kategoria": ["Koti"]
     },
     {
       "id": 2,
-      "tehtävä": "käy kaupassa"
-    }
-  ],
-  "kissanhoito": [
-    {
-      "id": 1,
-      "tehtävä": "ruoki kissa"
-    },
-    {
-      "id": 2,
-      "tehtävä": "pese kissa"
+      "tehtävä": "käy kaupassa",
+      "kategoria": ["Koti"]
     },
     {
       "id": 3,
-      "tehtävä": "osta leluja"
+      "tehtävä": "ruoki kissa",
+      "kategoria": ["Koti"]
+    },
+    {
+      "id": 4,
+      "tehtävä": "pese kissa",
+      "kategoria": ["Koulu"]
+    },
+    {
+      "id": 5,
+      "tehtävä": "osta leluja",
+      "kategoria": ["Koti", "Koulu"]
+    },
+    {
+      "id": 6,
+      "tehtävä": "tee backen",
+      "kategoria": ["Koti"]
+    },
+    {
+      "id": 7,
+      "tehtävä": "tee fronted",
+      "kategoria": ["Kissanhoito"]
+    },
+    {
+      "id": 8,
+      "tehtävä": "koodaa",
+      "kategoria": ["Koti", "Työ"]
     }
   ],
-  "koulu": [
+  "kategoriat": [
     {
-      "id": 1,
-      "tehtävä": "tee backen"
+      "nimi": "Kaikki"
     },
     {
-      "id": 2,
-      "tehtävä": "tee fronted"
+      "nimi": "Koulu"
     },
     {
-      "id": 3,
-      "tehtävä": "koodaa"
+      "nimi": "Koti"
+    },
+    {
+      "nimi": "Työ"
+    },
+    {
+      "nimi": "Kissanhoito"
     }
   ]
 }

@@ -12,25 +12,24 @@ function App() {
 
   const buttonHanlder = () => {
     console.log(menuBarShow);
-    return menuBarShow === "none"
-      ? setMenuBarShow("block")
-      : setMenuBarShow("none");
+    menuBarShow === "none" ? setMenuBarShow("block") : setMenuBarShow("none");
   };
 
   return (
-    <BrowserRouter>
-      <div>
-        <button onClick={buttonHanlder} className="navButton">
-          <img className="navIcon" src={navIcon} alt="menu" />
-        </button>
-        <menu className="mobileMenu" style={{ display: menuBarShow }}>
-          <Link className="menuButton" to={"/"}>
+    <BrowserRouter className="browserRouter">
+      <button onClick={buttonHanlder} className="navButton">
+        <img className="navIcon" src={navIcon} alt="menu" />
+      </button>
+      <div className="mobileMenu">
+        <h1>TODO</h1>
+        <menu style={{ display: menuBarShow }}>
+          <Link className="menuButton" to={"/"} onClick={buttonHanlder}>
             Etusivu
           </Link>
-          <Link className="menuButton" to={"/tietoa"}>
+          <Link className="menuButton" to={"/tietoa"} onClick={buttonHanlder}>
             Tietoa
           </Link>
-          <Link className="menuButton" to={"/lisaa"}>
+          <Link className="menuButton" to={"/lisaa"} onClick={buttonHanlder}>
             Lisää
           </Link>
         </menu>

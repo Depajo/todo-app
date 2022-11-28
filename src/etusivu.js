@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { getdata } from "./data";
+import { RadioGroup, Radio, FormLabel, Card, Typography } from "@mui/material";
 
 function Etusivu() {
   const [data, setData] = useState([]);
@@ -55,14 +56,13 @@ function Etusivu() {
     return kategoriat.map((d, i) => {
       return (
         <div key={"div" + i}>
-          <label key={"label" + i}>{d.nimi}</label>
-          <input
+          <FormLabel key={"label" + i}>{d.nimi}</FormLabel>
+          <Radio
             key={"key" + i}
-            type="radio"
             name="kategory"
             value={d.nimi}
             onChange={callChange}
-          ></input>
+          ></Radio>
         </div>
       );
     });
@@ -70,16 +70,35 @@ function Etusivu() {
 
   return (
     <div className="content">
-      <h1>TODO</h1>
-      <div className="select">{createKategoryButton(kategoriaData)}</div>
+      <RadioGroup row className="select">
+        {createKategoryButton(kategoriaData)}
+      </RadioGroup>
+
       {mapArray(data, dataStatus)}
     </div>
   );
 }
 
-const getdata = async function (url) {
-  let res = await axios.get(url);
-  return res;
+const CreateKategoryButton = (kategoriat) => {
+  const [dataType, setDataType] = useState("Loading");
+  const callChange = (event) => {
+    if (event.target.checked) {
+      setDataType(event.target.value);
+    }
+  };
+  return kategoriat.map((d, i) => {
+    return (
+      <div key={"div" + i}>
+        <FormLabel key={"label" + i}>{d.nimi}</FormLabel>
+        <Radio
+          key={"key" + i}
+          name="kategory"
+          value={d.nimi}
+          onChange={callChange}
+        ></Radio>
+      </div>
+    );
+  });
 };
 
 const mapArray = (data, dataStatus) => {
@@ -96,10 +115,16 @@ const mapArray = (data, dataStatus) => {
 
   if (dataStatus === 200)
     return allTasks.map((d, i) => {
-      let onetask = d.map((d, i) => <p key={i}>{d}</p>);
+      let onetask = d.map((d, i) => (
+        <Typography variant="body2" key={i}>
+          {d}
+        </Typography>
+      ));
       return (
         <div className="object" key={i}>
-          {onetask}
+          <Card key={"card" + i} sx={{ padding: 3 }}>
+            {onetask}
+          </Card>
         </div>
       );
     });
@@ -107,5 +132,4 @@ const mapArray = (data, dataStatus) => {
     return <p>{dataStatus}</p>;
   }
 };
-
 export default Etusivu;

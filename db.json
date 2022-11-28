@@ -14,41 +14,19 @@
       "id": 3,
       "tehtävä": "ruoki kissa",
       "kategoria": ["Koti"]
-    },
-    {
-      "id": 4,
-      "tehtävä": "pese kissa",
-      "kategoria": ["Koulu"]
-    },
-    {
-      "id": 5,
-      "tehtävä": "osta leluja",
-      "kategoria": ["Koti", "Koulu"]
-    },
-    {
-      "id": 6,
-      "tehtävä": "tee backen",
-      "kategoria": ["Koti"]
-    },
-    {
-      "id": 7,
-      "tehtävä": "tee fronted",
-      "kategoria": ["Kissanhoito"]
-    },
-    {
-      "id": 8,
-      "tehtävä": "koodaa",
-      "kategoria": ["Koti", "Työ"]
     }
   ],
   "kategoriat": [
     {
+      "id": 1,
       "nimi": "Kaikki"
     },
     {
+      "id": 2,
       "nimi": "Koulu"
     },
     {
+      "id": 3,
       "nimi": "Koti"
     }
   ]

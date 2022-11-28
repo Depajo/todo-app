@@ -24,7 +24,6 @@ function Etusivu() {
         setKategoriaData(res.data);
       })
       .catch(() => console.error("Error"));
-
     showKategory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataType]);
@@ -47,46 +46,28 @@ function Etusivu() {
     setData(dataWhatShow);
   };
 
-  const createKategoryButton = (kategoriat) => {
-    const callChange = (event) => {
-      if (event.target.checked) {
-        setDataType(event.target.value);
-      }
-    };
-    return kategoriat.map((d, i) => {
-      return (
-        <div key={"div" + i}>
-          <FormLabel key={"label" + i}>{d.nimi}</FormLabel>
-          <Radio
-            key={"key" + i}
-            name="kategory"
-            value={d.nimi}
-            onChange={callChange}
-          ></Radio>
-        </div>
-      );
-    });
+  const callChange = (event) => {
+    console.log(event.target.value);
+    if (event.target.checked) {
+      setDataType(event.target.value);
+    }
   };
 
   return (
     <div className="content">
       <RadioGroup row className="select">
-        {createKategoryButton(kategoriaData)}
+        <CreateKategoryButton
+          kategoriat={kategoriaData}
+          callChange={callChange}
+        />
       </RadioGroup>
-
-      {mapArray(data, dataStatus)}
+      <MapArray data={data} dataStatus={dataStatus} />
     </div>
   );
 }
 
-const CreateKategoryButton = (kategoriat) => {
-  const [dataType, setDataType] = useState("Loading");
-  const callChange = (event) => {
-    if (event.target.checked) {
-      setDataType(event.target.value);
-    }
-  };
-  return kategoriat.map((d, i) => {
+const CreateKategoryButton = (props) => {
+  return props.kategoriat.map((d, i) => {
     return (
       <div key={"div" + i}>
         <FormLabel key={"label" + i}>{d.nimi}</FormLabel>
@@ -94,16 +75,16 @@ const CreateKategoryButton = (kategoriat) => {
           key={"key" + i}
           name="kategory"
           value={d.nimi}
-          onChange={callChange}
+          onChange={props.callChange}
         ></Radio>
       </div>
     );
   });
 };
 
-const mapArray = (data, dataStatus) => {
+const MapArray = (props) => {
   let allTasks = [];
-  for (const value of data) {
+  for (const value of props.data) {
     let oneTask = [];
     let objectKeysCount = Object.keys(value).length;
     for (let i = 0; i < objectKeysCount; i++) {
@@ -113,7 +94,7 @@ const mapArray = (data, dataStatus) => {
     allTasks.push(oneTask);
   }
 
-  if (dataStatus === 200)
+  if (props.dataStatus === 200)
     return allTasks.map((d, i) => {
       let onetask = d.map((d, i) => (
         <Typography variant="body2" key={i}>
@@ -129,7 +110,7 @@ const mapArray = (data, dataStatus) => {
       );
     });
   else {
-    return <p>{dataStatus}</p>;
+    return <p>{props.dataStatus}</p>;
   }
 };
 export default Etusivu;

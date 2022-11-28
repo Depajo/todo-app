@@ -61,35 +61,39 @@ h1 {
   align-items: center;
   margin: 20px;
 }
-.container-1 {
-  margin: 10px;
+
+.container-1,
+.container-2 {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
 }
 
-.container-3 {
-  margin: 20px;
+.muiTextField {
+  margin-bottom: 20px;
 }
-
 .select {
   margin-top: 10px;
   display: flex;
+  padding: 10px;
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
   box-shadow: 0px 1px 1px 0px rgb(90, 90, 90);
 }
 
-label {
-  margin: 10px;
-  font-size: larger;
-}
-
 .object {
   margin: 5px;
   padding: 10px;
-  /* border: 2px solid black; */
 }
 
 .object p {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 20px;
   margin: 5px;
+}
+
+.muiCheckboxGroup {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
 }

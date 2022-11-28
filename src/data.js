@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 
 const getdata = async function (url) {
@@ -6,4 +5,9 @@ const getdata = async function (url) {
   return res;
 };
 
-export { getdata };
+const postdata = async function (url, data) {
+  console.log(data);
+  await axios.post(url, data);
+};
+
+export { getdata, postdata };

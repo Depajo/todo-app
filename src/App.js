@@ -6,6 +6,7 @@ import Tietoa from "./tietoa";
 import Lisaa from "./lisaa";
 import { useState } from "react";
 import navIcon from "./menu_nav_icon.png";
+import MuokkaaTaskia from "./muokkaaTaskia";
 
 function App() {
   const [menuBarShow, setMenuBarShow] = useState("none");
@@ -36,8 +37,9 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Etusivu />} t />
-        <Route path="/tietoa" element={<Tietoa />} />
         <Route path="/lisaa" element={<Lisaa />} />
+        <Route path="/tietoa" element={<Tietoa />} />
+        <Route path="/muokkaaTaskia" element={<MuokkaaTaskia />} />
         <Route path="*" element={<ErrorSivu />} />
       </Routes>
     </BrowserRouter>

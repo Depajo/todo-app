@@ -1,7 +1,9 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { getdata } from "./data";
-import { RadioGroup, Radio, FormLabel, Card, Typography } from "@mui/material";
+import { RadioGroup } from "@mui/material";
+import { CreateKategoryRadiobox, MapArray } from "./myElements";
+import MuokkaaTaskia from "./muokkaaTaskia";
 
 function Etusivu() {
   const [data, setData] = useState([]);
@@ -9,13 +11,15 @@ function Etusivu() {
   const [serverData, setServerData] = useState([]);
   const [dataStatus, setDataStatus] = useState(400);
   const [dataType, setDataType] = useState("Loading");
+  const [editingPage, setEditingPage] = useState(-1);
 
   useEffect(() => {
+    console.log("käyty");
     getdata("http://localhost:3010/tasks")
       .then((res) => {
         setDataStatus(res.status);
         setServerData(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch(() => console.error("Error"));
 
@@ -26,7 +30,7 @@ function Etusivu() {
       .catch(() => console.error("Error"));
     showKategory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dataType]);
+  }, [dataType, editingPage]);
 
   const showKategory = () => {
     let dataWhatShow = [];
@@ -53,64 +57,34 @@ function Etusivu() {
     }
   };
 
-  return (
-    <div className="content">
-      <RadioGroup row className="select">
-        <CreateKategoryButton
-          kategoriat={kategoriaData}
-          callChange={callChange}
-        />
-      </RadioGroup>
-      <MapArray data={data} dataStatus={dataStatus} />
-    </div>
-  );
-}
+  const closeEditing = () => setEditingPage(-1);
 
-const CreateKategoryButton = (props) => {
-  return props.kategoriat.map((d, i) => {
+  const editHandle = (i) => {
+    setEditingPage(i);
+  };
+  if (editingPage === -1) {
     return (
-      <div key={"div" + i}>
-        <FormLabel key={"label" + i}>{d.nimi}</FormLabel>
-        <Radio
-          key={"key" + i}
-          name="kategory"
-          value={d.nimi}
-          onChange={props.callChange}
-        ></Radio>
+      <div className="content">
+        <RadioGroup row className="select">
+          <CreateKategoryRadiobox
+            kategoriat={kategoriaData}
+            callChange={callChange}
+          />
+        </RadioGroup>
+        <MapArray data={data} dataStatus={dataStatus} editHandle={editHandle} />
       </div>
     );
-  });
-};
-
-const MapArray = (props) => {
-  let allTasks = [];
-  for (const value of props.data) {
-    let oneTask = [];
-    let objectKeysCount = Object.keys(value).length;
-    for (let i = 0; i < objectKeysCount; i++) {
-      oneTask.push(Object.keys(value)[i] + ": " + Object.values(value)[i]);
-    }
-    // console.log(oneTask);
-    allTasks.push(oneTask);
+  } else {
+    return (
+      <div className="content">
+        <MuokkaaTaskia
+          data={data[editingPage]}
+          kategoriaData={kategoriaData}
+          closeEditing={closeEditing}
+        />
+      </div>
+    );
   }
+}
 
-  if (props.dataStatus === 200)
-    return allTasks.map((d, i) => {
-      let onetask = d.map((d, i) => (
-        <Typography variant="body2" key={i}>
-          {d}
-        </Typography>
-      ));
-      return (
-        <div className="object" key={i}>
-          <Card key={"card" + i} sx={{ padding: 3 }}>
-            {onetask}
-          </Card>
-        </div>
-      );
-    });
-  else {
-    return <p>{props.dataStatus}</p>;
-  }
-};
 export default Etusivu;

@@ -10,4 +10,8 @@ const postdata = async function (url, data) {
   await axios.post(url, data);
 };
 
-export { getdata, postdata };
+const putdata = async function (url, data) {
+  await axios.put(url, data);
+};
+
+export { getdata, postdata, putdata };

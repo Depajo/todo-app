@@ -1,11 +1,11 @@
 import "./App.css";
-import { TextField, FormLabel, Checkbox, Button } from "@mui/material/";
+import { TextField, Button } from "@mui/material/";
 import React, { useEffect, useState } from "react";
 import { getdata, postdata } from "./data";
+import { CreateKategoryCheckbox } from "./myElements";
 
 function Lisaa() {
   const [categoryData, setCategoryData] = useState([]);
-  const [dataType] = useState("Loading");
 
   const [newCategory, setNewKategoria] = useState();
 
@@ -24,7 +24,7 @@ function Lisaa() {
     setNewKategoria(event.target.value);
   };
 
-  const addNewCategory = (event) => {
+  const addNewCategory = () => {
     postdata("http://localhost:3010/kategoriat", { nimi: newCategory })
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
@@ -52,8 +52,8 @@ function Lisaa() {
     setNewTaskName(event.target.value);
   };
 
-  const addNewTask = (event) => {
-    postdata("http://localhost:3010/tasks", {
+  const addNewTask = () => {
+    postdata("http://localhost:3010/tasks/", {
       tehtävä: newTaskName,
       kategoria: newTaskCategory,
     });
@@ -71,9 +71,12 @@ function Lisaa() {
             onChange={newTaskNameHandel}
           />
           <div className="muiCheckboxGroup">
-            <CreateKategoryButton
+            <CreateKategoryCheckbox
+              name="kategoriat"
               newTaskHandel={newTaskHandel}
               kategoriat={categoryData}
+              checked={false}
+              disabled={false}
             />
           </div>
           <Button variant="contained" onClick={addNewTask}>
@@ -99,21 +102,5 @@ function Lisaa() {
     </div>
   );
 }
-
-const CreateKategoryButton = (props) => {
-  return props.kategoriat.map((d, i) => {
-    return (
-      <div key={"div" + i}>
-        <FormLabel key={"label" + i}>{d.nimi}</FormLabel>
-        <Checkbox
-          key={"key" + i}
-          name="kategory"
-          value={d.nimi}
-          onChange={props.newTaskHandel}
-        ></Checkbox>
-      </div>
-    );
-  });
-};
 
 export default Lisaa;

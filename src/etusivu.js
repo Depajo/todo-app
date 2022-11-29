@@ -66,9 +66,14 @@ function Etusivu() {
   const deletCategory = () => {
     for (let i = 0; i < kategoriaData.length; i++) {
       console.log(kategoriaData[i].id);
-      if (kategoriaData[i].nimi === dataType && kategoriaData[i].id !== 1) {
-        deletedata("http://localhost:3010/kategoriat/" + kategoriaData[i].id);
-        setDataType("");
+      if (kategoriaData[i].nimi === dataType) {
+        if (kategoriaData[i].id === 1) {
+          alert("Et voi poistaa tätä kategoriaa");
+        } else {
+          deletedata("http://localhost:3010/kategoriat/" + kategoriaData[i].id);
+          setDataType("");
+          alert("Kategoria poistettu");
+        }
       }
     }
   };

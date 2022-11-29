@@ -29,6 +29,7 @@ function Lisaa() {
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
 
+    window.location.reload(false);
     alert("Kategoria lisätty");
   };
 

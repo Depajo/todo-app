@@ -1,19 +1,9 @@
 {
   "tasks": [
     {
-      "tehtävä": "seiso",
+      "tehtävä": "Syö suklaata",
       "kategoria": ["Kaikki"],
       "id": 1
-    },
-    {
-      "tehtävä": "moi",
-      "kategoria": ["a"],
-      "id": 2
-    },
-    {
-      "id": 3,
-      "tehtävä": "ruoki kissa",
-      "kategoria": ["Koti", "Kaikki"]
     }
   ],
   "kategoriat": [

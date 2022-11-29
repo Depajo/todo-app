@@ -6,15 +6,12 @@ import Tietoa from "./tietoa";
 import Lisaa from "./lisaa";
 import { useState } from "react";
 import navIcon from "./menu_nav_icon.png";
-import MuokkaaTaskia from "./muokkaaTaskia";
 
 function App() {
   const [menuBarShow, setMenuBarShow] = useState("none");
 
-  const buttonHanlder = () => {
-    console.log(menuBarShow);
+  const buttonHanlder = () =>
     menuBarShow === "none" ? setMenuBarShow("block") : setMenuBarShow("none");
-  };
 
   return (
     <BrowserRouter className="browserRouter">
@@ -27,11 +24,11 @@ function App() {
           <Link className="menuButton" to={"/"} onClick={buttonHanlder}>
             Etusivu
           </Link>
-          <Link className="menuButton" to={"/tietoa"} onClick={buttonHanlder}>
-            Tietoa
-          </Link>
           <Link className="menuButton" to={"/lisaa"} onClick={buttonHanlder}>
             Lisää
+          </Link>
+          <Link className="menuButton" to={"/tietoa"} onClick={buttonHanlder}>
+            Tietoa
           </Link>
         </menu>
       </div>
@@ -39,7 +36,6 @@ function App() {
         <Route path="/" element={<Etusivu />} t />
         <Route path="/lisaa" element={<Lisaa />} />
         <Route path="/tietoa" element={<Tietoa />} />
-        <Route path="/muokkaaTaskia" element={<MuokkaaTaskia />} />
         <Route path="*" element={<ErrorSivu />} />
       </Routes>
     </BrowserRouter>

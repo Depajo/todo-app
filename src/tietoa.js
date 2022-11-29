@@ -11,7 +11,15 @@ function Tietoa() {
         </div>
         <div>
           <h3>Sisältö</h3>
-          <p>Sisältö on omaa</p>
+          <p>
+            Käytetty{" "}
+            <a href="https://mui.com/core/" target="_blank">
+              Mui core
+            </a>{" "}
+            elementtejä. Ne ovat vapaassa käytössä eikä tarvitse lisenssiä.
+            Mui:lla on olemassa myös lisenssikäyttöisiä elementtejä. Niitä ei
+            ole tässä projektissa käytetty.
+          </p>
         </div>
         <div>
           <h3>Ohjeet</h3>

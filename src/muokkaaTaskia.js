@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import "./App.css";
 import { CreateKategoryCheckbox } from "./myElements";
 import { TextField, Button } from "@mui/material/";
-import { putdata } from "./data";
+import { putdata, deletedata } from "./data";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { margin } from "@mui/system";
 
 function MuokkaaTaskia(props) {
   const [category, editCategory] = useState([]);
   const [taskName, setTaskName] = useState([]);
-
-  // useEffect(() => {
-  //   console.log("käyty muokkaa");
-  // }, []);
 
   const editTask = () => {
     console.log(props.data.id);
@@ -18,6 +16,8 @@ function MuokkaaTaskia(props) {
       tehtävä: taskName,
       kategoria: category,
     });
+    props.setEditingPage(-1);
+    props.setDataType("");
   };
 
   const editTaskCategoryHandel = (event) => {
@@ -41,9 +41,14 @@ function MuokkaaTaskia(props) {
     setTaskName(event.target.value);
   };
 
+  const deletTask = () => {
+    deletedata("http://localhost:3010/tasks/" + props.data.id);
+    props.setEditingPage(-1);
+    props.setDataType("");
+  };
+
   return (
     <div className="editView">
-      <Button onClick={props.closeEditing}>Sulje</Button>
       <div className="content">
         <h1>Muokkaa Tehtävää</h1>
         <h4>Muokkaa tehtävä:</h4>
@@ -75,10 +80,30 @@ function MuokkaaTaskia(props) {
             />
           </div>
         </div>
-
-        <Button variant="contained" onClick={editTask}>
-          Muokkaa
-        </Button>
+        <div className="edit-buttons">
+          <Button
+            sx={{ marginRight: 1 }}
+            variant="contained"
+            onClick={editTask}
+          >
+            Muokkaa
+          </Button>
+          <Button
+            sx={{ marginRight: 1 }}
+            variant="outlined"
+            onClick={props.closeEditing}
+          >
+            Peruuta
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={deletTask}
+            startIcon={<DeleteIcon />}
+            color="error"
+          >
+            Poista
+          </Button>
+        </div>
       </div>
     </div>
   );

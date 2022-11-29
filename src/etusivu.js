@@ -10,11 +10,11 @@ function Etusivu() {
   const [kategoriaData, setKategoriaData] = useState([]);
   const [serverData, setServerData] = useState([]);
   const [dataStatus, setDataStatus] = useState(400);
-  const [dataType, setDataType] = useState("Loading");
+  const [dataType, setDataType] = useState("kaikki");
   const [editingPage, setEditingPage] = useState(-1);
 
   useEffect(() => {
-    console.log("käyty");
+    console.log(dataType);
     getdata("http://localhost:3010/tasks")
       .then((res) => {
         setDataStatus(res.status);
@@ -65,6 +65,7 @@ function Etusivu() {
   if (editingPage === -1) {
     return (
       <div className="content">
+        <h4 style={{ marginBottom: 6 }}>Valitse kategoria:</h4>
         <RadioGroup row className="select">
           <CreateKategoryRadiobox
             kategoriat={kategoriaData}
@@ -81,6 +82,8 @@ function Etusivu() {
           data={data[editingPage]}
           kategoriaData={kategoriaData}
           closeEditing={closeEditing}
+          setEditingPage={setEditingPage}
+          setDataType={setDataType}
         />
       </div>
     );

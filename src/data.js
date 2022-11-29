@@ -14,4 +14,8 @@ const putdata = async function (url, data) {
   await axios.put(url, data);
 };
 
-export { getdata, postdata, putdata };
+const deletedata = async function (url) {
+  await axios.delete(url);
+};
+
+export { getdata, postdata, putdata, deletedata };

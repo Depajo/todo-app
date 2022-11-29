@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { getdata } from "./data";
-import { RadioGroup } from "@mui/material";
+import { getdata, deletedata } from "./data";
+import { RadioGroup, Button } from "@mui/material";
 import { CreateKategoryRadiobox, MapArray } from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
 
@@ -62,6 +62,17 @@ function Etusivu() {
   const editHandle = (i) => {
     setEditingPage(i);
   };
+
+  const deletCategory = () => {
+    for (let i = 0; i < kategoriaData.length; i++) {
+      console.log(kategoriaData[i].id);
+      if (kategoriaData[i].nimi === dataType && kategoriaData[i].id !== 1) {
+        deletedata("http://localhost:3010/kategoriat/" + kategoriaData[i].id);
+        setDataType("");
+      }
+    }
+  };
+
   if (editingPage === -1) {
     return (
       <div className="content">
@@ -73,6 +84,14 @@ function Etusivu() {
           />
         </RadioGroup>
         <MapArray data={data} dataStatus={dataStatus} editHandle={editHandle} />
+        <Button
+          variant="outlined"
+          onClick={deletCategory}
+          // startIcon={<DeleteIcon />}
+          color="error"
+        >
+          Poista kategoria
+        </Button>
       </div>
     );
   } else {

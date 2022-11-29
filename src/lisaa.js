@@ -28,6 +28,8 @@ function Lisaa() {
     postdata("http://localhost:3010/kategoriat", { nimi: newCategory })
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
+
+    alert("Kategoria lisätty");
   };
 
   const newTaskHandel = (event) => {
@@ -57,6 +59,7 @@ function Lisaa() {
       tehtävä: newTaskName,
       kategoria: newTaskCategory,
     });
+    alert("Tehtävä lisätty");
   };
 
   return (

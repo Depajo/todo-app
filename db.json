@@ -1,23 +1,28 @@
 {
   "tasks": [
     {
-      "tehtävä": "Syö suklaata",
-      "kategoria": ["Kaikki"],
-      "id": 1
+      "tehtävä": "Tee frontend",
+      "kategoria": [
+        "Koulu"
+      ],
+      "id": 2
+    },
+    {
+      "tehtävä": "tee backend",
+      "kategoria": [
+        "Koulu"
+      ],
+      "id": 3
     }
   ],
   "kategoriat": [
     {
-      "id": 1,
-      "nimi": "Kaikki"
+      "nimi": "Kaikki",
+      "id": 1
     },
     {
-      "id": 2,
-      "nimi": "Koulu"
-    },
-    {
-      "id": 3,
-      "nimi": "Koti"
+      "nimi": "Koulu",
+      "id": 2
     }
   ]
 }

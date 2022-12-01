@@ -2,18 +2,21 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { getdata, deletedata } from "./data";
 import { RadioGroup, Button } from "@mui/material";
-import { CreateKategoryRadiobox, mapArr, TaskCard } from "./myElements";
+import {
+  CreateKategoryRadiobox,
+  mapArr,
+  showKategory,
+  TaskCard,
+} from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
 
 function Etusivu() {
-  const [data, setData] = useState([]);
   const [kategoriaData, setKategoriaData] = useState([]);
   const [serverData, setServerData] = useState([]);
   const [dataType, setDataType] = useState("");
   const [editingPage, setEditingPage] = useState(-1);
 
   useEffect(() => {
-    console.log(dataType);
     getdata("http://localhost:3010/tasks")
       .then((res) => {
         setServerData(res.data);
@@ -25,31 +28,12 @@ function Etusivu() {
         setKategoriaData(res.data);
       })
       .catch(() => console.error("Error"));
-    showKategory();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataType, editingPage]);
 
-  const showKategory = () => {
-    let dataWhatShow = [];
-
-    if (dataType.toLocaleLowerCase() === "kaikki") {
-      dataWhatShow = serverData;
-    } else {
-      for (let index = 0; index < serverData.length; index++) {
-        let d = serverData[index];
-        for (let ki = 0; ki < d.kategoria.length; ki++) {
-          if (d.kategoria[ki] === dataType) {
-            console.log(d);
-            dataWhatShow.push(d);
-          }
-        }
-      }
-    }
-    setData(dataWhatShow);
-  };
+  const objTasks = showKategory(dataType, serverData);
+  const arrTasks = mapArr(objTasks);
 
   const callChange = (event) => {
-    console.log(event.target.value);
     if (event.target.checked) {
       setDataType(event.target.value);
     }
@@ -63,7 +47,6 @@ function Etusivu() {
 
   const deletCategory = () => {
     for (let i = 0; i < kategoriaData.length; i++) {
-      console.log(kategoriaData[i].id);
       if (kategoriaData[i].nimi === dataType) {
         if (kategoriaData[i].id === 1) {
           alert("Et voi poistaa tätä kategoriaa");
@@ -76,8 +59,6 @@ function Etusivu() {
     }
   };
 
-  const allTasks = mapArr(data);
-
   if (editingPage === -1) {
     return (
       <div className="content">
@@ -88,15 +69,10 @@ function Etusivu() {
             callChange={callChange}
           />
         </RadioGroup>
-        {allTasks.map((task, i) => (
+        {arrTasks.map((task, i) => (
           <TaskCard key={i} task={task} index={i} editHandle={editHandle} />
         ))}
-        <Button
-          variant="outlined"
-          onClick={deletCategory}
-          // startIcon={<DeleteIcon />}
-          color="error"
-        >
+        <Button variant="outlined" onClick={deletCategory} color="error">
           Poista kategoria
         </Button>
       </div>
@@ -105,7 +81,7 @@ function Etusivu() {
     return (
       <div className="content">
         <MuokkaaTaskia
-          data={data[editingPage]}
+          data={objTasks[editingPage]}
           kategoriaData={kategoriaData}
           closeEditing={closeEditing}
           setEditingPage={setEditingPage}

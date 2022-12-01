@@ -1,223 +1,25 @@
 {
   "tasks": [
     {
-      "tehtävä": "Opiskele koodamaa",
+      "tehtävä": "4",
       "kategoria": [
         "Koulu"
       ],
       "id": 4
     },
     {
-      "tehtävä": "Syö suklaata",
+      "tehtävä": "moi5",
       "kategoria": [
-        "Kaikki"
+        "Muu"
       ],
       "id": 5
     },
     {
-      "tehtävä": "Syö karkkia",
+      "tehtävä": "jee",
       "kategoria": [
-        "Kaikki"
+        "Harrarstukset"
       ],
       "id": 6
-    },
-    {
-      "tehtävä": "Tee frontend",
-      "kategoria": [
-        "Koulu"
-      ],
-      "id": 7
-    },
-    {
-      "tehtävä": "Tee backend",
-      "kategoria": [
-        "Koulu"
-      ],
-      "id": 8
-    },
-    {
-      "tehtävä": "moi",
-      "kategoria": [
-        "Kaikki"
-      ],
-      "id": 9
-    },
-    {
-      "tehtävä": "Siivoa kotona",
-      "kategoria": [],
-      "id": 10
-    },
-    {
-      "tehtävä": "moi",
-      "kategoria": [
-        "Koti"
-      ],
-      "id": 11
-    },
-    {
-      "tehtävä": "Opiskele koodamaa",
-      "kategoria": [
-        "Kaikki",
-        "Muu"
-      ],
-      "id": 12
-    },
-    {
-      "tehtävä": "Syö suklaata",
-      "kategoria": [
-        "Kaikki"
-      ],
-      "id": 13
-    },
-    {
-      "tehtävä": "Syö karkkia",
-      "kategoria": [
-        "Kaikki"
-      ],
-      "id": 14
-    },
-    {
-      "tehtävä": "Tee frontend",
-      "kategoria": [
-        "Koulu"
-      ],
-      "id": 15
-    },
-    {
-      "tehtävä": "Tee backend",
-      "kategoria": [
-        "Koulu"
-      ],
-      "id": 16
-    },
-    {
-      "tehtävä": "Pelaa sulkkista",
-      "kategoria": [
-        "Muu"
-      ],
-      "id": 17
-    },
-    {
-      "tehtävä": "Siivoa kotona",
-      "kategoria": [],
-      "id": 18
-    },
-    {
-      "tehtävä": "Vie roskat",
-      "kategoria": [
-        "Koti"
-      ],
-      "id": 19
-    },
-    {
-      "tehtävä": "Opiskele koodamaa",
-      "kategoria": [
-        "Kaikki",
-        "Muu"
-      ],
-      "id": 20
-    },
-    {
-      "tehtävä": "Syö suklaata",
-      "kategoria": [
-        "Kaikki"
-      ],
-      "id": 21
-    },
-    {
-      "tehtävä": "Syö karkkia",
-      "kategoria": [
-        "Kaikki"
-      ],
-      "id": 22
-    },
-    {
-      "tehtävä": "Tee frontend",
-      "kategoria": [
-        "Koulu"
-      ],
-      "id": 23
-    },
-    {
-      "tehtävä": "Tee backend",
-      "kategoria": [
-        "Koulu"
-      ],
-      "id": 24
-    },
-    {
-      "tehtävä": "Pelaa sulkkista",
-      "kategoria": [
-        "Muu"
-      ],
-      "id": 25
-    },
-    {
-      "tehtävä": "Siivoa kotona",
-      "kategoria": [],
-      "id": 26
-    },
-    {
-      "tehtävä": "Vie roskat",
-      "kategoria": [
-        "Koti"
-      ],
-      "id": 27
-    },
-    {
-      "tehtävä": "Opiskele koodamaa",
-      "kategoria": [
-        "Kaikki",
-        "Muu"
-      ],
-      "id": 28
-    },
-    {
-      "tehtävä": "Syö suklaata",
-      "kategoria": [
-        "Kaikki"
-      ],
-      "id": 29
-    },
-    {
-      "tehtävä": "Syö karkkia",
-      "kategoria": [
-        "Kaikki"
-      ],
-      "id": 30
-    },
-    {
-      "tehtävä": "Tee frontend",
-      "kategoria": [
-        "Koulu"
-      ],
-      "id": 31
-    },
-    {
-      "tehtävä": "Tee backend",
-      "kategoria": [
-        "Koulu"
-      ],
-      "id": 32
-    },
-    {
-      "tehtävä": "Pelaa sulkkista",
-      "kategoria": [
-        "Muu"
-      ],
-      "id": 33
-    },
-    {
-      "tehtävä": "Siivoa kotona",
-      "kategoria": [],
-      "id": 34
-    },
-    {
-      "tehtävä": "Vie roskat",
-      "kategoria": [
-        "Koti"
-      ],
-      "id": 35
     }
   ],
   "kategoriat": [
@@ -227,31 +29,15 @@
     },
     {
       "nimi": "Muu",
-      "id": 4
+      "id": 2
     },
     {
       "nimi": "Koulu",
       "id": 5
     },
     {
-      "nimi": "Koti",
+      "nimi": "Harrarstukset",
       "id": 6
-    },
-    {
-      "nimi": "Matkat",
-      "id": 8
-    },
-    {
-      "nimi": "Kaverit",
-      "id": 9
-    },
-    {
-      "nimi": "Koirat",
-      "id": 10
-    },
-    {
-      "nimi": "Kissat",
-      "id": 11
     }
   ]
 }

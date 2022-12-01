@@ -4,14 +4,12 @@ import { CreateKategoryCheckbox } from "./myElements";
 import { TextField, Button } from "@mui/material/";
 import { putdata, deletedata } from "./data";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { margin } from "@mui/system";
 
 function MuokkaaTaskia(props) {
   const [category, editCategory] = useState([]);
   const [taskName, setTaskName] = useState([]);
 
   const editTask = () => {
-    console.log(props.data.id);
     putdata("http://localhost:3010/tasks/" + props.data.id, {
       tehtävä: taskName,
       kategoria: category,
@@ -26,9 +24,7 @@ function MuokkaaTaskia(props) {
     } else {
       let arr = [];
       category.forEach((element, i) => {
-        console.log(element);
         if (event.target.value === element) {
-          console.log("löyty " + element + " " + i);
         } else {
           arr.push(element);
         }

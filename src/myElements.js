@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   FormLabel,
   Checkbox,
@@ -59,12 +59,31 @@ const TaskCard = (props) => {
             {task}
           </Typography>
         ))}
+
         <Button onClick={() => props.editHandle(props.index)} variant="text">
           Muokkaa
         </Button>
       </Card>
     </div>
   );
+};
+
+const showKategory = (dataType, serverData) => {
+  let dataWhatShow = [];
+  if (dataType.toLocaleLowerCase() === "kaikki") {
+    dataWhatShow = serverData;
+  } else {
+    for (let index = 0; index < serverData.length; index++) {
+      let d = serverData[index];
+      for (let ki = 0; ki < d.kategoria.length; ki++) {
+        if (d.kategoria[ki] === dataType) {
+          dataWhatShow.push(d);
+        }
+      }
+    }
+  }
+
+  return dataWhatShow;
 };
 
 const mapArr = (data) => {
@@ -80,4 +99,10 @@ const mapArr = (data) => {
   return allTasks;
 };
 
-export { CreateKategoryCheckbox, CreateKategoryRadiobox, mapArr, TaskCard };
+export {
+  CreateKategoryCheckbox,
+  CreateKategoryRadiobox,
+  mapArr,
+  TaskCard,
+  showKategory,
+};

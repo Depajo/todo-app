@@ -51,15 +51,14 @@ const CreateKategoryRadiobox = (props) => {
 };
 
 const TaskCard = (props) => {
-  let onetask = props.task.map((task, i) => (
-    <Typography variant="body2" key={i}>
-      {task}
-    </Typography>
-  ));
   return (
     <div className="object" key={props.indexi}>
       <Card key={"card" + props.index} sx={{ padding: 3 }}>
-        {onetask}
+        {props.task.map((task, i) => (
+          <Typography variant="body2" key={i}>
+            {task}
+          </Typography>
+        ))}
         <Button onClick={() => props.editHandle(props.index)} variant="text">
           Muokkaa
         </Button>
@@ -68,9 +67,9 @@ const TaskCard = (props) => {
   );
 };
 
-const MapArray = (props) => {
+const mapArr = (data) => {
   let allTasks = [];
-  for (const value of props.data) {
+  for (const value of data) {
     let oneTask = [];
     let objectKeysCount = Object.keys(value).length;
     for (let i = 0; i < objectKeysCount; i++) {
@@ -78,14 +77,7 @@ const MapArray = (props) => {
     }
     allTasks.push(oneTask);
   }
-  // console.log(allTasks);
-  if (props.dataStatus === 200)
-    return allTasks.map((task, i) => (
-      <TaskCard key={i} task={task} index={i} editHandle={props.editHandle} />
-    ));
-  else {
-    return <p>{props.dataStatus}</p>;
-  }
+  return allTasks;
 };
 
-export { CreateKategoryCheckbox, CreateKategoryRadiobox, MapArray };
+export { CreateKategoryCheckbox, CreateKategoryRadiobox, mapArr, TaskCard };

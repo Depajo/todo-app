@@ -2,14 +2,13 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { getdata, deletedata } from "./data";
 import { RadioGroup, Button } from "@mui/material";
-import { CreateKategoryRadiobox, MapArray } from "./myElements";
+import { CreateKategoryRadiobox, mapArr, TaskCard } from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
 
 function Etusivu() {
   const [data, setData] = useState([]);
   const [kategoriaData, setKategoriaData] = useState([]);
   const [serverData, setServerData] = useState([]);
-  const [dataStatus, setDataStatus] = useState(400);
   const [dataType, setDataType] = useState("");
   const [editingPage, setEditingPage] = useState(-1);
 
@@ -17,9 +16,7 @@ function Etusivu() {
     console.log(dataType);
     getdata("http://localhost:3010/tasks")
       .then((res) => {
-        setDataStatus(res.status);
         setServerData(res.data);
-        // console.log(res.data);
       })
       .catch(() => console.error("Error"));
 
@@ -42,6 +39,7 @@ function Etusivu() {
         let d = serverData[index];
         for (let ki = 0; ki < d.kategoria.length; ki++) {
           if (d.kategoria[ki] === dataType) {
+            console.log(d);
             dataWhatShow.push(d);
           }
         }
@@ -78,6 +76,8 @@ function Etusivu() {
     }
   };
 
+  const allTasks = mapArr(data);
+
   if (editingPage === -1) {
     return (
       <div className="content">
@@ -88,7 +88,9 @@ function Etusivu() {
             callChange={callChange}
           />
         </RadioGroup>
-        <MapArray data={data} dataStatus={dataStatus} editHandle={editHandle} />
+        {allTasks.map((task, i) => (
+          <TaskCard key={i} task={task} index={i} editHandle={editHandle} />
+        ))}
         <Button
           variant="outlined"
           onClick={deletCategory}

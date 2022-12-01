@@ -10,7 +10,7 @@ function Etusivu() {
   const [kategoriaData, setKategoriaData] = useState([]);
   const [serverData, setServerData] = useState([]);
   const [dataStatus, setDataStatus] = useState(400);
-  const [dataType, setDataType] = useState("kaikki");
+  const [dataType, setDataType] = useState("");
   const [editingPage, setEditingPage] = useState(-1);
 
   useEffect(() => {

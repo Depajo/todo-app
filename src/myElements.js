@@ -50,6 +50,19 @@ const CreateKategoryRadiobox = (props) => {
   });
 };
 
+const TaskCard = (props) => {
+  return (
+    <div className="object" key={props.indexi}>
+      <Card key={"card" + props.index} sx={{ padding: 3 }}>
+        {props.onetask}
+        <Button onClick={() => props.editHandle(props.index)} variant="text">
+          Muokkaa
+        </Button>
+      </Card>
+    </div>
+  );
+};
+
 const MapArray = (props) => {
   let allTasks = [];
 
@@ -62,7 +75,7 @@ const MapArray = (props) => {
     // console.log(oneTask);
     allTasks.push(oneTask);
   }
-
+  console.log(allTasks);
   if (props.dataStatus === 200)
     return allTasks.map((task, i) => {
       let onetask = task.map((task, i) => (
@@ -72,14 +85,12 @@ const MapArray = (props) => {
       ));
 
       return (
-        <div className="object" key={i}>
-          <Card key={"card" + i} sx={{ padding: 3 }}>
-            {onetask}
-            <Button onClick={() => props.editHandle(i)} variant="text">
-              Muokkaa
-            </Button>
-          </Card>
-        </div>
+        <TaskCard
+          key={i}
+          onetask={onetask}
+          index={i}
+          editHandle={props.editHandle}
+        />
       );
     });
   else {

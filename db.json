@@ -1,18 +1,223 @@
 {
   "tasks": [
     {
+      "tehtävä": "Opiskele koodamaa",
+      "kategoria": [
+        "Koulu"
+      ],
+      "id": 4
+    },
+    {
+      "tehtävä": "Syö suklaata",
+      "kategoria": [
+        "Kaikki"
+      ],
+      "id": 5
+    },
+    {
+      "tehtävä": "Syö karkkia",
+      "kategoria": [
+        "Kaikki"
+      ],
+      "id": 6
+    },
+    {
       "tehtävä": "Tee frontend",
       "kategoria": [
         "Koulu"
       ],
-      "id": 2
+      "id": 7
     },
     {
-      "tehtävä": "tee backend",
+      "tehtävä": "Tee backend",
       "kategoria": [
         "Koulu"
       ],
-      "id": 3
+      "id": 8
+    },
+    {
+      "tehtävä": "Pelaa sulkkista",
+      "kategoria": [
+        "Muu"
+      ],
+      "id": 9
+    },
+    {
+      "tehtävä": "Siivoa kotona",
+      "kategoria": [],
+      "id": 10
+    },
+    {
+      "tehtävä": "Vie roskat",
+      "kategoria": [
+        "Koti"
+      ],
+      "id": 11
+    },
+    {
+      "tehtävä": "Opiskele koodamaa",
+      "kategoria": [
+        "Kaikki",
+        "Muu"
+      ],
+      "id": 12
+    },
+    {
+      "tehtävä": "Syö suklaata",
+      "kategoria": [
+        "Kaikki"
+      ],
+      "id": 13
+    },
+    {
+      "tehtävä": "Syö karkkia",
+      "kategoria": [
+        "Kaikki"
+      ],
+      "id": 14
+    },
+    {
+      "tehtävä": "Tee frontend",
+      "kategoria": [
+        "Koulu"
+      ],
+      "id": 15
+    },
+    {
+      "tehtävä": "Tee backend",
+      "kategoria": [
+        "Koulu"
+      ],
+      "id": 16
+    },
+    {
+      "tehtävä": "Pelaa sulkkista",
+      "kategoria": [
+        "Muu"
+      ],
+      "id": 17
+    },
+    {
+      "tehtävä": "Siivoa kotona",
+      "kategoria": [],
+      "id": 18
+    },
+    {
+      "tehtävä": "Vie roskat",
+      "kategoria": [
+        "Koti"
+      ],
+      "id": 19
+    },
+    {
+      "tehtävä": "Opiskele koodamaa",
+      "kategoria": [
+        "Kaikki",
+        "Muu"
+      ],
+      "id": 20
+    },
+    {
+      "tehtävä": "Syö suklaata",
+      "kategoria": [
+        "Kaikki"
+      ],
+      "id": 21
+    },
+    {
+      "tehtävä": "Syö karkkia",
+      "kategoria": [
+        "Kaikki"
+      ],
+      "id": 22
+    },
+    {
+      "tehtävä": "Tee frontend",
+      "kategoria": [
+        "Koulu"
+      ],
+      "id": 23
+    },
+    {
+      "tehtävä": "Tee backend",
+      "kategoria": [
+        "Koulu"
+      ],
+      "id": 24
+    },
+    {
+      "tehtävä": "Pelaa sulkkista",
+      "kategoria": [
+        "Muu"
+      ],
+      "id": 25
+    },
+    {
+      "tehtävä": "Siivoa kotona",
+      "kategoria": [],
+      "id": 26
+    },
+    {
+      "tehtävä": "Vie roskat",
+      "kategoria": [
+        "Koti"
+      ],
+      "id": 27
+    },
+    {
+      "tehtävä": "Opiskele koodamaa",
+      "kategoria": [
+        "Kaikki",
+        "Muu"
+      ],
+      "id": 28
+    },
+    {
+      "tehtävä": "Syö suklaata",
+      "kategoria": [
+        "Kaikki"
+      ],
+      "id": 29
+    },
+    {
+      "tehtävä": "Syö karkkia",
+      "kategoria": [
+        "Kaikki"
+      ],
+      "id": 30
+    },
+    {
+      "tehtävä": "Tee frontend",
+      "kategoria": [
+        "Koulu"
+      ],
+      "id": 31
+    },
+    {
+      "tehtävä": "Tee backend",
+      "kategoria": [
+        "Koulu"
+      ],
+      "id": 32
+    },
+    {
+      "tehtävä": "Pelaa sulkkista",
+      "kategoria": [
+        "Muu"
+      ],
+      "id": 33
+    },
+    {
+      "tehtävä": "Siivoa kotona",
+      "kategoria": [],
+      "id": 34
+    },
+    {
+      "tehtävä": "Vie roskat",
+      "kategoria": [
+        "Koti"
+      ],
+      "id": 35
     }
   ],
   "kategoriat": [
@@ -22,7 +227,31 @@
     },
     {
       "nimi": "Muu",
-      "id": 2
+      "id": 4
+    },
+    {
+      "nimi": "Koulu",
+      "id": 5
+    },
+    {
+      "nimi": "Koti",
+      "id": 6
+    },
+    {
+      "nimi": "Matkat",
+      "id": 8
+    },
+    {
+      "nimi": "Kaverit",
+      "id": 9
+    },
+    {
+      "nimi": "Koirat",
+      "id": 10
+    },
+    {
+      "nimi": "Kissat",
+      "id": 11
     }
   ]
 }

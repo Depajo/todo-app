@@ -1,24 +1,8 @@
 {
   "tasks": [
     {
-      "tehtävä": "4",
-      "kategoria": [
-        "Koulu"
-      ],
-      "id": 4
-    },
-    {
-      "tehtävä": "moi5",
-      "kategoria": [
-        "Muu"
-      ],
-      "id": 5
-    },
-    {
-      "tehtävä": "jee",
-      "kategoria": [
-        "Harrarstukset"
-      ],
+      "tehtävä": "Moi6",
+      "kategoria": [],
       "id": 6
     }
   ],
@@ -28,16 +12,8 @@
       "id": 1
     },
     {
-      "nimi": "Muu",
+      "nimi": "Muut",
       "id": 2
-    },
-    {
-      "nimi": "Koulu",
-      "id": 5
-    },
-    {
-      "nimi": "Harrarstukset",
-      "id": 6
     }
   ]
 }

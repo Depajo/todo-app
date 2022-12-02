@@ -8,16 +8,16 @@ import {
   Button,
 } from "@mui/material/";
 
-const CreateKategoryCheckbox = (props) => {
-  const isChecked = (nimi) => {
+const CreateCategoryCheckbox = (props) => {
+  const isChecked = (name) => {
     for (let i = 0; i < props.checked.length; i++) {
-      if (props.checked[i] === nimi) {
+      if (props.checked[i] === name) {
         return true;
       }
     }
   };
 
-  return props.kategoriat.map((d, i) => {
+  return props.categorys.map((d, i) => {
     return (
       <div key={"div" + i}>
         <FormLabel key={"label" + i}>{d.nimi}</FormLabel>
@@ -34,8 +34,8 @@ const CreateKategoryCheckbox = (props) => {
   });
 };
 
-const CreateKategoryRadiobox = (props) => {
-  return props.kategoriat.map((d, i) => {
+const CreateCategoryRadiobox = (props) => {
+  return props.categorys.map((d, i) => {
     return (
       <div key={"div" + i}>
         <FormLabel key={"label" + i}>{d.nimi}</FormLabel>
@@ -54,12 +54,11 @@ const TaskCard = (props) => {
   return (
     <div className="object" key={props.indexi}>
       <Card key={"card" + props.index} sx={{ padding: 3 }}>
-        {props.task.map((task, i) => (
+        {props.onetask.map((taskRow, i) => (
           <Typography variant="body2" key={i}>
-            {task}
+            {taskRow}
           </Typography>
         ))}
-
         <Button onClick={() => props.editHandle(props.index)} variant="text">
           Muokkaa
         </Button>
@@ -68,22 +67,26 @@ const TaskCard = (props) => {
   );
 };
 
-const showKategory = (dataType, serverData) => {
-  let dataWhatShow = [];
+const showCategory = (dataType, serverData) => {
+  let allTasksObj = [];
   if (dataType.toLocaleLowerCase() === "kaikki") {
-    dataWhatShow = serverData;
+    allTasksObj = serverData;
   } else {
     for (let index = 0; index < serverData.length; index++) {
-      let d = serverData[index];
-      for (let ki = 0; ki < d.kategoria.length; ki++) {
-        if (d.kategoria[ki] === dataType) {
-          dataWhatShow.push(d);
+      let obj = serverData[index];
+      for (
+        let categoryIndex = 0;
+        categoryIndex < obj.kategoria.length;
+        categoryIndex++
+      ) {
+        if (obj.kategoria[categoryIndex] === dataType) {
+          allTasksObj.push(obj);
         }
       }
     }
   }
 
-  return dataWhatShow;
+  return allTasksObj;
 };
 
 const mapArr = (data) => {
@@ -96,13 +99,24 @@ const mapArr = (data) => {
     }
     allTasks.push(oneTask);
   }
+
   return allTasks;
 };
 
+const checkValueIsSame = (target, value) => {
+  console.log(target + " + " + value);
+  if (value === target || target === "") {
+    return false;
+  } else {
+    return true;
+  }
+};
+
 export {
-  CreateKategoryCheckbox,
-  CreateKategoryRadiobox,
+  CreateCategoryCheckbox,
+  CreateCategoryRadiobox,
   mapArr,
   TaskCard,
-  showKategory,
+  showCategory,
+  checkValueIsSame,
 };

@@ -3,15 +3,15 @@ import React, { useState, useEffect } from "react";
 import { getdata, deletedata } from "./data";
 import { RadioGroup, Button } from "@mui/material";
 import {
-  CreateKategoryRadiobox,
+  CreateCategoryRadiobox,
   mapArr,
-  showKategory,
+  showCategory,
   TaskCard,
 } from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
 
 function Etusivu() {
-  const [kategoriaData, setKategoriaData] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
   const [serverData, setServerData] = useState([]);
   const [dataType, setDataType] = useState("");
   const [editingPage, setEditingPage] = useState(-1);
@@ -25,12 +25,12 @@ function Etusivu() {
 
     getdata("http://localhost:3010/kategoriat")
       .then((res) => {
-        setKategoriaData(res.data);
+        setCategoryData(res.data);
       })
       .catch(() => console.error("Error"));
   }, [dataType, editingPage]);
 
-  const objTasks = showKategory(dataType, serverData);
+  const objTasks = showCategory(dataType, serverData);
   const arrTasks = mapArr(objTasks);
 
   const callChange = (event) => {
@@ -46,12 +46,12 @@ function Etusivu() {
   };
 
   const deletCategory = () => {
-    for (let i = 0; i < kategoriaData.length; i++) {
-      if (kategoriaData[i].nimi === dataType) {
-        if (kategoriaData[i].id === 1) {
+    for (let i = 0; i < categoryData.length; i++) {
+      if (categoryData[i].nimi === dataType) {
+        if (categoryData[i].id === 1) {
           alert("Et voi poistaa tätä kategoriaa");
         } else {
-          deletedata("http://localhost:3010/kategoriat/" + kategoriaData[i].id);
+          deletedata("http://localhost:3010/kategoriat/" + categoryData[i].id);
           setDataType("");
           alert("Kategoria poistettu");
         }
@@ -64,13 +64,13 @@ function Etusivu() {
       <div className="content">
         <h4 style={{ marginBottom: 6 }}>Valitse kategoria:</h4>
         <RadioGroup row className="select">
-          <CreateKategoryRadiobox
-            kategoriat={kategoriaData}
+          <CreateCategoryRadiobox
+            categorys={categoryData}
             callChange={callChange}
           />
         </RadioGroup>
         {arrTasks.map((task, i) => (
-          <TaskCard key={i} task={task} index={i} editHandle={editHandle} />
+          <TaskCard key={i} onetask={task} index={i} editHandle={editHandle} />
         ))}
         <Button variant="outlined" onClick={deletCategory} color="error">
           Poista kategoria
@@ -82,7 +82,7 @@ function Etusivu() {
       <div className="content">
         <MuokkaaTaskia
           data={objTasks[editingPage]}
-          kategoriaData={kategoriaData}
+          categoryData={categoryData}
           closeEditing={closeEditing}
           setEditingPage={setEditingPage}
           setDataType={setDataType}

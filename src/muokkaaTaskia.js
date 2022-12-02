@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { CreateKategoryCheckbox } from "./myElements";
+import { CreateCategoryCheckbox } from "./myElements";
 import { TextField, Button } from "@mui/material/";
 import { putdata, deletedata } from "./data";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -58,19 +58,19 @@ function MuokkaaTaskia(props) {
         <div className="container-muokkaaKategoria">
           <div className="muiCheckboxGroup">
             <h4 style={{ marginTop: 0 }}>Uudet:</h4>
-            <CreateKategoryCheckbox
+            <CreateCategoryCheckbox
               name="kategoriat"
               newTaskHandel={editTaskCategoryHandel}
-              kategoriat={props.kategoriaData}
+              categorys={props.categoryData}
               checked={false}
               disabled={false}
             />
           </div>
           <div className="muiCheckboxGroup">
             <h4 style={{ marginTop: 0 }}>Vanhat:</h4>
-            <CreateKategoryCheckbox
+            <CreateCategoryCheckbox
               name="vanhatkategoriat"
-              kategoriat={props.kategoriaData}
+              categorys={props.categoryData}
               checked={props.data.kategoria}
               disabled={true}
             />

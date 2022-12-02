@@ -2,15 +2,14 @@ import "./App.css";
 import { TextField, Button } from "@mui/material/";
 import React, { useEffect, useState } from "react";
 import { getdata, postdata } from "./data";
-import { CreateKategoryCheckbox } from "./myElements";
+import { CreateCategoryCheckbox, checkValueIsSame } from "./myElements";
 
 function Lisaa() {
   const [categoryData, setCategoryData] = useState([]);
 
-  const [newCategory, setNewKategoria] = useState();
-
+  const [newCategory, setNewCategory] = useState("");
   const [newTaskCategory, setNewTaskCategory] = useState([]);
-  const [newTaskName, setNewTaskName] = useState();
+  const [newTaskName, setNewTaskName] = useState("");
 
   useEffect(() => {
     getdata("http://localhost:3010/kategoriat")
@@ -18,19 +17,30 @@ function Lisaa() {
         setCategoryData(res.data);
       })
       .catch(() => console.error("Error"));
-  }, []);
+  }, [newCategory]);
 
   const newCategoryHandel = (event) => {
-    setNewKategoria(event.target.value);
+    setNewCategory(event.target.value);
   };
 
   const addNewCategory = () => {
-    postdata("http://localhost:3010/kategoriat", { nimi: newCategory })
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error));
+    let addCategory = true;
 
-    window.location.reload(false);
-    alert("Kategoria lisätty");
+    categoryData.forEach((e, i) => {
+      setNewCategory("");
+      if (addCategory) {
+        addCategory = checkValueIsSame(newCategory, categoryData[i].nimi);
+      }
+    });
+
+    console.log(addCategory);
+    if (addCategory) {
+      postdata("http://localhost:3010/kategoriat", { nimi: newCategory });
+      alert("Kategoria lisätty");
+      setNewCategory("");
+    } else {
+      alert("Kategoria on jo olemassa tai\nyrität lisästä tyhjää kategoriaa");
+    }
   };
 
   const newTaskHandel = (event) => {
@@ -39,10 +49,7 @@ function Lisaa() {
     } else {
       let arr = [];
       newTaskCategory.forEach((element, i) => {
-        console.log(element);
-
         if (event.target.value === element) {
-          console.log("löyty " + element + " " + i);
         } else {
           arr.push(element);
         }
@@ -61,8 +68,8 @@ function Lisaa() {
       kategoria: newTaskCategory,
     });
     alert("Tehtävä lisätty");
+    setNewTaskName("");
   };
-
   return (
     <div className="content">
       <div className="container">
@@ -73,12 +80,14 @@ function Lisaa() {
             label="Tehtävä"
             variant="outlined"
             onChange={newTaskNameHandel}
+            value={newTaskName}
           />
+
           <div className="muiCheckboxGroup">
-            <CreateKategoryCheckbox
+            <CreateCategoryCheckbox
               name="kategoriat"
               newTaskHandel={newTaskHandel}
-              kategoriat={categoryData}
+              categorys={categoryData}
               checked={false}
               disabled={false}
             />
@@ -96,6 +105,7 @@ function Lisaa() {
               variant="outlined"
               sx={{ width: 300 }}
               onChange={newCategoryHandel}
+              value={newCategory}
             />
           </div>
           <Button variant="contained" className="n" onClick={addNewCategory}>

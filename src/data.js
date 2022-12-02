@@ -6,7 +6,6 @@ const getdata = async function (url) {
 };
 
 const postdata = async function (url, data) {
-  console.log(data);
   await axios.post(url, data);
 };
 

@@ -31,7 +31,6 @@ function Etusivu() {
   }, [dataType, editingPage]);
 
   const objTasks = showCategory(dataType, serverData);
-  const arrTasks = mapArr(objTasks);
 
   const callChange = (event) => {
     if (event.target.checked) {
@@ -69,7 +68,7 @@ function Etusivu() {
             callChange={callChange}
           />
         </RadioGroup>
-        {arrTasks.map((task, i) => (
+        {objTasks.map((task, i) => (
           <TaskCard key={i} onetask={task} index={i} editHandle={editHandle} />
         ))}
         <Button variant="outlined" onClick={deletCategory} color="error">

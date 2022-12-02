@@ -1,9 +1,22 @@
 {
   "tasks": [
     {
-      "tehtävä": "Moi6",
-      "kategoria": [],
+      "tehtävä": [],
+      "kategoria": [
+        "Kaikki",
+        "Muut"
+      ],
       "id": 6
+    },
+    {
+      "tehtävä": "mioi",
+      "kategoria": [
+        "Kaikki",
+        "Muut",
+        "moi",
+        "hei"
+      ],
+      "id": 7
     }
   ],
   "kategoriat": [

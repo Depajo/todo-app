@@ -51,14 +51,31 @@ const CreateCategoryRadiobox = (props) => {
 };
 
 const TaskCard = (props) => {
+  let id = props.onetask.id;
+  let kategotiat = props.onetask.kategoria.map((e, i) => (
+    <li style={{ margin: 5 }} key={i}>
+      {e}
+    </li>
+  ));
+  let tehtava = props.onetask.tehtävä;
+
+  // console.log(kategotiat);
+
   return (
     <div className="object" key={props.indexi}>
       <Card key={"card" + props.index} sx={{ padding: 3 }}>
-        {props.onetask.map((taskRow, i) => (
-          <Typography variant="body2" key={i}>
-            {taskRow}
-          </Typography>
-        ))}
+        <div className="id">
+          <h4 className="tehtavakortti-otsikko">ID:</h4>
+          <p className="tehtavakortti-arvo">{id}</p>
+        </div>
+        <div className="tehtava">
+          <h4 className="tehtavakortti-otsikko">Tehtävä:</h4>
+          <p className="tehtavakortti-arvo">{tehtava}</p>
+        </div>
+        <div className="kategoriat">
+          <h4 className="tehtavakortti-otsikko">Kategoriat:</h4>
+          <ul className="kategoriat-lista">{kategotiat}</ul>
+        </div>
         <Button onClick={() => props.editHandle(props.index)} variant="text">
           Muokkaa
         </Button>

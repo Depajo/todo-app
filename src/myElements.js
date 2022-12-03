@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  FormLabel,
-  Checkbox,
-  Radio,
-  Card,
-  Typography,
-  Button,
-} from "@mui/material/";
+import { FormLabel, Checkbox, Radio, Card, Button } from "@mui/material/";
 
 const CreateCategoryCheckbox = (props) => {
   const isChecked = (name) => {
@@ -58,8 +51,6 @@ const TaskCard = (props) => {
     </li>
   ));
   let tehtava = props.onetask.tehtävä;
-
-  // console.log(kategotiat);
 
   return (
     <div className="object" key={props.indexi}>
@@ -121,7 +112,6 @@ const mapArr = (data) => {
 };
 
 const checkValueIsSame = (target, value) => {
-  console.log(target + " + " + value);
   if (value === target || target === "") {
     return false;
   } else {

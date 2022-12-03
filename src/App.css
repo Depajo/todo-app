@@ -99,10 +99,6 @@ h1 {
 
 .id,
 .tehtava {
-}
-
-.id,
-.tehtava {
   display: flex;
   flex-direction: row;
   justify-content: left;

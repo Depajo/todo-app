@@ -32,8 +32,6 @@ function Lisaa() {
         addCategory = checkValueIsSame(newCategory, categoryData[i].nimi);
       }
     });
-
-    console.log(addCategory);
     if (addCategory) {
       postdata("http://localhost:3010/kategoriat", { nimi: newCategory });
       alert("Kategoria lisätty");

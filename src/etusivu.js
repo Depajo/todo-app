@@ -2,12 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { getdata, deletedata } from "./data";
 import { RadioGroup, Button } from "@mui/material";
-import {
-  CreateCategoryRadiobox,
-  mapArr,
-  showCategory,
-  TaskCard,
-} from "./myElements";
+import { CreateCategoryRadiobox, showCategory, TaskCard } from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
 
 function Etusivu() {
@@ -68,9 +63,11 @@ function Etusivu() {
             callChange={callChange}
           />
         </RadioGroup>
+
         {objTasks.map((task, i) => (
           <TaskCard key={i} onetask={task} index={i} editHandle={editHandle} />
         ))}
+
         <Button variant="outlined" onClick={deletCategory} color="error">
           Poista kategoria
         </Button>

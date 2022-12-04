@@ -16,7 +16,7 @@ function MuokkaaTaskia(props) {
     putdata("http://localhost:3010/tasks/" + task.id, {
       tehtävä: taskName,
       kategoria: category,
-      listanumero: 0,
+      prioriteetti: 0,
     });
     props.setOpen(false);
     props.setDataType("");
@@ -97,6 +97,7 @@ function MuokkaaTaskia(props) {
           >
             Peruuta
           </Button>
+
           <Button
             variant="outlined"
             onClick={deletTask}

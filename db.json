@@ -2,27 +2,22 @@
   "tasks": [
     {
       "tehtävä": "",
-      "kategoria": [
-        "Muut",
-        "Kaikki"
-      ],
-      "listanumero": 0,
+      "kategoria": [],
+      "prioriteetti": 0,
       "id": 1
     },
     {
-      "tehtävä": "moi",
-      "kategoria": [
-        "Kaikki"
-      ],
-      "listanumero": 0,
+      "tehtävä": "",
+      "kategoria": [],
+      "prioriteetti": 1,
       "id": 2
     },
     {
-      "tehtävä": "moi",
+      "tehtävä": "moi3",
       "kategoria": [
-        "jee"
+        "moi"
       ],
-      "listaNumero": 0,
+      "prioriteetti": 3,
       "id": 3
     }
   ],
@@ -38,10 +33,6 @@
     {
       "nimi": "moi",
       "id": 10
-    },
-    {
-      "nimi": "jee",
-      "id": 11
     }
   ]
 }

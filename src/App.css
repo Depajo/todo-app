@@ -69,19 +69,40 @@ h1 {
 .object {
   margin: 5px;
   padding: 10px;
-  min-width: 400px;
-  max-width: 400px;
+  min-width: 300px;
+  max-width: 300px;
   overflow: auto;
 }
 
-.id,
+.id {
+  margin: 5px;
+  padding: 10px;
+  min-width: 50px;
+  max-width: 50px;
+  overflow: auto;
+}
+
 .tehtava {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: left;
-  align-items: center;
+  align-items: left;
   font-size: 20px;
 }
+
+.tehtava:hover .tehtavaNappi {
+  display: block;
+}
+
+.tehtavaNappi {
+  display: none;
+  margin: 5px;
+  padding: 10px;
+  min-width: 50px;
+  max-width: 50px;
+  overflow: auto;
+}
+
 .tehtavakortti-arvo,
 .tehtavakortti-otsikko {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;

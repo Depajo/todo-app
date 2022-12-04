@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { getdata, deletedata } from "./data";
+import { getdata, deletedata, putdata } from "./data";
 import {
   Button,
   Dialog,
@@ -9,9 +9,11 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Alert,
 } from "@mui/material";
 import { showCategory, TaskCard, orderData } from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
+import AddIcon from "@mui/icons-material/Add";
 
 function Etusivu() {
   const [categoryData, setCategoryData] = useState([]);
@@ -70,6 +72,32 @@ function Etusivu() {
     }
   };
 
+  const plusPriority = (task) => {
+    if (task.prioriteetti < serverData.length) {
+      task.prioriteetti = task.prioriteetti + 1;
+      console.log(task.prioriteetti);
+      putdata("http://localhost:3010/tasks/" + task.id, {
+        tehtävä: task.tehtävä,
+        kategoria: task.kategoria,
+        prioriteetti: task.prioriteetti,
+      });
+    }
+    setDataType("");
+  };
+
+  const minusPriority = (task) => {
+    if (task.prioriteetti <= serverData.length && task.prioriteetti > 0) {
+      task.prioriteetti = task.prioriteetti - 1;
+      console.log(task.prioriteetti);
+      putdata("http://localhost:3010/tasks/" + task.id, {
+        tehtävä: task.tehtävä,
+        kategoria: task.kategoria,
+        prioriteetti: task.prioriteetti,
+      });
+    }
+    setDataType("");
+  };
+
   return (
     <div className="content">
       <div style={{ display: "flex" }}>
@@ -82,6 +110,7 @@ function Etusivu() {
               label="Järjestys"
               sx={{ minWidth: 250 }}
             >
+              <MenuItem value={"prioriteetti"}>Prioriteetti</MenuItem>
               <MenuItem value={"aakkosjärjestys"}>
                 Aakkosjärjestyksessä
               </MenuItem>
@@ -109,7 +138,15 @@ function Etusivu() {
       </div>
 
       {objTasksSorted.map((task, i) => (
-        <TaskCard key={i} onetask={task} index={i} editHandle={editHandle} />
+        <TaskCard
+          key={i}
+          onetask={task}
+          index={i}
+          editHandle={editHandle}
+          plusPriority={plusPriority}
+          minusPriority={minusPriority}
+          plusIcon={<AddIcon />}
+        />
       ))}
 
       <Button

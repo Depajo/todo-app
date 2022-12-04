@@ -1,5 +1,13 @@
 import React from "react";
-import { FormLabel, Checkbox, Radio, Card, Button } from "@mui/material/";
+import {
+  FormLabel,
+  Checkbox,
+  Radio,
+  Card,
+  Button,
+  IconButton,
+} from "@mui/material/";
+import { margin } from "@mui/system";
 
 const CreateCategoryCheckbox = (props) => {
   const isChecked = (name) => {
@@ -51,6 +59,7 @@ const TaskCard = (props) => {
     </li>
   ));
   let tehtava = props.onetask.tehtävä;
+  let prioriteetti = props.onetask.prioriteetti;
 
   return (
     <div className="object" key={props.indexi}>
@@ -67,6 +76,36 @@ const TaskCard = (props) => {
           <h4 className="tehtavakortti-otsikko">Kategoriat:</h4>
           <ul className="kategoriat-lista">{kategotiat}</ul>
         </div>
+        <h4 className="tehtavakortti-otsikko">Prioriteetti:</h4>
+        <div className="prioriteetti" style={{ display: "flex" }}>
+          <h3 className="tehtavakortti-arvo">{prioriteetti}</h3>
+          <IconButton
+            onClick={() => props.plusPriority(props.onetask)}
+            sx={{
+              color: "#35739E",
+              fontSize: 20,
+              margin: 1,
+              padding: 2,
+              bgcolor: "#e1e1e1",
+            }}
+            variant="text"
+          >
+            +
+          </IconButton>
+          <IconButton
+            onClick={() => props.minusPriority(props.onetask)}
+            sx={{
+              color: "#35739E",
+              fontSize: 20,
+              margin: 1,
+              padding: 2,
+              bgcolor: "#e1e1e1",
+            }}
+            variant="text"
+          >
+            -
+          </IconButton>
+        </div>
         <Button
           onClick={() => props.editHandle(props.onetask)}
           sx={{ color: "#35739E" }}
@@ -74,7 +113,6 @@ const TaskCard = (props) => {
         >
           Muokkaa
         </Button>
-        <br></br>
       </Card>
     </div>
   );
@@ -117,6 +155,22 @@ const orderData = (data, order) => {
   } else if (order.toLocaleLowerCase() === "vanhin ensin") {
     allTasksObj = data.sort((a, b) => {
       return a.id - b.id;
+    });
+  } else if (order.toLocaleLowerCase() === "kategoria") {
+    allTasksObj = data.sort((a, b) => {
+      return a.kategoria[0].localeCompare(b.kategoria[0]);
+    });
+  } else if (order.toLocaleLowerCase() === "tehty") {
+    allTasksObj = data.sort((a, b) => {
+      return a.tehty - b.tehty;
+    });
+  } else if (order.toLocaleLowerCase() === "tehtävä") {
+    allTasksObj = data.sort((a, b) => {
+      return a.tehtävä.localeCompare(b.tehtävä);
+    });
+  } else if (order.toLocaleLowerCase() === "prioriteetti") {
+    allTasksObj = data.sort((a, b) => {
+      return a.prioriteetti < b.prioriteetti;
     });
   }
 

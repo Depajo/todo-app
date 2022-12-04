@@ -3,7 +3,8 @@
     {
       "tehtävä": "terve6",
       "kategoria": [
-        "Kaikki"
+        "Kaikki",
+        "Muut"
       ],
       "id": 6
     },
@@ -17,7 +18,7 @@
     {
       "tehtävä": "moi88",
       "kategoria": [
-        "Kaikki"
+        "Muut"
       ],
       "id": 8
     }

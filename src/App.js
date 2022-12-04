@@ -23,10 +23,10 @@ function App() {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{ mr: 3, padding: 4 }}
             onClick={buttonHanlder}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ fontSize: "large" }} />
           </IconButton>
           <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>
             Todo

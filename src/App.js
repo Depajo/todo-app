@@ -4,9 +4,19 @@ import Etusivu from "./etusivu.js";
 import ErrorSivu from "./errorSivu";
 import Tietoa from "./tietoa";
 import Lisaa from "./lisaa";
+import Tehtava from "./tehtava";
 import { useState } from "react";
-import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Button,
+  MenuItem,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Margin } from "@mui/icons-material";
+import { margin, maxWidth } from "@mui/system";
 
 function App() {
   const [menuBarShow, setMenuBarShow] = useState("none");
@@ -23,30 +33,77 @@ function App() {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 3, padding: 4 }}
+            sx={{ padding: 4 }}
             onClick={buttonHanlder}
           >
             <MenuIcon sx={{ fontSize: "large" }} />
           </IconButton>
-          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h4"
+            component="div"
+            sx={{ flexGrow: 1, textAlign: "right" }}
+          >
             Todo
           </Typography>
         </Toolbar>
 
         <menu style={{ display: menuBarShow }}>
-          <Link className="menuButton" to={"/"} onClick={buttonHanlder}>
-            Etusivu
-          </Link>
-          <Link className="menuButton" to={"/lisaa"} onClick={buttonHanlder}>
-            Lisää
-          </Link>
-          <Link className="menuButton" to={"/tietoa"} onClick={buttonHanlder}>
-            Tietoa
-          </Link>
+          <MenuItem>
+            <Button
+              sx={{
+                color: "#fff",
+                padding: 2,
+                margin: "auto",
+                width: "100%",
+                textAlign: "left",
+                justifyContent: "left",
+                borderColor: "#fff",
+              }}
+              variant="outlined"
+              href="/"
+            >
+              Etusivu
+            </Button>
+          </MenuItem>
+          <MenuItem sx={{ fontSize: 20 }}>
+            <Button
+              sx={{
+                color: "#fff",
+                padding: 2,
+                margin: "auto",
+                width: "100%",
+                textAlign: "left",
+                justifyContent: "left",
+                borderColor: "#fff",
+              }}
+              variant="outlined"
+              href="/lisaa"
+            >
+              Lisää
+            </Button>
+          </MenuItem>
+          <MenuItem sx={{ fontSize: 20 }}>
+            <Button
+              sx={{
+                color: "#fff",
+                padding: 2,
+                margin: "auto",
+                width: "100%",
+                textAlign: "left",
+                justifyContent: "left",
+                borderColor: "#fff",
+              }}
+              variant="outlined"
+              href="/tietoa"
+            >
+              Tietoa
+            </Button>
+          </MenuItem>
         </menu>
       </AppBar>
       <Routes>
         <Route path="/" element={<Etusivu />} t />
+        <Route path="/tehtava/:id" element={<Tehtava />} />
         <Route path="/lisaa" element={<Lisaa />} />
         <Route path="/tietoa" element={<Tietoa />} />
         <Route path="*" element={<ErrorSivu />} />

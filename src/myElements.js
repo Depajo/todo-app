@@ -1,13 +1,5 @@
-import React from "react";
-import {
-  FormLabel,
-  Checkbox,
-  Radio,
-  Card,
-  Button,
-  IconButton,
-} from "@mui/material/";
-import { margin } from "@mui/system";
+import React, { useEffect, useState } from "react";
+import { FormLabel, Checkbox, Radio } from "@mui/material/";
 
 const CreateCategoryCheckbox = (props) => {
   const isChecked = (name) => {
@@ -51,71 +43,24 @@ const CreateCategoryRadiobox = (props) => {
   });
 };
 
-const TaskCard = (props) => {
-  let id = props.onetask.id;
-  let kategotiat = props.onetask.kategoria.map((e, i) => (
-    <li style={{ margin: 5 }} key={i}>
-      {e}
-    </li>
-  ));
-  let tehtava = props.onetask.tehtävä;
-  let prioriteetti = props.onetask.prioriteetti;
+const HelpText = (props) => {
+  const [helpText, setHelpText] = useState("");
 
-  return (
-    <div className="object" key={props.indexi}>
-      <Card key={"card" + props.index} sx={{ padding: 3 }}>
-        <div className="id">
-          <h4 className="tehtavakortti-otsikko">ID:</h4>
-          <p className="tehtavakortti-arvo">{id}</p>
-        </div>
-        <div className="tehtava">
-          <h4 className="tehtavakortti-otsikko">Tehtävä:</h4>
-          <p className="tehtavakortti-arvo">{tehtava}</p>
-        </div>
-        <div className="kategoriat">
-          <h4 className="tehtavakortti-otsikko">Kategoriat:</h4>
-          <ul className="kategoriat-lista">{kategotiat}</ul>
-        </div>
-        <h4 className="tehtavakortti-otsikko">Prioriteetti:</h4>
-        <div className="prioriteetti" style={{ display: "flex" }}>
-          <h3 className="tehtavakortti-arvo">{prioriteetti}</h3>
-          <IconButton
-            onClick={() => props.plusPriority(props.onetask)}
-            sx={{
-              color: "#35739E",
-              fontSize: 20,
-              margin: 1,
-              padding: 2,
-              bgcolor: "#e1e1e1",
-            }}
-            variant="text"
-          >
-            +
-          </IconButton>
-          <IconButton
-            onClick={() => props.minusPriority(props.onetask)}
-            sx={{
-              color: "#35739E",
-              fontSize: 20,
-              margin: 1,
-              padding: 2,
-              bgcolor: "#e1e1e1",
-            }}
-            variant="text"
-          >
-            -
-          </IconButton>
-        </div>
-        <Button
-          onClick={() => props.editHandle(props.onetask)}
-          sx={{ color: "#35739E" }}
-          variant="text"
-        >
-          Muokkaa
-        </Button>
-      </Card>
-    </div>
-  );
+  console.log(props);
+  useEffect(() => {
+    console.log("helpText useEffect");
+    if (props.dataType === "") {
+      setHelpText("Valitse Kategoria:");
+    } else if (props.order === "") {
+      setHelpText("Valitse Järjestys:");
+    } else {
+      setHelpText("");
+    }
+  }, [helpText, props.dataType, props.order]);
+
+  console.log(helpText);
+
+  return <h3 style={{ color: "#ff3333", marginBottom: 0 }}>{helpText}</h3>;
 };
 
 const showCategory = (dataType, serverData) => {
@@ -236,10 +181,10 @@ export {
   CreateCategoryCheckbox,
   CreateCategoryRadiobox,
   mapArr,
-  TaskCard,
   showCategory,
   checkValueIsSame,
   orderData,
   shearchDataByTask,
   shearchDataById,
+  HelpText,
 };

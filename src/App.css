@@ -1,6 +1,5 @@
 * {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   order: 0;
 }
 body {
@@ -14,17 +13,7 @@ h1 {
 }
 
 .menuButton {
-  margin: auto;
-  margin-top: 10px;
   display: block;
-  text-decoration: none;
-  background-color: rgb(103, 112, 118);
-  color: aliceblue;
-  padding: 10px;
-  box-shadow: 3px 3px rgb(72, 72, 72);
-  border-radius: 10px;
-  max-width: 200px;
-  text-align: center;
 }
 
 .menuButton:hover {
@@ -71,6 +60,7 @@ h1 {
   padding: 10px;
   min-width: 300px;
   max-width: 300px;
+  height: auto;
   overflow: auto;
 }
 

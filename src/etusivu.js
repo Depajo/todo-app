@@ -9,11 +9,11 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Alert,
 } from "@mui/material";
-import { showCategory, TaskCard, orderData } from "./myElements";
+import { ManyTasks } from "./taskCard";
+import { showCategory, orderData, HelpText } from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
-import AddIcon from "@mui/icons-material/Add";
+import { useNavigate } from "react-router-dom";
 
 function Etusivu() {
   const [categoryData, setCategoryData] = useState([]);
@@ -22,6 +22,7 @@ function Etusivu() {
   const [order, setOrder] = useState("");
   const [editingTask, setEditingTask] = useState(-1);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getdata("http://localhost:3010/tasks")
@@ -41,7 +42,6 @@ function Etusivu() {
   const objTasksSorted = orderData(objTasks, order);
 
   const callChangeDataType = (event) => {
-    console.log(event.target.value);
     setDataType(event.target.value);
   };
 
@@ -98,27 +98,16 @@ function Etusivu() {
     setDataType("");
   };
 
+  const openTask = (task) => {
+    navigate("/tehtava/" + task.id);
+  };
+
   return (
     <div className="content">
+      <h1>Valitse näkymä</h1>
+      <HelpText dataType={dataType} order={order} />
       <div style={{ display: "flex" }}>
         <Paper sx={{ margin: 1 }}>
-          <FormControl sx={{ margin: 2 }}>
-            <InputLabel>Järjestys</InputLabel>
-            <Select
-              onChange={callChangeOrder}
-              value={order}
-              label="Järjestys"
-              sx={{ minWidth: 250 }}
-            >
-              <MenuItem value={"prioriteetti"}>Prioriteetti</MenuItem>
-              <MenuItem value={"aakkosjärjestys"}>
-                Aakkosjärjestyksessä
-              </MenuItem>
-              <MenuItem value={"uusin ensin"}>Uusin ensin</MenuItem>
-              <MenuItem value={"vanhin ensin"}>Vanhin ensin</MenuItem>
-            </Select>
-          </FormControl>
-
           <FormControl sx={{ margin: 2 }}>
             <InputLabel>Kategoria</InputLabel>
             <Select
@@ -134,20 +123,35 @@ function Etusivu() {
               ))}
             </Select>
           </FormControl>
+
+          <FormControl sx={{ margin: 2 }}>
+            <InputLabel>Järjestys</InputLabel>
+            <Select
+              onChange={callChangeOrder}
+              value={order}
+              label="Järjestys"
+              sx={{ minWidth: 250 }}
+            >
+              <MenuItem value={"prioriteetti"}>Oma Prioriteetti</MenuItem>
+              <MenuItem value={"aakkosjärjestys"}>
+                Aakkosjärjestyksessä
+              </MenuItem>
+              <MenuItem value={"uusin ensin"}>Uusin ensin</MenuItem>
+              <MenuItem value={"vanhin ensin"}>Vanhin ensin</MenuItem>
+            </Select>
+          </FormControl>
         </Paper>
       </div>
 
-      {objTasksSorted.map((task, i) => (
-        <TaskCard
-          key={i}
-          onetask={task}
-          index={i}
-          editHandle={editHandle}
-          plusPriority={plusPriority}
-          minusPriority={minusPriority}
-          plusIcon={<AddIcon />}
-        />
-      ))}
+      <ManyTasks
+        tasks={objTasksSorted}
+        order={order}
+        dataType={dataType}
+        editHandle={editHandle}
+        plusPriority={plusPriority}
+        minusPriority={minusPriority}
+        openTask={openTask}
+      />
 
       <Button
         sx={{ margin: 3 }}

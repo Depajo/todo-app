@@ -123,7 +123,7 @@ const orderData = (data, order) => {
   return allTasksObj;
 };
 
-const shearchDataByTask = (data, shearch) => {
+const shearchDataByTask = async (data, shearch) => {
   let allTasksObj = [];
   if (shearch === "") {
     allTasksObj = data;
@@ -145,6 +145,7 @@ const shearchDataById = (data, id) => {
     allTasksObj = data;
   } else {
     for (let index = 0; index < data.length; index++) {
+      console.log(data[index].id);
       let obj = data[index];
       if (obj.id === id) {
         allTasksObj.push(obj);
@@ -185,4 +186,6 @@ export {
   showCategory,
   checkValueIsSame,
   orderData,
+  shearchDataByTask,
+  shearchDataById,
 };

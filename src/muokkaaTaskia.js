@@ -6,16 +6,19 @@ import { putdata, deletedata } from "./data";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 function MuokkaaTaskia(props) {
+  const [task] = useState(props.editingTaskId);
+
+  console.log(task);
   const [category, editCategory] = useState([]);
   const [taskName, setTaskName] = useState("");
 
   const editTask = () => {
-    putdata("http://localhost:3010/tasks/" + props.data.id, {
+    putdata("http://localhost:3010/tasks/" + task.id, {
       tehtävä: taskName,
       kategoria: category,
       listanumero: 0,
     });
-    props.setEditingPage(-1);
+    props.setOpen(false);
     props.setDataType("");
   };
 
@@ -35,12 +38,13 @@ function MuokkaaTaskia(props) {
   };
 
   const editTaskNameHandel = (event) => {
+    console.log(event.target.value);
     setTaskName(event.target.value);
   };
 
   const deletTask = () => {
-    deletedata("http://localhost:3010/tasks/" + props.data.id);
-    props.setEditingPage(-1);
+    deletedata("http://localhost:3010/tasks/" + task.id);
+    props.setOpen(false);
     props.setDataType("");
   };
 
@@ -51,7 +55,7 @@ function MuokkaaTaskia(props) {
         <h4>Muokkaa tehtävä:</h4>
         <TextField
           sx={{ width: 300 }}
-          label={props.data.tehtävä}
+          label={task.tehtävä}
           variant="outlined"
           onChange={editTaskNameHandel}
           value={taskName}
@@ -73,7 +77,7 @@ function MuokkaaTaskia(props) {
             <CreateCategoryCheckbox
               name="vanhatkategoriat"
               categorys={props.categoryData}
-              checked={props.data.kategoria}
+              checked={task.kategoria}
               disabled={true}
             />
           </div>

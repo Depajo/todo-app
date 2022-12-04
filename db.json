@@ -1,28 +1,28 @@
 {
   "tasks": [
     {
-      "tehtävä": "abc",
+      "tehtävä": "",
       "kategoria": [
-        "Muut"
+        "Muut",
+        "Kaikki"
       ],
       "listanumero": 0,
       "id": 1
     },
     {
-      "tehtävä": "n",
-      "kategoria": [
-        "Muut",
-        "Kaikki"
-      ],
-      "Tarkeys": null,
-      "id": 2
-    },
-    {
-      "tehtävä": "a",
+      "tehtävä": "moi",
       "kategoria": [
         "Kaikki"
       ],
       "listanumero": 0,
+      "id": 2
+    },
+    {
+      "tehtävä": "moi",
+      "kategoria": [
+        "jee"
+      ],
+      "listaNumero": 0,
       "id": 3
     }
   ],
@@ -34,6 +34,14 @@
     {
       "nimi": "Muut",
       "id": 9
+    },
+    {
+      "nimi": "moi",
+      "id": 10
+    },
+    {
+      "nimi": "jee",
+      "id": 11
     }
   ]
 }

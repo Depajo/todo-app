@@ -18,7 +18,8 @@ function Etusivu() {
   const [serverData, setServerData] = useState([]);
   const [dataType, setDataType] = useState("");
   const [order, setOrder] = useState("");
-  const [editingPage, setEditingPage] = useState(-1);
+  const [editingTask, setEditingTask] = useState(-1);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     getdata("http://localhost:3010/tasks")
@@ -32,7 +33,7 @@ function Etusivu() {
         setCategoryData(res.data);
       })
       .catch(() => console.error("Error"));
-  }, [dataType, editingPage]);
+  }, [dataType]);
 
   const objTasks = showCategory(dataType, serverData);
   const objTasksSorted = orderData(objTasks, order);
@@ -46,10 +47,13 @@ function Etusivu() {
     setOrder(event.target.value);
   };
 
-  const closeEditing = () => setEditingPage(-1);
+  const closeEditing = () => setOpen(false);
 
   const editHandle = (task) => {
-    setEditingPage(task.id);
+    setOpen(true);
+    console.log("teht numero: " + task.id);
+
+    setEditingTask(task);
   };
 
   const deletCategory = () => {
@@ -66,72 +70,67 @@ function Etusivu() {
     }
   };
 
-  if (editingPage === -1) {
-    return (
-      <div className="content">
-        <div style={{ display: "flex" }}>
-          <Paper>
-            <FormControl sx={{ margin: 2 }}>
-              <InputLabel>Järjestys</InputLabel>
-              <Select
-                onChange={callChangeOrder}
-                value={order}
-                label="Järjestys"
-                sx={{ minWidth: 250 }}
-              >
-                <MenuItem value={"aakkosjärjestys"}>
-                  Aakkosjärjestyksessä
+  return (
+    <div className="content">
+      <div style={{ display: "flex" }}>
+        <Paper sx={{ margin: 1 }}>
+          <FormControl sx={{ margin: 2 }}>
+            <InputLabel>Järjestys</InputLabel>
+            <Select
+              onChange={callChangeOrder}
+              value={order}
+              label="Järjestys"
+              sx={{ minWidth: 250 }}
+            >
+              <MenuItem value={"aakkosjärjestys"}>
+                Aakkosjärjestyksessä
+              </MenuItem>
+              <MenuItem value={"uusin ensin"}>Uusin ensin</MenuItem>
+              <MenuItem value={"vanhin ensin"}>Vanhin ensin</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControl sx={{ margin: 2 }}>
+            <InputLabel>Kategoria</InputLabel>
+            <Select
+              onChange={callChangeDataType}
+              value={dataType}
+              label="Kategoria"
+              sx={{ minWidth: 250 }}
+            >
+              {categoryData.map((d, i) => (
+                <MenuItem key={i} value={d.nimi}>
+                  {d.nimi}
                 </MenuItem>
-                <MenuItem value={"uusin ensin"}>Uusin ensin</MenuItem>
-                <MenuItem value={"vanhin ensin"}>Vanhin ensin</MenuItem>
-              </Select>
-            </FormControl>
-
-            <FormControl sx={{ margin: 2 }}>
-              <InputLabel>Kategoria</InputLabel>
-              <Select
-                onChange={callChangeDataType}
-                value={dataType}
-                label="Kategoria"
-                sx={{ minWidth: 250 }}
-              >
-                {categoryData.map((d, i) => (
-                  <MenuItem key={i} value={d.nimi}>
-                    {d.nimi}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Paper>
-        </div>
-
-        {objTasksSorted.map((task, i) => (
-          <TaskCard key={i} onetask={task} index={i} editHandle={editHandle} />
-        ))}
-
-        <Button
-          sx={{ margin: 3 }}
-          variant="outlined"
-          onClick={deletCategory}
-          color="error"
-        >
-          Poista kategoria
-        </Button>
+              ))}
+            </Select>
+          </FormControl>
+        </Paper>
       </div>
-    );
-  } else {
-    return (
-      <Dialog open={true}>
+
+      {objTasksSorted.map((task, i) => (
+        <TaskCard key={i} onetask={task} index={i} editHandle={editHandle} />
+      ))}
+
+      <Button
+        sx={{ margin: 3 }}
+        variant="outlined"
+        onClick={deletCategory}
+        color="error"
+      >
+        Poista kategoria
+      </Button>
+      <Dialog open={open}>
         <MuokkaaTaskia
-          data={objTasks[editingPage]}
-          categoryData={categoryData}
+          editingTaskId={editingTask}
           closeEditing={closeEditing}
-          setEditingPage={setEditingPage}
+          setOpen={setOpen}
           setDataType={setDataType}
+          categoryData={categoryData}
         />
       </Dialog>
-    );
-  }
+    </div>
+  );
 }
 
 export default Etusivu;

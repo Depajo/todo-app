@@ -2,7 +2,6 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { getdata, deletedata } from "./data";
 import {
-  RadioGroup,
   Button,
   Dialog,
   Paper,
@@ -11,13 +10,14 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-import { CreateCategoryRadiobox, showCategory, TaskCard } from "./myElements";
+import { showCategory, TaskCard, orderData } from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
 
 function Etusivu() {
   const [categoryData, setCategoryData] = useState([]);
   const [serverData, setServerData] = useState([]);
   const [dataType, setDataType] = useState("");
+  const [order, setOrder] = useState("");
   const [editingPage, setEditingPage] = useState(-1);
 
   useEffect(() => {
@@ -35,17 +35,21 @@ function Etusivu() {
   }, [dataType, editingPage]);
 
   const objTasks = showCategory(dataType, serverData);
+  const objTasksSorted = orderData(objTasks, order);
 
-  const callChange = (event) => {
-    if (event.target.checked) {
-      setDataType(event.target.value);
-    }
+  const callChangeDataType = (event) => {
+    console.log(event.target.value);
+    setDataType(event.target.value);
+  };
+
+  const callChangeOrder = (event) => {
+    setOrder(event.target.value);
   };
 
   const closeEditing = () => setEditingPage(-1);
 
-  const editHandle = (i) => {
-    setEditingPage(i);
+  const editHandle = (task) => {
+    setEditingPage(task.id);
   };
 
   const deletCategory = () => {
@@ -69,7 +73,12 @@ function Etusivu() {
           <Paper>
             <FormControl sx={{ margin: 2 }}>
               <InputLabel>Järjestys</InputLabel>
-              <Select label="Järjestys" sx={{ minWidth: 250 }}>
+              <Select
+                onChange={callChangeOrder}
+                value={order}
+                label="Järjestys"
+                sx={{ minWidth: 250 }}
+              >
                 <MenuItem value={"aakkosjärjestys"}>
                   Aakkosjärjestyksessä
                 </MenuItem>
@@ -78,16 +87,25 @@ function Etusivu() {
               </Select>
             </FormControl>
 
-            <RadioGroup row sx={{ padding: 1, margin: "auto" }}>
-              <CreateCategoryRadiobox
-                categorys={categoryData}
-                callChange={callChange}
-              />
-            </RadioGroup>
+            <FormControl sx={{ margin: 2 }}>
+              <InputLabel>Kategoria</InputLabel>
+              <Select
+                onChange={callChangeDataType}
+                value={dataType}
+                label="Kategoria"
+                sx={{ minWidth: 250 }}
+              >
+                {categoryData.map((d, i) => (
+                  <MenuItem key={i} value={d.nimi}>
+                    {d.nimi}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Paper>
         </div>
 
-        {objTasks.map((task, i) => (
+        {objTasksSorted.map((task, i) => (
           <TaskCard key={i} onetask={task} index={i} editHandle={editHandle} />
         ))}
 

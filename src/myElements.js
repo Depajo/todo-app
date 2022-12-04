@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  FormLabel,
-  Checkbox,
-  Radio,
-  MenuItem,
-  Card,
-  Button,
-} from "@mui/material/";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import { FormLabel, Checkbox, Radio, Card, Button } from "@mui/material/";
 
 const CreateCategoryCheckbox = (props) => {
   const isChecked = (name) => {
@@ -76,7 +68,7 @@ const TaskCard = (props) => {
           <ul className="kategoriat-lista">{kategotiat}</ul>
         </div>
         <Button
-          onClick={() => props.editHandle(props.index)}
+          onClick={() => props.editHandle(props.onetask)}
           sx={{ color: "#35739E" }}
           variant="text"
         >
@@ -126,6 +118,38 @@ const orderData = (data, order) => {
     allTasksObj = data.sort((a, b) => {
       return a.id - b.id;
     });
+  }
+
+  return allTasksObj;
+};
+
+const shearchDataByTask = (data, shearch) => {
+  let allTasksObj = [];
+  if (shearch === "") {
+    allTasksObj = data;
+  } else {
+    for (let index = 0; index < data.length; index++) {
+      let obj = data[index];
+      if (obj.tehtävä.toLowerCase().includes(shearch.toLowerCase())) {
+        allTasksObj.push(obj);
+      }
+    }
+  }
+
+  return allTasksObj;
+};
+
+const shearchDataById = (data, id) => {
+  let allTasksObj = [];
+  if (id === "") {
+    allTasksObj = data;
+  } else {
+    for (let index = 0; index < data.length; index++) {
+      let obj = data[index];
+      if (obj.id === id) {
+        allTasksObj.push(obj);
+      }
+    }
   }
 
   return allTasksObj;

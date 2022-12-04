@@ -7,7 +7,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 function MuokkaaTaskia(props) {
   const [category, editCategory] = useState([]);
-  const [taskName, setTaskName] = useState(props.data.tehtävä);
+  const [taskName, setTaskName] = useState("");
 
   const editTask = () => {
     putdata("http://localhost:3010/tasks/" + props.data.id, {

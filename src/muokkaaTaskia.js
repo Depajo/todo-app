@@ -13,6 +13,7 @@ function MuokkaaTaskia(props) {
     putdata("http://localhost:3010/tasks/" + props.data.id, {
       tehtävä: taskName,
       kategoria: category,
+      listanumero: 0,
     });
     props.setEditingPage(-1);
     props.setDataType("");

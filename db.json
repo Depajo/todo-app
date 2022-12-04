@@ -1,26 +1,29 @@
 {
   "tasks": [
     {
-      "tehtävä": "terve6",
+      "tehtävä": "abc",
       "kategoria": [
-        "Kaikki",
         "Muut"
       ],
-      "id": 6
+      "listanumero": 0,
+      "id": 1
     },
     {
-      "tehtävä": "imuroi",
+      "tehtävä": "n",
+      "kategoria": [
+        "Muut",
+        "Kaikki"
+      ],
+      "Tarkeys": null,
+      "id": 2
+    },
+    {
+      "tehtävä": "a",
       "kategoria": [
         "Kaikki"
       ],
-      "id": 7
-    },
-    {
-      "tehtävä": "moi88",
-      "kategoria": [
-        "Muut"
-      ],
-      "id": 8
+      "listanumero": 0,
+      "id": 3
     }
   ],
   "kategoriat": [

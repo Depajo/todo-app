@@ -64,6 +64,7 @@ function Lisaa() {
     postdata("http://localhost:3010/tasks/", {
       tehtävä: newTaskName,
       kategoria: newTaskCategory,
+      listaNumero: 0,
     });
     alert("Tehtävä lisätty");
     setNewTaskName("");

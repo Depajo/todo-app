@@ -1,7 +1,16 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { getdata, deletedata } from "./data";
-import { RadioGroup, Button, Dialog, Paper } from "@mui/material";
+import {
+  RadioGroup,
+  Button,
+  Dialog,
+  Paper,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 import { CreateCategoryRadiobox, showCategory, TaskCard } from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
 
@@ -56,15 +65,27 @@ function Etusivu() {
   if (editingPage === -1) {
     return (
       <div className="content">
-        <h4 style={{ marginBottom: 6 }}>Valitse kategoria:</h4>
-        <Paper>
-          <RadioGroup row sx={{ padding: 1, margin: 0 }}>
-            <CreateCategoryRadiobox
-              categorys={categoryData}
-              callChange={callChange}
-            />
-          </RadioGroup>
-        </Paper>
+        <div style={{ display: "flex" }}>
+          <Paper>
+            <FormControl sx={{ margin: 2 }}>
+              <InputLabel>Järjestys</InputLabel>
+              <Select label="Järjestys" sx={{ minWidth: 250 }}>
+                <MenuItem value={"aakkosjärjestys"}>
+                  Aakkosjärjestyksessä
+                </MenuItem>
+                <MenuItem value={"uusin ensin"}>Uusin ensin</MenuItem>
+                <MenuItem value={"vanhin ensin"}>Vanhin ensin</MenuItem>
+              </Select>
+            </FormControl>
+
+            <RadioGroup row sx={{ padding: 1, margin: "auto" }}>
+              <CreateCategoryRadiobox
+                categorys={categoryData}
+                callChange={callChange}
+              />
+            </RadioGroup>
+          </Paper>
+        </div>
 
         {objTasks.map((task, i) => (
           <TaskCard key={i} onetask={task} index={i} editHandle={editHandle} />

@@ -28,7 +28,7 @@ function App() {
           >
             <MenuIcon sx={{ fontSize: "large" }} />
           </IconButton>
-          <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
             Todo
           </Typography>
         </Toolbar>

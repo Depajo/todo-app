@@ -1,5 +1,13 @@
 import React from "react";
-import { FormLabel, Checkbox, Radio, Card, Button } from "@mui/material/";
+import {
+  FormLabel,
+  Checkbox,
+  Radio,
+  MenuItem,
+  Card,
+  Button,
+} from "@mui/material/";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 const CreateCategoryCheckbox = (props) => {
   const isChecked = (name) => {
@@ -74,6 +82,7 @@ const TaskCard = (props) => {
         >
           Muokkaa
         </Button>
+        <br></br>
       </Card>
     </div>
   );
@@ -96,6 +105,27 @@ const showCategory = (dataType, serverData) => {
         }
       }
     }
+  }
+
+  let allTaskSorted = orderData(allTasksObj, "aakkosjärjestys");
+
+  return allTaskSorted;
+};
+
+const orderData = (data, order) => {
+  let allTasksObj = [];
+  if (order.toLocaleLowerCase() === "aakkosjärjestys") {
+    allTasksObj = data.sort((a, b) => {
+      return a.tehtävä.localeCompare(b.tehtävä);
+    });
+  } else if (order.toLocaleLowerCase() === "uusin ensin") {
+    allTasksObj = data.sort((a, b) => {
+      return b.id - a.id;
+    });
+  } else if (order.toLocaleLowerCase() === "vanhin ensin") {
+    allTasksObj = data.sort((a, b) => {
+      return a.id - b.id;
+    });
   }
 
   return allTasksObj;
@@ -130,4 +160,5 @@ export {
   TaskCard,
   showCategory,
   checkValueIsSame,
+  orderData,
 };

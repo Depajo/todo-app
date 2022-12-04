@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { getdata, deletedata } from "./data";
-import { RadioGroup, Button } from "@mui/material";
+import { RadioGroup, Button, Dialog, Paper } from "@mui/material";
 import { CreateCategoryRadiobox, showCategory, TaskCard } from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
 
@@ -57,25 +57,32 @@ function Etusivu() {
     return (
       <div className="content">
         <h4 style={{ marginBottom: 6 }}>Valitse kategoria:</h4>
-        <RadioGroup row className="select">
-          <CreateCategoryRadiobox
-            categorys={categoryData}
-            callChange={callChange}
-          />
-        </RadioGroup>
+        <Paper>
+          <RadioGroup row sx={{ padding: 1, margin: 0 }}>
+            <CreateCategoryRadiobox
+              categorys={categoryData}
+              callChange={callChange}
+            />
+          </RadioGroup>
+        </Paper>
 
         {objTasks.map((task, i) => (
           <TaskCard key={i} onetask={task} index={i} editHandle={editHandle} />
         ))}
 
-        <Button variant="outlined" onClick={deletCategory} color="error">
+        <Button
+          sx={{ margin: 3 }}
+          variant="outlined"
+          onClick={deletCategory}
+          color="error"
+        >
           Poista kategoria
         </Button>
       </div>
     );
   } else {
     return (
-      <div className="content">
+      <Dialog open={true}>
         <MuokkaaTaskia
           data={objTasks[editingPage]}
           categoryData={categoryData}
@@ -83,7 +90,7 @@ function Etusivu() {
           setEditingPage={setEditingPage}
           setDataType={setDataType}
         />
-      </div>
+      </Dialog>
     );
   }
 }

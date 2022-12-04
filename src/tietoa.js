@@ -13,7 +13,7 @@ function Tietoa() {
           <h3>Sisältö</h3>
           <p>
             Käytetty{" "}
-            <a href="https://mui.com/core/" target="_blank">
+            <a href="https://mui.com/core/" target="_blank" rel="noreferrer">
               Mui core
             </a>{" "}
             elementtejä. Ne ovat vapaassa käytössä eikä tarvitse lisenssiä.

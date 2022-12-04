@@ -79,14 +79,14 @@ function MuokkaaTaskia(props) {
         </div>
         <div className="edit-buttons">
           <Button
-            sx={{ marginRight: 1 }}
+            sx={{ marginRight: 1, bgcolor: "#35739E" }}
             variant="contained"
             onClick={editTask}
           >
             Muokkaa
           </Button>
           <Button
-            sx={{ marginRight: 1 }}
+            sx={{ marginRight: 1, color: "#35739E" }}
             variant="outlined"
             onClick={props.closeEditing}
           >

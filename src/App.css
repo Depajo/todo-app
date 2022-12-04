@@ -7,32 +7,10 @@ body {
   background-color: rgb(223, 223, 223);
 }
 
-.navIcon {
-  width: 50px;
-}
-
-.mobileMenu {
-  margin: 0px;
-  background-color: rgb(255, 255, 255);
-  padding: 35px;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 3px 0px;
-  border-radius: 10px;
-}
-
 h1 {
   text-align: center;
   margin: 0px;
   margin-bottom: 20px;
-}
-
-.navButton {
-  position: absolute;
-  margin: 25px 0px 0px 10px;
-  border: 0px;
-  border-radius: 10px;
-  background-color: rgb(255, 255, 255);
 }
 
 .menuButton {
@@ -40,18 +18,17 @@ h1 {
   margin-top: 10px;
   display: block;
   text-decoration: none;
-  background-color: rgb(61, 61, 61);
+  background-color: rgb(103, 112, 118);
   color: aliceblue;
   padding: 10px;
-  box-shadow: 0px 5px 0px rgb(116, 116, 116);
-  border-radius: 3px;
+  box-shadow: 3px 3px rgb(72, 72, 72);
+  border-radius: 10px;
   max-width: 200px;
   text-align: center;
 }
 
 .menuButton:hover {
-  box-shadow: 0px 3px 0px rgb(116, 116, 116);
-  background-color: black;
+  background-color: rgb(86, 85, 85);
 }
 
 .content {

@@ -91,7 +91,11 @@ function Lisaa() {
             />
           </div>
 
-          <Button variant="contained" onClick={addNewTask}>
+          <Button
+            sx={{ bgcolor: "#35739E" }}
+            variant="contained"
+            onClick={addNewTask}
+          >
             Lisää
           </Button>
         </div>
@@ -107,7 +111,12 @@ function Lisaa() {
               value={newCategory}
             />
           </div>
-          <Button variant="contained" className="n" onClick={addNewCategory}>
+          <Button
+            sx={{ bgcolor: "#35739E" }}
+            variant="contained"
+            className="n"
+            onClick={addNewCategory}
+          >
             Lisää
           </Button>
         </div>

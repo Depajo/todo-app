@@ -67,7 +67,11 @@ const TaskCard = (props) => {
           <h4 className="tehtavakortti-otsikko">Kategoriat:</h4>
           <ul className="kategoriat-lista">{kategotiat}</ul>
         </div>
-        <Button onClick={() => props.editHandle(props.index)} variant="text">
+        <Button
+          onClick={() => props.editHandle(props.index)}
+          sx={{ color: "#35739E" }}
+          variant="text"
+        >
           Muokkaa
         </Button>
       </Card>

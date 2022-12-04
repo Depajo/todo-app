@@ -5,7 +5,8 @@ import ErrorSivu from "./errorSivu";
 import Tietoa from "./tietoa";
 import Lisaa from "./lisaa";
 import { useState } from "react";
-import navIcon from "./menu_nav_icon.png";
+import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 function App() {
   const [menuBarShow, setMenuBarShow] = useState("none");
@@ -15,11 +16,23 @@ function App() {
 
   return (
     <BrowserRouter className="browserRouter">
-      <button onClick={buttonHanlder} className="navButton">
-        <img className="navIcon" src={navIcon} alt="menu" />
-      </button>
-      <div className="mobileMenu">
-        <h1>TODO</h1>
+      <AppBar sx={{ bgcolor: "#35739E" }} position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+            onClick={buttonHanlder}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>
+            Todo
+          </Typography>
+        </Toolbar>
+
         <menu style={{ display: menuBarShow }}>
           <Link className="menuButton" to={"/"} onClick={buttonHanlder}>
             Etusivu
@@ -31,7 +44,7 @@ function App() {
             Tietoa
           </Link>
         </menu>
-      </div>
+      </AppBar>
       <Routes>
         <Route path="/" element={<Etusivu />} t />
         <Route path="/lisaa" element={<Lisaa />} />

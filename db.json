@@ -3,7 +3,7 @@
     {
       "tehtävä": "terve6",
       "kategoria": [
-        "Muut"
+        "Kaikki"
       ],
       "id": 6
     },
@@ -16,7 +16,9 @@
     },
     {
       "tehtävä": "moi88",
-      "kategoria": [],
+      "kategoria": [
+        "Kaikki"
+      ],
       "id": 8
     }
   ],

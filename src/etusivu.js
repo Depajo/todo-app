@@ -14,6 +14,7 @@ import { ManyTasks } from "./taskCard";
 import { showCategory, orderData, HelpText } from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
 import { useNavigate } from "react-router-dom";
+import TaskTimer from "./taskTimer";
 
 function Etusivu() {
   const [categoryData, setCategoryData] = useState([]);
@@ -53,8 +54,6 @@ function Etusivu() {
 
   const editHandle = (task) => {
     setOpen(true);
-    console.log("teht numero: " + task.id);
-
     setEditingTask(task);
   };
 
@@ -70,32 +69,6 @@ function Etusivu() {
         }
       }
     }
-  };
-
-  const plusPriority = (task) => {
-    if (task.prioriteetti < serverData.length) {
-      task.prioriteetti = task.prioriteetti + 1;
-      console.log(task.prioriteetti);
-      putdata("http://localhost:3010/tasks/" + task.id, {
-        tehtävä: task.tehtävä,
-        kategoria: task.kategoria,
-        prioriteetti: task.prioriteetti,
-      });
-    }
-    setDataType("");
-  };
-
-  const minusPriority = (task) => {
-    if (task.prioriteetti <= serverData.length && task.prioriteetti > 0) {
-      task.prioriteetti = task.prioriteetti - 1;
-      console.log(task.prioriteetti);
-      putdata("http://localhost:3010/tasks/" + task.id, {
-        tehtävä: task.tehtävä,
-        kategoria: task.kategoria,
-        prioriteetti: task.prioriteetti,
-      });
-    }
-    setDataType("");
   };
 
   const openTask = (task) => {
@@ -148,8 +121,8 @@ function Etusivu() {
         order={order}
         dataType={dataType}
         editHandle={editHandle}
-        plusPriority={plusPriority}
-        minusPriority={minusPriority}
+        setDataType={setDataType}
+        serverData={serverData}
         openTask={openTask}
       />
 

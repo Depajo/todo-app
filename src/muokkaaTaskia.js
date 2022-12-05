@@ -7,8 +7,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 function MuokkaaTaskia(props) {
   const [task] = useState(props.editingTaskId);
-
-  console.log(task);
   const [category, editCategory] = useState([]);
   const [taskName, setTaskName] = useState("");
 
@@ -16,7 +14,13 @@ function MuokkaaTaskia(props) {
     putdata("http://localhost:3010/tasks/" + task.id, {
       tehtävä: taskName,
       kategoria: category,
-      prioriteetti: 0,
+      prioriteetti: task.prioriteetti,
+      luontipvm: task.luontipvm,
+      valmis: task.valmis,
+      ajanlaskenta: task.ajanlaskenta,
+      aikaalaskettuMin: task.aikaalaskettuMin,
+      ajanlaskentaKaynistyksetJaLopetukset:
+        task.ajanlaskentaKaynistyksetJaLopetukset,
     });
     props.setOpen(false);
     props.setDataType("");

@@ -46,9 +46,7 @@ const CreateCategoryRadiobox = (props) => {
 const HelpText = (props) => {
   const [helpText, setHelpText] = useState("");
 
-  console.log(props);
   useEffect(() => {
-    console.log("helpText useEffect");
     if (props.dataType === "") {
       setHelpText("Valitse Kategoria:");
     } else if (props.order === "") {
@@ -57,8 +55,6 @@ const HelpText = (props) => {
       setHelpText("");
     }
   }, [helpText, props.dataType, props.order]);
-
-  console.log(helpText);
 
   return <h3 style={{ color: "#ff3333", marginBottom: 0 }}>{helpText}</h3>;
 };

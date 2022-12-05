@@ -65,6 +65,11 @@ function Lisaa() {
       tehtävä: newTaskName,
       kategoria: newTaskCategory,
       prioriteetti: 0,
+      luontipvm: new Date().toLocaleDateString(),
+      valmis: false,
+      ajanlaskenta: false,
+      aikaalaskettuMin: 0,
+      ajanlaskentaKaynistyksetJaLopetukset: [],
     });
     alert("Tehtävä lisätty");
     setNewTaskName("");

@@ -68,12 +68,13 @@ function Lisaa() {
       luontipvm: new Date().toLocaleDateString(),
       valmis: false,
       ajanlaskenta: false,
-      aikaalaskettuMin: 0,
+      aikaalaskettuSec: 0,
       ajanlaskentaAloitettu: 0,
     });
     alert("Tehtävä lisätty");
     setNewTaskName("");
   };
+
   return (
     <div className="content">
       <div className="container">

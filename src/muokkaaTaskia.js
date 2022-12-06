@@ -18,7 +18,7 @@ function MuokkaaTaskia(props) {
       luontipvm: task.luontipvm,
       valmis: task.valmis,
       ajanlaskenta: task.ajanlaskenta,
-      aikaalaskettuMin: task.aikaalaskettuMin,
+      aikaalaskettuSec: task.aikaalaskettuSec,
       ajanlaskentaAloitettu: task.ajanlaskentaAloitettu,
     });
     props.setOpen(false);

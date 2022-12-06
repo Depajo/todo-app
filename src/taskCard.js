@@ -20,12 +20,7 @@ const TaskCard = (props) => {
 
   let valmis = props.onetask.valmis;
 
-  let ajanlaskenta = props.onetask.ajanlaskenta;
-
-  let aikaalaskettuMin = props.onetask.aikaalaskettuMin;
-
-  let ajanlaskentaKaynistyksetJaLopetukset =
-    props.onetask.ajanlaskentaKaynistyksetJaLopetukset;
+  let aikaalaskettuSec = props.onetask.aikaalaskettuSec;
 
   const plusPriority = (task) => {
     if (task.prioriteetti < props.serverData.length) {
@@ -38,9 +33,8 @@ const TaskCard = (props) => {
         luontipvm: task.luontipvm,
         valmis: task.valmis,
         ajanlaskenta: task.ajanlaskenta,
-        aikaalaskettuMin: task.aikaalaskettuMin,
-        ajanlaskentaKaynistyksetJaLopetukset:
-          task.ajanlaskentaKaynistyksetJaLopetukset,
+        aikaalaskettuSec: task.aikaalaskettuSec,
+        ajanlaskentaAloitettu: task.ajanlaskentaAloitettu,
       });
     }
     props.setDataType("");
@@ -57,9 +51,8 @@ const TaskCard = (props) => {
         luontipvm: task.luontipvm,
         valmis: task.valmis,
         ajanlaskenta: task.ajanlaskenta,
-        aikaalaskettuMin: task.aikaalaskettuMin,
-        ajanlaskentaKaynistyksetJaLopetukset:
-          task.ajanlaskentaKaynistyksetJaLopetukset,
+        aikaalaskettuSec: task.aikaalaskettuSec,
+        ajanlaskentaAloitettu: task.ajanlaskentaAloitettu,
       });
     }
     props.setDataType("");
@@ -125,7 +118,7 @@ const TaskCard = (props) => {
         </div>
         <div className="aikaalaskettuMin">
           <h4 className="tehtavakortti-otsikko">AikaalaskettuMin:</h4>
-          <p className="tehtavakortti-arvo">{aikaalaskettuMin}</p>
+          <p className="tehtavakortti-arvo">{aikaalaskettuSec}</p>
         </div>
 
         <Button

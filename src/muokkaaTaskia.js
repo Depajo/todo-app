@@ -19,8 +19,7 @@ function MuokkaaTaskia(props) {
       valmis: task.valmis,
       ajanlaskenta: task.ajanlaskenta,
       aikaalaskettuMin: task.aikaalaskettuMin,
-      ajanlaskentaKaynistyksetJaLopetukset:
-        task.ajanlaskentaKaynistyksetJaLopetukset,
+      ajanlaskentaAloitettu: task.ajanlaskentaAloitettu,
     });
     props.setOpen(false);
     props.setDataType("");

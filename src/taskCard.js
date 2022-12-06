@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Button, IconButton, Link } from "@mui/material/";
 import { putdata } from "./data.js";
-import MuokkaaTaskia from "./muokkaaTaskia";
 import TaskTimer from "./taskTimer.js";
 
 const TaskCard = (props) => {
@@ -122,18 +121,11 @@ const TaskCard = (props) => {
         <div className="ajanlaskenta">
           <h4 className="tehtavakortti-otsikko">Ajanlaskenta:</h4>
           <TaskTimer task={props.onetask} />
+          {props.onetask.ajanlaskenta ? "lasketaan" : "ei lasketa"}
         </div>
         <div className="aikaalaskettuMin">
           <h4 className="tehtavakortti-otsikko">AikaalaskettuMin:</h4>
           <p className="tehtavakortti-arvo">{aikaalaskettuMin}</p>
-        </div>
-        <div className="ajanlaskentaKaynistyksetJaLopetukset">
-          <h4 className="tehtavakortti-otsikko">Käynistykset Ja Lopetukset:</h4>
-          <ul className="tehtavakortti-arvo">
-            {ajanlaskentaKaynistyksetJaLopetukset.map((e, i) => (
-              <li key={i}>{e}</li>
-            ))}
-          </ul>
         </div>
 
         <Button

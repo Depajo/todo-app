@@ -69,7 +69,7 @@ function Lisaa() {
       valmis: false,
       ajanlaskenta: false,
       aikaalaskettuMin: 0,
-      ajanlaskentaKaynistyksetJaLopetukset: [],
+      ajanlaskentaAloitettu: 0,
     });
     alert("Tehtävä lisätty");
     setNewTaskName("");

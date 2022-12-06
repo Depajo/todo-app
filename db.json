@@ -5,26 +5,13 @@
       "kategoria": [
         "Kaikki"
       ],
-      "prioriteetti": 1,
-      "luontipvm": "5.12.2022",
-      "valmis": false,
-      "ajanlaskenta": false,
-      "aikaalaskettuMin": 0,
-      "ajanlaskentaKaynistyksetJaLopetukset": [],
-      "id": 3
-    },
-    {
-      "tehtävä": "moi",
-      "kategoria": [
-        "Kaikki"
-      ],
       "prioriteetti": 0,
-      "luontipvm": "5.12.2022",
+      "luontipvm": "6.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuMin": 0,
-      "ajanlaskentaKaynistyksetJaLopetukset": [],
-      "id": 4
+      "aikaalaskettuMin": 170,
+      "ajanlaskentaAloitettu": 0,
+      "id": 1
     }
   ],
   "kategoriat": [

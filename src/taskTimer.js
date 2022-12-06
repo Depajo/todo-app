@@ -25,19 +25,20 @@ function TaskTimer(props) {
   };
 
   let timeCountStart = async () => {
-    return await getdata("http://localhost:3010/tasks/", task.id).then(
+    return await getdata("http://localhost:3010/tasks/" + task.id).then(
       (res) => {
-        console.log(res.data[0].ajanlaskentaAloitettu);
-        return res.data[0].ajanlaskentaAloitettu;
+        console.log("Tehtävä id: " + task.id);
+        console.log(res.data.ajanlaskentaAloitettu);
+        return res.data.ajanlaskentaAloitettu;
       }
     );
   };
 
   let timeCounted = async () => {
-    return await getdata("http://localhost:3010/tasks/", task.id).then(
+    return await getdata("http://localhost:3010/tasks/" + task.id).then(
       (res) => {
-        console.log(res.data[0].aikaalaskettuMin);
-        return res.data[0].aikaalaskettuMin;
+        console.log(res.aikaalaskettuMin);
+        return res.data.aikaalaskettuMin;
       }
     );
   };

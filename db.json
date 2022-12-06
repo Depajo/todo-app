@@ -1,6 +1,19 @@
 {
   "tasks": [
     {
+      "tehtävä": "hei",
+      "kategoria": [
+        "Kaikki"
+      ],
+      "prioriteetti": 0,
+      "luontipvm": "6.12.2022",
+      "valmis": false,
+      "ajanlaskenta": true,
+      "aikaalaskettuMin": 94,
+      "ajanlaskentaAloitettu": 1670356794,
+      "id": 2
+    },
+    {
       "tehtävä": "moi",
       "kategoria": [
         "Kaikki"
@@ -8,10 +21,10 @@
       "prioriteetti": 0,
       "luontipvm": "6.12.2022",
       "valmis": false,
-      "ajanlaskenta": false,
-      "aikaalaskettuMin": 170,
-      "ajanlaskentaAloitettu": 0,
-      "id": 1
+      "ajanlaskenta": true,
+      "aikaalaskettuMin": 58,
+      "ajanlaskentaAloitettu": 1670356799,
+      "id": 3
     }
   ],
   "kategoriat": [

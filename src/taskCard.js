@@ -1,9 +1,22 @@
-import React from "react";
-import { Card, Button, IconButton, Link } from "@mui/material/";
-import { putdata } from "./data.js";
+import React, { useEffect, useState } from "react";
+import { Card, Button, IconButton } from "@mui/material/";
+import { patchdata, getdata } from "./data.js";
 import TaskTimer from "./taskTimer.js";
 
 const TaskCard = (props) => {
+  const [loading, setloading] = useState(false);
+  const [ajanlaskenta, setAjanlaskenta] = useState(false);
+
+  useEffect(() => {
+    console.log("TaskCard useEffect");
+    console.log(props.onetask);
+  }, [props.onetask, loading, ajanlaskenta]);
+
+  getdata("http://localhost:3010/tasks/" + props.onetask.id).then((res) => {
+    setAjanlaskenta(res.data.ajanlaskenta);
+    setloading(true);
+  });
+
   let id = props.onetask.id;
 
   let kategotiat = props.onetask.kategoria.map((e, i) => (
@@ -20,21 +33,12 @@ const TaskCard = (props) => {
 
   let valmis = props.onetask.valmis;
 
-  let aikaalaskettuSec = props.onetask.aikaalaskettuSec;
-
   const plusPriority = (task) => {
     if (task.prioriteetti < props.serverData.length) {
       task.prioriteetti = task.prioriteetti + 1;
-      console.log(task.prioriteetti);
-      putdata("http://localhost:3010/tasks/" + task.id, {
-        tehtävä: task.tehtävä,
-        kategoria: task.kategoria,
+
+      patchdata("http://localhost:3010/tasks/" + task.id, {
         prioriteetti: task.prioriteetti,
-        luontipvm: task.luontipvm,
-        valmis: task.valmis,
-        ajanlaskenta: task.ajanlaskenta,
-        aikaalaskettuSec: task.aikaalaskettuSec,
-        ajanlaskentaAloitettu: task.ajanlaskentaAloitettu,
       });
     }
     props.setDataType("");
@@ -43,101 +47,93 @@ const TaskCard = (props) => {
   const minusPriority = (task) => {
     if (task.prioriteetti <= props.serverData.length && task.prioriteetti > 0) {
       task.prioriteetti = task.prioriteetti - 1;
-      console.log(task.prioriteetti);
-      putdata("http://localhost:3010/tasks/" + task.id, {
-        tehtävä: task.tehtävä,
-        kategoria: task.kategoria,
+
+      patchdata("http://localhost:3010/tasks/" + task.id, {
         prioriteetti: task.prioriteetti,
-        luontipvm: task.luontipvm,
-        valmis: task.valmis,
-        ajanlaskenta: task.ajanlaskenta,
-        aikaalaskettuSec: task.aikaalaskettuSec,
-        ajanlaskentaAloitettu: task.ajanlaskentaAloitettu,
       });
     }
     props.setDataType("");
   };
 
-  return (
-    <div className="object" key={props.indexi}>
-      <Card key={"card" + props.index} sx={{ padding: 3 }}>
-        <div className="id">
-          <h4 className="tehtavakortti-otsikko">ID:</h4>
-          <p className="tehtavakortti-arvo">{id}</p>
-        </div>
-        <div className="tehtava">
-          <h4 className="tehtavakortti-otsikko">Tehtävä:</h4>
-          <p className="tehtavakortti-arvo">{tehtava}</p>
-        </div>
-        <div className="kategoriat">
-          <h4 className="tehtavakortti-otsikko">Kategoriat:</h4>
-          <ul className="kategoriat-lista">{kategotiat}</ul>
-        </div>
-        <h4 className="tehtavakortti-otsikko">Oma Prioriteetti:</h4>
-        <div className="prioriteetti" style={{ display: "flex" }}>
-          <h3 className="tehtavakortti-arvo">{prioriteetti}</h3>
-          <IconButton
-            onClick={() => plusPriority(props.onetask)}
-            sx={{
-              color: "#35739E",
-              fontSize: 20,
-              margin: 1,
-              padding: 2,
-              bgcolor: "#e1e1e1",
-            }}
-            variant="text"
-          >
-            +
-          </IconButton>
-          <IconButton
-            onClick={() => minusPriority(props.onetask)}
-            sx={{
-              color: "#35739E",
-              fontSize: 20,
-              margin: 1,
-              padding: 2,
-              bgcolor: "#e1e1e1",
-            }}
-            variant="text"
-          >
-            -
-          </IconButton>
-        </div>
-        <div className="luontipvm">
-          <h4 className="tehtavakortti-otsikko">Luontipvm:</h4>
-          <p className="tehtavakortti-arvo">{luontipvm}</p>
-        </div>
-        <div className="valmis">
-          <h4 className="tehtavakortti-otsikko">Valmis:</h4>
-          <p className="tehtavakortti-arvo">{valmis}</p>
-        </div>
-        <div className="ajanlaskenta">
-          <h4 className="tehtavakortti-otsikko">Ajanlaskenta:</h4>
-          <TaskTimer task={props.onetask} />
-          {props.onetask.ajanlaskenta ? "lasketaan" : "ei lasketa"}
-        </div>
-        <div className="aikaalaskettuMin">
-          <h4 className="tehtavakortti-otsikko">AikaalaskettuMin:</h4>
-          <p className="tehtavakortti-arvo">{aikaalaskettuSec}</p>
-        </div>
+  if (loading === true) {
+    return (
+      <div className="object" key={props.indexi}>
+        <Card key={"card" + props.index} sx={{ padding: 3 }}>
+          <div className="id">
+            <h3 className="tehtavakortti-otsikko">ID:</h3>
+            <p className="tehtavakortti-arvo">{id}</p>
+          </div>
+          <div className="tehtava">
+            <h3 className="tehtavakortti-otsikko">Tehtävä:</h3>
+            <p className="tehtavakortti-arvo">{tehtava}</p>
+          </div>
+          <div className="kategoriat">
+            <h3 className="tehtavakortti-otsikko">Kategoriat:</h3>
+            <ul className="kategoriat-lista">{kategotiat}</ul>
+          </div>
+          <h3 className="tehtavakortti-otsikko">Oma Prioriteetti:</h3>
+          <div className="prioriteetti" style={{ display: "flex" }}>
+            <h3 className="tehtavakortti-arvo">{prioriteetti}</h3>
+            <IconButton
+              onClick={() => plusPriority(props.onetask)}
+              sx={{
+                color: "#35739E",
+                fontSize: 20,
+                margin: 1,
+                padding: 2,
+                bgcolor: "#e1e1e1",
+              }}
+              variant="text"
+            >
+              +
+            </IconButton>
+            <IconButton
+              onClick={() => minusPriority(props.onetask)}
+              sx={{
+                color: "#35739E",
+                fontSize: 20,
+                margin: 1,
+                padding: 2,
+                bgcolor: "#e1e1e1",
+              }}
+              variant="text"
+            >
+              -
+            </IconButton>
+          </div>
+          <div className="luontipvm">
+            <h3 className="tehtavakortti-otsikko">Luontipvm:</h3>
+            <p className="tehtavakortti-arvo">{luontipvm}</p>
+          </div>
+          {/* <div className="valmis">
+            <h3 className="tehtavakortti-otsikko">Valmis:</h3>
+            <p className="tehtavakortti-arvo">{valmis}</p>
+          </div> */}
+          <div className="ajanlaskenta">
+            <h3 className="tehtavakortti-otsikko">Ajanlaskenta:</h3>
+            <TaskTimer task={props.onetask} />
+          </div>
 
-        <Button
-          onClick={() => props.editHandle(props.onetask)}
-          sx={{ color: "#35739E" }}
-          variant="text"
-        >
-          Muokkaa
-        </Button>
-        <Button
-          onClick={() => props.openTask(props.onetask)}
-          sx={{ color: "#35739E" }}
-          variant="text"
-        >
-          Avaa tehtävä
-        </Button>
-      </Card>
-    </div>
-  );
+          <Button
+            onClick={() => props.editHandle(props.onetask)}
+            sx={{ color: "#35739E" }}
+            variant="text"
+          >
+            Muokkaa
+          </Button>
+          <Button
+            onClick={() => props.openTask(props.onetask)}
+            sx={{ color: "#35739E" }}
+            variant="text"
+          >
+            Avaa tehtävä
+          </Button>
+        </Card>
+      </div>
+    );
+  } else {
+    return <div> Loading.. </div>;
+  }
 };
 
 function ManyTasks(props) {

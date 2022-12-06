@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-import { getdata, putdata } from "./data";
+import { getdata, patchdata } from "./data";
 
 function TaskTimer(props) {
   const [timer, setTimer] = useState(0);
@@ -9,14 +9,15 @@ function TaskTimer(props) {
 
   useEffect(() => {
     setTimerStart(task.ajanlaskenta);
-    let interval = null;
+    setTimer(task.aikaalaskettuSec);
+    // let interval = null;
 
-    interval = setInterval(() => {}, 1000);
+    // interval = setInterval(() => {}, 1000);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+    // return () => {
+    //   clearInterval(interval);
+    // };
+  }, [task.ajanlaskenta]);
 
   const timeNowSecond = async () => {
     return Math.floor(Date.now() / 1000);
@@ -88,12 +89,7 @@ function TaskTimer(props) {
   };
 
   const saveData = (aloitettu, difference, timerOn) => {
-    putdata("http://localhost:3010/tasks/" + task.id, {
-      tehtävä: task.tehtävä,
-      kategoria: task.kategoria,
-      prioriteetti: task.prioriteetti,
-      luontipvm: task.luontipvm,
-      valmis: task.valmis,
+    patchdata("http://localhost:3010/tasks/" + task.id, {
       ajanlaskenta: timerOn,
       aikaalaskettuSec: difference,
       ajanlaskentaAloitettu: aloitettu,
@@ -109,7 +105,18 @@ function TaskTimer(props) {
     <div>
       <div className="timer">
         <div className="timer-display">
-          <h1>{timer}</h1>
+          {timerStart ? (
+            <h4 style={{ color: "green" }}>Lasketaan aikaa...</h4>
+          ) : (
+            <h4 style={{ color: "red" }}>Ajanlaskenta pysäytetty</h4>
+          )}
+          {timerStart ? (
+            <></>
+          ) : (
+            <h4>
+              Käytetty aikaa: <br /> {timer} sekunttia
+            </h4>
+          )}
         </div>
         <div className="timer-buttons">
           {timerStart ? (

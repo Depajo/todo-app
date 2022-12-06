@@ -1,15 +1,15 @@
 {
   "tasks": [
     {
-      "tehtävä": "tehtävä",
+      "tehtävä": "moi",
       "kategoria": [
         "Kaikki"
       ],
       "prioriteetti": 0,
-      "luontipvm": "6.12.2022",
+      "luontipvm": "7.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 21,
+      "aikaalaskettuSec": 2,
       "ajanlaskentaAloitettu": 0,
       "id": 1
     }

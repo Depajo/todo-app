@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { getdata, deletedata, putdata } from "./data";
+import { getdata, deletedata } from "./data";
 import {
   Button,
   Dialog,
@@ -14,7 +14,6 @@ import { ManyTasks } from "./taskCard";
 import { showCategory, orderData, HelpText } from "./myElements";
 import MuokkaaTaskia from "./muokkaaTaskia";
 import { useNavigate } from "react-router-dom";
-import TaskTimer from "./taskTimer";
 
 function Etusivu() {
   const [categoryData, setCategoryData] = useState([]);

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { CreateCategoryCheckbox } from "./myElements";
 import { TextField, Button } from "@mui/material/";
-import { putdata, deletedata } from "./data";
+import { patchdata, deletedata } from "./data";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 function MuokkaaTaskia(props) {
@@ -11,15 +11,9 @@ function MuokkaaTaskia(props) {
   const [taskName, setTaskName] = useState("");
 
   const editTask = () => {
-    putdata("http://localhost:3010/tasks/" + task.id, {
+    patchdata("http://localhost:3010/tasks/" + task.id, {
       tehtävä: taskName,
       kategoria: category,
-      prioriteetti: task.prioriteetti,
-      luontipvm: task.luontipvm,
-      valmis: task.valmis,
-      ajanlaskenta: task.ajanlaskenta,
-      aikaalaskettuSec: task.aikaalaskettuSec,
-      ajanlaskentaAloitettu: task.ajanlaskentaAloitettu,
     });
     props.setOpen(false);
     props.setDataType("");

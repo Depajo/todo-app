@@ -17,4 +17,8 @@ const deletedata = async function (url) {
   await axios.delete(url);
 };
 
-export { getdata, postdata, putdata, deletedata };
+const patchdata = async function (url, data) {
+  await axios.patch(url, data);
+};
+
+export { getdata, postdata, putdata, deletedata, patchdata };

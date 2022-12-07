@@ -23,14 +23,6 @@ function TaskTimer(props) {
     return Math.floor(Date.now() / 1000);
   };
 
-  const timeCounterId = async () => {
-    return await getdata("http://localhost:3010/tasks/" + task.id).then(
-      (res) => {
-        return res.data.aloituksetJaLopetukset.id;
-      }
-    );
-  };
-
   const timeCountStart = async () => {
     return await getdata("http://localhost:3010/tasks/" + task.id).then(
       (res) => {
@@ -93,13 +85,6 @@ function TaskTimer(props) {
       time3 = res;
       // console.log("aijemmin laksettu aika " + res);
     });
-
-    // let time4;
-
-    // await timeCounterId().then((res) => {
-    //   time4 = res + 1;
-    //   // console.log("ajanlaskennan id " + res);
-    // });
 
     await differenceBetween(time1, time2, time3).then((res) => {
       // console.log("aikaalaskettu " + res);

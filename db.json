@@ -1,7 +1,7 @@
 {
   "tasks": [
     {
-      "tehtävä": "moi",
+      "tehtävä": "testi",
       "kategoria": [
         "Kaikki"
       ],
@@ -9,9 +9,20 @@
       "luontipvm": "7.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 2,
+      "aikaalaskettuSec": 43,
       "ajanlaskentaAloitettu": 0,
       "id": 1
+    },
+    {
+      "tehtävä": "",
+      "kategoria": [],
+      "prioriteetti": 0,
+      "luontipvm": "7.12.2022",
+      "valmis": false,
+      "ajanlaskenta": false,
+      "aikaalaskettuSec": 79,
+      "ajanlaskentaAloitettu": 0,
+      "id": 2
     }
   ],
   "kategoriat": [
@@ -30,6 +41,104 @@
     {
       "nimi": "hitto",
       "id": 11
+    }
+  ],
+  "laskuriData": [
+    {
+      "aloitus": 1670372568,
+      "lopetus": 1670372569,
+      "taskId": 1,
+      "id": 2
+    },
+    {
+      "aloitus": 1670372579,
+      "lopetus": 1670372580,
+      "taskId": 1,
+      "id": 3
+    },
+    {
+      "aloitus": 1670372590,
+      "lopetus": 1670372591,
+      "taskId": 1,
+      "id": 4
+    },
+    {
+      "aloitus": 1670372604,
+      "lopetus": 1670372605,
+      "taskId": 1,
+      "id": 5
+    },
+    {
+      "aloitus": 1670372627,
+      "lopetus": 1670372631,
+      "taskId": 1,
+      "id": 6
+    },
+    {
+      "aloitus": 1670372662,
+      "lopetus": 1670372697,
+      "taskId": 1,
+      "id": 7
+    },
+    {
+      "aloitus": 1670372694,
+      "lopetus": 1670372712,
+      "taskId": 2,
+      "id": 8
+    },
+    {
+      "aloitus": 1670372751,
+      "lopetus": 1670372752,
+      "taskId": 2,
+      "id": 9
+    },
+    {
+      "aloitus": 1670372757,
+      "lopetus": 1670372767,
+      "taskId": 2,
+      "id": 10
+    },
+    {
+      "aloitus": 1670372777,
+      "lopetus": 1670372785,
+      "taskId": 2,
+      "id": 11
+    },
+    {
+      "aloitus": 1670372798,
+      "lopetus": 1670372809,
+      "taskId": 2,
+      "id": 12
+    },
+    {
+      "aloitus": 1670372827,
+      "lopetus": 1670372837,
+      "taskId": 2,
+      "id": 13
+    },
+    {
+      "aloitus": 1670372842,
+      "lopetus": 1670372851,
+      "taskId": 2,
+      "id": 14
+    },
+    {
+      "aloitus": 1670372857,
+      "lopetus": 1670372859,
+      "taskId": 2,
+      "id": 15
+    },
+    {
+      "aloitus": 1670372863,
+      "lopetus": 1670372871,
+      "taskId": 2,
+      "id": 16
+    },
+    {
+      "aloitus": 1670372881,
+      "lopetus": 1670372883,
+      "taskId": 2,
+      "id": 17
     }
   ]
 }

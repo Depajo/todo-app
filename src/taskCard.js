@@ -8,8 +8,8 @@ const TaskCard = (props) => {
   const [ajanlaskenta, setAjanlaskenta] = useState(false);
 
   useEffect(() => {
-    console.log("TaskCard useEffect");
-    console.log(props.onetask);
+    // console.log("TaskCard useEffect");
+    // console.log(props.onetask);
   }, [props.onetask, loading, ajanlaskenta]);
 
   getdata("http://localhost:3010/tasks/" + props.onetask.id).then((res) => {

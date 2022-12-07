@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-import { getdata, patchdata } from "./data";
+import { getdata, patchdata, postdata } from "./data";
 
 function TaskTimer(props) {
   const [timer, setTimer] = useState(0);
@@ -23,7 +23,15 @@ function TaskTimer(props) {
     return Math.floor(Date.now() / 1000);
   };
 
-  let timeCountStart = async () => {
+  const timeCounterId = async () => {
+    return await getdata("http://localhost:3010/tasks/" + task.id).then(
+      (res) => {
+        return res.data.aloituksetJaLopetukset.id;
+      }
+    );
+  };
+
+  const timeCountStart = async () => {
     return await getdata("http://localhost:3010/tasks/" + task.id).then(
       (res) => {
         // console.log("Tehtävä id: " + task.id);
@@ -33,7 +41,7 @@ function TaskTimer(props) {
     );
   };
 
-  let timeCounted = async () => {
+  const timeCounted = async () => {
     return await getdata("http://localhost:3010/tasks/" + task.id).then(
       (res) => {
         // console.log(res.data.aikaalaskettuSec);
@@ -42,12 +50,13 @@ function TaskTimer(props) {
     );
   };
 
-  let differenceBetween = async (timeNow, timeStarted, timeAlredy) => {
+  const differenceBetween = async (timeNow, timeStarted, timeAlredy) => {
     return timeStarted - timeNow + timeAlredy;
   };
 
   const startTimer = async () => {
     // console.log("START TIMER \n\n");
+
     let time3;
 
     await timeCounted().then((res) => {
@@ -55,7 +64,10 @@ function TaskTimer(props) {
       // console.log("aijemmin laksettu aika " + res);
     });
 
-    await timeNowSecond().then((res) => saveData(res, time3, true));
+    await timeNowSecond().then((res) => {
+      // console.log("aika nyt " + res);
+      saveData(res, time3, true);
+    });
   };
 
   const stopTimer = async () => {
@@ -65,14 +77,14 @@ function TaskTimer(props) {
 
     await timeCountStart().then((res) => {
       time1 = res;
-      // console.log("ajan lasku aloitettu " + res);
+      console.log("ajan lasku aloitettu " + res);
     });
 
     let time2;
 
     await timeNowSecond().then((res) => {
       time2 = res;
-      // console.log("aika nyt " + res);
+      console.log("aika nyt " + res);
     });
 
     let time3;
@@ -82,8 +94,22 @@ function TaskTimer(props) {
       // console.log("aijemmin laksettu aika " + res);
     });
 
+    // let time4;
+
+    // await timeCounterId().then((res) => {
+    //   time4 = res + 1;
+    //   // console.log("ajanlaskennan id " + res);
+    // });
+
     await differenceBetween(time1, time2, time3).then((res) => {
       // console.log("aikaalaskettu " + res);
+
+      postdata("http://localhost:3010/laskuriData/", {
+        aloitus: time1,
+        lopetus: time2,
+        taskId: task.id,
+      });
+
       saveData(0, res, false);
     });
   };

@@ -11,7 +11,9 @@ import {
   MenuItem,
 } from "@mui/material";
 import { ManyTasks } from "./taskCard";
-import { showCategory, orderData, HelpText } from "./myElements";
+import { HelpText } from "./myElements";
+import { showCategory, orderData } from "./myFunctions";
+
 import MuokkaaTaskia from "./muokkaaTaskia";
 import { useNavigate } from "react-router-dom";
 
@@ -23,6 +25,8 @@ function Etusivu() {
   const [editingTask, setEditingTask] = useState(-1);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const [objTasks, setObjTasks] = useState([]);
+  const [objTasksSorted, setObjTasksSorted] = useState([]);
 
   useEffect(() => {
     getdata("http://localhost:3010/tasks")
@@ -36,10 +40,15 @@ function Etusivu() {
         setCategoryData(res.data);
       })
       .catch(() => console.error("Error"));
-  }, [dataType]);
+  }, [dataType, open, order]);
 
-  const objTasks = showCategory(dataType, serverData);
-  const objTasksSorted = orderData(objTasks, order);
+  useEffect(() => {
+    setObjTasks(showCategory(dataType, serverData));
+  }, [dataType, serverData]);
+
+  useEffect(() => {
+    setObjTasksSorted(orderData(objTasks, order));
+  }, [objTasks, order]);
 
   const callChangeDataType = (event) => {
     setDataType(event.target.value);
@@ -123,6 +132,7 @@ function Etusivu() {
         setDataType={setDataType}
         serverData={serverData}
         openTask={openTask}
+        setServerData={setServerData}
       />
 
       <Button

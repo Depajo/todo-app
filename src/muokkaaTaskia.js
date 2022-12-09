@@ -16,7 +16,7 @@ function MuokkaaTaskia(props) {
       kategoria: category,
     });
     props.setOpen(false);
-    props.setDataType("");
+    // props.setDataType("");
   };
 
   const editTaskCategoryHandel = (event) => {
@@ -35,14 +35,13 @@ function MuokkaaTaskia(props) {
   };
 
   const editTaskNameHandel = (event) => {
-    console.log(event.target.value);
     setTaskName(event.target.value);
   };
 
   const deletTask = () => {
     deletedata("http://localhost:3010/tasks/" + task.id);
     props.setOpen(false);
-    props.setDataType("");
+    // props.setDataType("");
   };
 
   return (

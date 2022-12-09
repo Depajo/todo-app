@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Etusivu from "./etusivu.js";
 import ErrorSivu from "./errorSivu";
 import Tietoa from "./tietoa";
@@ -15,8 +15,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Margin } from "@mui/icons-material";
-import { margin, maxWidth } from "@mui/system";
+import TimeSearch from "./timeSearch";
 
 function App() {
   const [menuBarShow, setMenuBarShow] = useState("none");
@@ -103,6 +102,7 @@ function App() {
       </AppBar>
       <Routes>
         <Route path="/" element={<Etusivu />} t />
+        <Route path="time" element={<TimeSearch />} />
         <Route path="/tehtava/:id" element={<Tehtava />} />
         <Route path="/lisaa" element={<Lisaa />} />
         <Route path="/tietoa" element={<Tietoa />} />

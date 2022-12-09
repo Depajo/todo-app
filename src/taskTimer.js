@@ -17,41 +17,38 @@ function TaskTimer(props) {
     // return () => {
     //   clearInterval(interval);
     // };
-  }, [task.ajanlaskenta]);
+  }, [task.ajanlaskenta, task.aikaalaskettuSec]);
 
   const timeNowSecond = async () => {
     return Math.floor(Date.now() / 1000);
   };
 
-  const timeCountStart = async () => {
-    return await getdata("http://localhost:3010/tasks/" + task.id).then(
-      (res) => {
-        // console.log("Tehtävä id: " + task.id);
-        // console.log(res.data.ajanlaskentaAloitettu);
-        return res.data.ajanlaskentaAloitettu;
-      }
-    );
+  const timeCountStart = async (id) => {
+    return await getdata("http://localhost:3010/tasks/" + id).then((res) => {
+      // console.log("Tehtävä id: " + task.id);
+      // console.log(res.data.ajanlaskentaAloitettu);
+      return res.data.ajanlaskentaAloitettu;
+    });
   };
 
-  const timeCounted = async () => {
-    return await getdata("http://localhost:3010/tasks/" + task.id).then(
-      (res) => {
-        // console.log(res.data.aikaalaskettuSec);
-        return res.data.aikaalaskettuSec;
-      }
-    );
+  const timeCounted = async (id) => {
+    return await getdata("http://localhost:3010/tasks/" + id).then((res) => {
+      // console.log(res.data.aikaalaskettuSec);
+      return res.data.aikaalaskettuSec;
+    });
   };
 
   const differenceBetween = async (timeNow, timeStarted, timeAlredy) => {
     return timeStarted - timeNow + timeAlredy;
   };
 
-  const startTimer = async () => {
+  const startTimer = async (id) => {
     // console.log("START TIMER \n\n");
+    console.log("ajan lasku aloitettu " + id);
 
     let time3;
 
-    await timeCounted().then((res) => {
+    await timeCounted(id).then((res) => {
       time3 = res;
       // console.log("aijemmin laksettu aika " + res);
     });
@@ -62,12 +59,13 @@ function TaskTimer(props) {
     });
   };
 
-  const stopTimer = async () => {
+  const stopTimer = async (id) => {
     // console.log("STOP TIMER \n\n");
+    console.log("ajan lasku pysäytetty " + id);
 
     let time1;
 
-    await timeCountStart().then((res) => {
+    await timeCountStart(id).then((res) => {
       time1 = res;
       console.log("ajan lasku aloitettu " + res);
     });
@@ -81,7 +79,7 @@ function TaskTimer(props) {
 
     let time3;
 
-    await timeCounted().then((res) => {
+    await timeCounted(id).then((res) => {
       time3 = res;
       // console.log("aijemmin laksettu aika " + res);
     });
@@ -131,9 +129,9 @@ function TaskTimer(props) {
         </div>
         <div className="timer-buttons">
           {timerStart ? (
-            <Button onClick={stopTimer}>Stop</Button>
+            <Button onClick={() => stopTimer(task.id)}>Stop</Button>
           ) : (
-            <Button onClick={startTimer}>Start</Button>
+            <Button onClick={() => startTimer(task.id)}>Start</Button>
           )}
         </div>
       </div>

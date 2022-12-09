@@ -2,7 +2,8 @@ import "./App.css";
 import { TextField, Button } from "@mui/material/";
 import React, { useEffect, useState } from "react";
 import { getdata, postdata } from "./data";
-import { CreateCategoryCheckbox, checkValueIsSame } from "./myElements";
+import { CreateCategoryCheckbox } from "./myElements";
+import { checkValueIsSame } from "./myFunctions";
 
 function Lisaa() {
   const [categoryData, setCategoryData] = useState([]);

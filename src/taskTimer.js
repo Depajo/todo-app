@@ -6,7 +6,6 @@ function TaskTimer(props) {
   const [timer, setTimer] = useState(0);
   const [task] = useState(props.task);
   const [timerStart, setTimerStart] = useState();
-  console.log(task);
 
   useEffect(() => {
     setTimerStart(task.ajanlaskenta);

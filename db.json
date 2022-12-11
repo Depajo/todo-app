@@ -1,13 +1,15 @@
 {
   "tasks": [
     {
-      "tehtävä": "pidempi",
-      "kategoria": [],
+      "tehtävä": "p",
+      "kategoria": [
+        "Muut"
+      ],
       "prioriteetti": 1,
       "luontipvm": "7.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 3341417230,
+      "aikaalaskettuSec": 3341417233,
       "ajanlaskentaAloitettu": 0,
       "id": 2
     },
@@ -20,7 +22,7 @@
       "luontipvm": "9.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 1592,
+      "aikaalaskettuSec": 1616,
       "ajanlaskentaAloitettu": 0,
       "id": 3
     }
@@ -633,6 +635,84 @@
       "lopetus": 1670620920,
       "taskId": 3,
       "id": 104
+    },
+    {
+      "aloitus": 1670761069,
+      "lopetus": 1670761075,
+      "taskId": 3,
+      "id": 105
+    },
+    {
+      "aloitus": 1670761079,
+      "lopetus": 1670761081,
+      "taskId": 3,
+      "id": 106
+    },
+    {
+      "aloitus": 1670761091,
+      "lopetus": 1670761093,
+      "taskId": 3,
+      "id": 107
+    },
+    {
+      "aloitus": 1670761259,
+      "lopetus": 1670761260,
+      "taskId": 3,
+      "id": 108
+    },
+    {
+      "aloitus": 1670761262,
+      "lopetus": 1670761263,
+      "taskId": 3,
+      "id": 109
+    },
+    {
+      "aloitus": 1670761264,
+      "lopetus": 1670761265,
+      "taskId": 3,
+      "id": 110
+    },
+    {
+      "aloitus": 1670761272,
+      "lopetus": 1670761274,
+      "taskId": 3,
+      "id": 111
+    },
+    {
+      "aloitus": 1670761301,
+      "lopetus": 1670761305,
+      "taskId": 3,
+      "id": 112
+    },
+    {
+      "aloitus": 1670761311,
+      "lopetus": 1670761313,
+      "taskId": 3,
+      "id": 113
+    },
+    {
+      "aloitus": 1670761315,
+      "lopetus": 1670761316,
+      "taskId": 3,
+      "id": 114
+    },
+    {
+      "aloitus": 1670761317,
+      "lopetus": 1670761318,
+      "taskId": 3,
+      "id": 115
+    },
+    {
+      "aloitus": 1670761416,
+      "lopetus": 1670761419,
+      "taskId": 2,
+      "id": 116
+    },
+    {
+      "aloitus": 1670761470,
+      "lopetus": 1670761471,
+      "taskId": 3,
+      "id": 117
     }
   ]
 }

@@ -4,11 +4,7 @@ import { IconButton } from "@mui/material";
 import { getdata, patchdata } from "./data.js";
 
 function Prioriteetti(props) {
-  const getdata = async (url) => {
-    getdata(url).then((res) => {
-      props.setServerData(res.data);
-    });
-  };
+  const [loading, setloading] = useState(false);
 
   const plusPriority = (task) => {
     if (task.prioriteetti < props.serverData.length) {
@@ -33,6 +29,14 @@ function Prioriteetti(props) {
 
     props.setDataType("");
   };
+
+  useEffect(() => {
+    setloading(true);
+  }, [props.onetask]);
+
+  if (loading === false) {
+    return <div></div>;
+  }
 
   return (
     <div>

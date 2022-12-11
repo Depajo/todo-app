@@ -8,16 +8,8 @@ function TaskTimer(props) {
   const [timerStart, setTimerStart] = useState();
 
   useEffect(() => {
-    // console.log("TaskTimer useEffect");
     setTimerStart(task.ajanlaskenta);
     setTimer(task.aikaalaskettuSec);
-    // let interval = null;
-
-    // interval = setInterval(() => {}, 1000);
-
-    // return () => {
-    //   clearInterval(interval);
-    // };
   }, [task.ajanlaskenta, task.aikaalaskettuSec]);
 
   // Palauttaa tämän hetken ajan
@@ -134,6 +126,7 @@ function TaskTimer(props) {
               Käytetty aikaa: <br /> {timer} sekunttia
             </h4>
           )}
+          <p>{task.aikaalaskettuSec}</p>
         </div>
         <div className="timer-buttons">
           {timerStart ? (

@@ -50,10 +50,10 @@ const HelpText = (props) => {
   const [helpText, setHelpText] = useState("");
 
   useEffect(() => {
-    if (props.dataType === "") {
-      setHelpText("Valitse Kategoria:");
-    } else if (props.order === "") {
+    if (props.order === "") {
       setHelpText("Valitse Järjestys:");
+    } else if (props.dataType === "") {
+      setHelpText("Valitse Kategoria:");
     } else {
       setHelpText("");
     }

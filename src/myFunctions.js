@@ -83,10 +83,9 @@ const shearchDataById = (data, id) => {
     allTasksObj = data;
   } else {
     for (let index = 0; index < data.length; index++) {
-      console.log(data[index].id);
       let obj = data[index];
       if (obj.id === id) {
-        allTasksObj.push(obj);
+        allTasksObj = obj;
       }
     }
   }

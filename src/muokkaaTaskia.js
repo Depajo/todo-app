@@ -46,7 +46,7 @@ function MuokkaaTaskia(props) {
   const deletTask = () => {
     deletedata("http://localhost:3010/tasks/" + task.id);
     props.setOpen(false);
-    // props.setDataType("");
+    props.setDataType("");
   };
 
   return (

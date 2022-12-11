@@ -8,9 +8,20 @@ const TaskCard = (props) => {
   const [task, setTask] = useState();
 
   useEffect(() => {
+    console.log("TaskCard useEffect");
+    console.log(task);
     setTask(props.onetask);
     setloading(false);
-  }, [loading, props.onetask]);
+  }, [loading, props.onetask, props.serverData]);
+
+  const shearchTimer = () => {
+    let timer = props.timers.find((e) => e.id === task.id);
+    if (timer) {
+      return timer;
+    } else {
+      return false;
+    }
+  };
 
   if (loading === false) {
     return (

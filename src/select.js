@@ -16,12 +16,12 @@ function Selector(props) {
 
   // Haetaan kategoriat
   useEffect(() => {
-    console.log("Selector useEffect");
+    // console.log("Selector useEffect");
     // console.log("dataType: ", propsdataType);
     // console.log("order: ", order);
 
     getdata("http://localhost:3010/kategoriat").then((res) => {
-      console.log("res.data: ", res.data);
+      // console.log("res.data: ", res.data);
       props.setCategoryData(res.data);
       setLoading(false);
     });

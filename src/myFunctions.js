@@ -1,3 +1,4 @@
+// Valitsee tehtävät kategorian mukaan ja palauttaa ne
 const showCategory = (dataType, serverData) => {
   let allTasksObj = [];
   if (dataType.toLocaleLowerCase() === "kaikki") {
@@ -22,6 +23,7 @@ const showCategory = (dataType, serverData) => {
   return allTaskSorted;
 };
 
+// Järjestää tehtävät halutun mukaan ja palauttaa ne järjestettynä
 const orderData = (data, order) => {
   let allTasksObj = [];
   if (order.toLocaleLowerCase() === "aakkosjärjestys") {
@@ -57,6 +59,7 @@ const orderData = (data, order) => {
   return allTasksObj;
 };
 
+// Hakee tehtävät hakusanan mukaan ja palauttaa ne
 const shearchDataByTask = async (data, shearch) => {
   let allTasksObj = [];
   if (shearch === "") {
@@ -73,6 +76,7 @@ const shearchDataByTask = async (data, shearch) => {
   return allTasksObj;
 };
 
+// Hakee tehtävät id:n mukaan ja palauttaa ne
 const shearchDataById = (data, id) => {
   let allTasksObj = [];
   if (id === "") {
@@ -90,20 +94,8 @@ const shearchDataById = (data, id) => {
   return allTasksObj;
 };
 
-const mapArr = (data) => {
-  let allTasks = [];
-  for (const value of data) {
-    let oneTask = [];
-    let objectKeysCount = Object.keys(value).length;
-    for (let i = 0; i < objectKeysCount; i++) {
-      oneTask.push(Object.keys(value)[i] + ": " + Object.values(value)[i]);
-    }
-    allTasks.push(oneTask);
-  }
-
-  return allTasks;
-};
-
+// Tarkastaa onko annettu arvo sama kuin tietty arvo
+// tai onko arvo tyhjä ja palauttaa true tai false
 const checkValueIsSame = (target, value) => {
   if (value === target || target === "") {
     return false;
@@ -112,6 +104,9 @@ const checkValueIsSame = (target, value) => {
   }
 };
 
+// Antaa ajan muodossa 2020-01-01T00:00 tai 00:00 tai 2020-01-01T00:00 ja
+// palauttaa sen, mikä on true, jos kaikki on false, palauttaa Errorin, jos
+// kaikki on true, palauttaa Errorin.
 const getMyTime = (dateOnly, timeOnly, dateAndTime) => {
   if (dateOnly === undefined) {
     dateOnly = false;
@@ -160,6 +155,7 @@ const getMyTime = (dateOnly, timeOnly, dateAndTime) => {
   return thisDayString;
 };
 
+// Lisää nollan eteen, jos numero on alle 10
 const lessThanTen = (number) => {
   if (number < 10) {
     return "0" + number;
@@ -172,7 +168,6 @@ export {
   getMyTime,
   lessThanTen,
   checkValueIsSame,
-  mapArr,
   shearchDataById,
   shearchDataByTask,
   orderData,

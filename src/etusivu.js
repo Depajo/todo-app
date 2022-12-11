@@ -1,9 +1,9 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { getdata, deletedata } from "./data";
+import { getdata } from "./data";
 import { Button, Dialog } from "@mui/material";
 import { TaskCard } from "./taskCard";
-import { HelpText } from "./myElements";
+
 import Selector from "./select";
 import { showCategory, orderData } from "./myFunctions";
 import MuokkaaTaskia from "./muokkaaTaskia";
@@ -21,19 +21,19 @@ function Etusivu() {
 
   // Haetaan dataa
   useEffect(() => {
-    console.log("Etusivu useEffect");
-    console.log("dataType: ", dataType);
+    // console.log("Etusivu useEffect");
+    // console.log("dataType: ", dataType);
     getdata("http://localhost:3010/tasks")
       .then((res) => {
         setServerData(res.data);
-        console.log("res.data: ", res.data);
+        // console.log("res.data: ", res.data);
       })
       .then(() => {
-        console.log("serverData: ", serverData);
+        // console.log("serverData: ", serverData);
         let obj = showCategory(dataType, serverData);
-        console.log("obj: ", obj);
+        // console.log("obj: ", obj);
         let objSorted = orderData(obj, order);
-        console.log("objSorted: ", objSorted);
+        // console.log("objSorted: ", objSorted);
         setObjTasks(objSorted);
       })
       .catch(() => console.error("Error"));

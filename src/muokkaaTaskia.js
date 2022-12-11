@@ -10,6 +10,7 @@ function MuokkaaTaskia(props) {
   const [category, editCategory] = useState([]);
   const [taskName, setTaskName] = useState("");
 
+  // Muokkaa tehtävää ja sulje ikkuna ja päivitä data
   const editTask = () => {
     patchdata("http://localhost:3010/tasks/" + task.id, {
       tehtävä: taskName,
@@ -19,6 +20,8 @@ function MuokkaaTaskia(props) {
     // props.setDataType("");
   };
 
+  // Muokkaa kategorioita joita tehtävällä on.
+  // Lisää se categoria tehtävälle tai poista categoria jos se on sillä tehtävällä.
   const editTaskCategoryHandel = (event) => {
     if (event.target.checked) {
       category.push(event.target.value);
@@ -34,10 +37,12 @@ function MuokkaaTaskia(props) {
     }
   };
 
+  // Muokkaa tehtävän nimeä
   const editTaskNameHandel = (event) => {
     setTaskName(event.target.value);
   };
 
+  // Poista tehtävä
   const deletTask = () => {
     deletedata("http://localhost:3010/tasks/" + task.id);
     props.setOpen(false);

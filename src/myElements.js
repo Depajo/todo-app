@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FormLabel, Checkbox, Radio } from "@mui/material/";
 
+// Luo checkboxit kategorioille
 const CreateCategoryCheckbox = (props) => {
   const isChecked = (name) => {
     for (let i = 0; i < props.checked.length; i++) {
@@ -27,6 +28,7 @@ const CreateCategoryCheckbox = (props) => {
   });
 };
 
+// Luo radioboxit kategorioille
 const CreateCategoryRadiobox = (props) => {
   return props.categorys.map((d, i) => {
     return (
@@ -43,6 +45,7 @@ const CreateCategoryRadiobox = (props) => {
   });
 };
 
+// Tekee helpTextin jos kategoriaa tai järjestystä ei ole valittu
 const HelpText = (props) => {
   const [helpText, setHelpText] = useState("");
 

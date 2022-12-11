@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Card, Button } from "@mui/material/";
-import { getdata } from "./data.js";
 import TaskTimer from "./taskTimer.js";
 import { Prioriteetti } from "./prioriteetti.js";
 
@@ -9,11 +8,9 @@ const TaskCard = (props) => {
   const [task, setTask] = useState();
 
   useEffect(() => {
-    getdata("http://localhost:3010/tasks/" + props.onetask.id).then((res) => {
-      setTask(res.data);
-      setloading(false);
-    });
-  }, [loading]);
+    setTask(props.onetask);
+    setloading(false);
+  }, [loading, props.onetask]);
 
   if (loading === false) {
     return (
@@ -81,37 +78,4 @@ const TaskCard = (props) => {
   }
 };
 
-function ManyTasks(props) {
-  if (
-    props.tasks.length === 0 &&
-    props.order.length > 0 &&
-    props.dataType.length > 0
-  ) {
-    return (
-      <div>
-        <h3>Ei tehtäviä</h3>
-        <Button sx={{ color: "#35739E" }} variant="outlined" href="/lisaa">
-          Lisää tehtävä
-        </Button>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        {props.tasks.map((task, i) => (
-          <TaskCard
-            key={i}
-            onetask={task}
-            index={i}
-            editHandle={props.editHandle}
-            serverData={props.serverData}
-            setDataType={props.setDataType}
-            setServerData={props.setServerData}
-          />
-        ))}
-      </div>
-    );
-  }
-}
-
-export { TaskCard, ManyTasks };
+export { TaskCard };

@@ -19,10 +19,12 @@ function TaskTimer(props) {
     // };
   }, [task.ajanlaskenta, task.aikaalaskettuSec]);
 
+  // Palauttaa tämän hetken ajan
   const timeNowSecond = async () => {
     return Math.floor(Date.now() / 1000);
   };
 
+  // Palauttaa ajan jolloin ajanlaskenta aloitettiin
   const timeCountStart = async (id) => {
     return await getdata("http://localhost:3010/tasks/" + id).then((res) => {
       // console.log("Tehtävä id: " + task.id);
@@ -31,6 +33,7 @@ function TaskTimer(props) {
     });
   };
 
+  // Palauttaa ajan joka on jo laskettu
   const timeCounted = async (id) => {
     return await getdata("http://localhost:3010/tasks/" + id).then((res) => {
       // console.log(res.data.aikaalaskettuSec);
@@ -38,6 +41,8 @@ function TaskTimer(props) {
     });
   };
 
+  // Laskee ajan joka on kulunut ajanlaskennan aloittamisesta nykyhetkeen
+  // ja lisää sen aikaan joka on jo laskettu
   const differenceBetween = async (timeNow, timeStarted, timeAlredy) => {
     return timeStarted - timeNow + timeAlredy;
   };
@@ -59,6 +64,7 @@ function TaskTimer(props) {
     });
   };
 
+  // Pysäyttää ajanlaskennan ja tallentaa ajan
   const stopTimer = async (id) => {
     // console.log("STOP TIMER \n\n");
     console.log("ajan lasku pysäytetty " + id);
@@ -97,6 +103,7 @@ function TaskTimer(props) {
     });
   };
 
+  // Tallentaa ajan ja ajanlaskennan tilan
   const saveData = (aloitettu, difference, timerOn) => {
     patchdata("http://localhost:3010/tasks/" + task.id, {
       ajanlaskenta: timerOn,

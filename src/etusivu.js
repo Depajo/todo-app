@@ -1,19 +1,11 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { getdata, deletedata } from "./data";
-import {
-  Button,
-  Dialog,
-  Paper,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-} from "@mui/material";
-import { ManyTasks } from "./taskCard";
+import { Button, Dialog } from "@mui/material";
+import { TaskCard } from "./taskCard";
 import { HelpText } from "./myElements";
+import Selector from "./select";
 import { showCategory, orderData } from "./myFunctions";
-
 import MuokkaaTaskia from "./muokkaaTaskia";
 import { useNavigate } from "react-router-dom";
 
@@ -26,123 +18,74 @@ function Etusivu() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const [objTasks, setObjTasks] = useState([]);
-  const [objTasksSorted, setObjTasksSorted] = useState([]);
 
+  // Haetaan dataa
   useEffect(() => {
+    console.log("Etusivu useEffect");
+    console.log("dataType: ", dataType);
     getdata("http://localhost:3010/tasks")
       .then((res) => {
         setServerData(res.data);
+        console.log("res.data: ", res.data);
+      })
+      .then(() => {
+        console.log("serverData: ", serverData);
+        let obj = showCategory(dataType, serverData);
+        console.log("obj: ", obj);
+        let objSorted = orderData(obj, order);
+        console.log("objSorted: ", objSorted);
+        setObjTasks(objSorted);
       })
       .catch(() => console.error("Error"));
+  }, [dataType, order, categoryData, open]);
 
-    getdata("http://localhost:3010/kategoriat")
-      .then((res) => {
-        setCategoryData(res.data);
-      })
-      .catch(() => console.error("Error"));
-  }, [dataType, open, order]);
-
-  useEffect(() => {
-    setObjTasks(showCategory(dataType, serverData));
-  }, [dataType, serverData]);
-
-  useEffect(() => {
-    setObjTasksSorted(orderData(objTasks, order));
-  }, [objTasks, order]);
-
-  const callChangeDataType = (event) => {
-    setDataType(event.target.value);
-  };
-
-  const callChangeOrder = (event) => {
-    setOrder(event.target.value);
-  };
-
+  // Suljetaan muokkausikkuna
   const closeEditing = () => setOpen(false);
 
+  // Avataan muokkausikkuna
   const editHandle = (task) => {
     setOpen(true);
     setEditingTask(task);
   };
 
-  const deletCategory = () => {
-    for (let i = 0; i < categoryData.length; i++) {
-      if (categoryData[i].nimi === dataType) {
-        if (categoryData[i].id === 1) {
-          alert("Et voi poistaa tätä kategoriaa");
-        } else {
-          deletedata("http://localhost:3010/kategoriat/" + categoryData[i].id);
-          setDataType("");
-          alert("Kategoria poistettu");
-        }
-      }
-    }
-  };
-
+  // Avataan tehtävä
   const openTask = (task) => {
     navigate("/tehtava/" + task.id);
   };
 
   return (
+    // Etusivu
     <div className="content">
-      <h1>Valitse näkymä</h1>
-      <HelpText dataType={dataType} order={order} />
-      <div style={{ display: "flex" }}>
-        <Paper sx={{ margin: 1 }}>
-          <FormControl sx={{ margin: 2 }}>
-            <InputLabel>Kategoria</InputLabel>
-            <Select
-              onChange={callChangeDataType}
-              value={dataType}
-              label="Kategoria"
-              sx={{ minWidth: 250 }}
-            >
-              {categoryData.map((d, i) => (
-                <MenuItem key={i} value={d.nimi}>
-                  {d.nimi}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <FormControl sx={{ margin: 2 }}>
-            <InputLabel>Järjestys</InputLabel>
-            <Select
-              onChange={callChangeOrder}
-              value={order}
-              label="Järjestys"
-              sx={{ minWidth: 250 }}
-            >
-              <MenuItem value={"prioriteetti"}>Oma Prioriteetti</MenuItem>
-              <MenuItem value={"aakkosjärjestys"}>
-                Aakkosjärjestyksessä
-              </MenuItem>
-              <MenuItem value={"uusin ensin"}>Uusin ensin</MenuItem>
-              <MenuItem value={"vanhin ensin"}>Vanhin ensin</MenuItem>
-            </Select>
-          </FormControl>
-        </Paper>
-      </div>
-
-      <ManyTasks
-        tasks={objTasksSorted}
+      <Selector
+        setDataType={setDataType}
+        setOrder={setOrder}
+        setCategoryData={setCategoryData}
         order={order}
         dataType={dataType}
-        editHandle={editHandle}
-        setDataType={setDataType}
-        serverData={serverData}
-        openTask={openTask}
-        setServerData={setServerData}
+        categoryData={categoryData}
       />
 
-      <Button
-        sx={{ margin: 3 }}
-        variant="outlined"
-        onClick={deletCategory}
-        color="error"
-      >
-        Poista kategoria
-      </Button>
+      {objTasks.length === 0 ? (
+        <div>
+          <h3>Ei tehtäviä</h3>
+          <Button sx={{ color: "#35739E" }} variant="outlined" href="/lisaa">
+            Lisää tehtävä
+          </Button>
+        </div>
+      ) : (
+        objTasks.map((task, i) => (
+          <TaskCard
+            key={i}
+            onetask={task}
+            index={i}
+            editHandle={editHandle}
+            serverData={serverData}
+            setDataType={setDataType}
+            setServerData={setServerData}
+          />
+        ))
+      )}
+
       <Dialog open={open}>
         <MuokkaaTaskia
           editingTaskId={editingTask}

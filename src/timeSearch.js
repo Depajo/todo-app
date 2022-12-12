@@ -1,16 +1,30 @@
-import { Button, TextField, Paper } from "@mui/material";
+import {
+  Button,
+  TextField,
+  Paper,
+  getAccordionDetailsUtilityClass,
+} from "@mui/material";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { getMyTime } from "./myFunctions";
+import { getdata } from "./data";
 
 function TimeSearch() {
   const [timeChange, setTimeChange] = useState(false);
   const [time1, setTime1] = useState("");
   const [time2, setTime2] = useState("");
-  const [searchTime1, setSearchTime1] = useState("");
-  const [searchTime2, setSearchTime2] = useState("");
+  // const [searchTime1, setSearchTime1] = useState("");
+  // const [searchTime2, setSearchTime2] = useState("");
+  const [tasks, setTasks] = useState([]);
+  const [timerData, setTimerData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    getdata("http://localhost:3010/laskuriData").then((res) => {
+      setTimerData(res.data);
+      setLoading(false);
+    });
+
     console.log("useEffect");
     if (timeChange) {
       console.log("timeChange");
@@ -19,14 +33,17 @@ function TimeSearch() {
       setTime2(getMyTime(true, false, false));
       setTime1(getMyTime(false, false, true));
     }
+
+    getdata("http://localhost:3010/tasks").then((data) => {
+      setTasks(data);
+    });
   }, [time1, time2, timeChange]);
 
-  const convertTimeToSeconds = (times) => {
+  // Käyttäjän syöttämän ajan muuttaminen sekunneiksi.
+  const convertTimeToSeconds = async (times) => {
     console.log("convertTimeToSeconds");
     console.log(time1);
-    let timeInSeconds = Date.parse(times) / 1000;
-
-    return timeInSeconds;
+    return (await Date.parse(times)) / 1000;
   };
 
   const handleTimeChange1 = (event) => {
@@ -39,11 +56,66 @@ function TimeSearch() {
     setTime2(event.target.value);
   };
 
-  const handleTimeConvert = () => {
-    let timeInSeconds = convertTimeToSeconds(time1);
-    setSearchTime1(timeInSeconds);
-    timeInSeconds = convertTimeToSeconds(time2);
-    setSearchTime2(timeInSeconds);
+  // Tietokannan aikojen vertailu käyttäjän antamalta aikaväliltä.
+  const handleTimeConvert = async () => {
+    let end;
+
+    try {
+      await convertTimeToSeconds(time1)
+        .then((data) => {
+          console.log("data1");
+          console.log(data);
+          end = data;
+        })
+        .then(() => {
+          console.log("end");
+          console.log(end);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+
+    let start;
+    try {
+      await convertTimeToSeconds(time2)
+        .then((data) => {
+          console.log("data2");
+          console.log(data);
+          start = data;
+        })
+        .then(() => {
+          console.log("start");
+          console.log(start);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+
+    let taskTimerData = [];
+
+    try {
+      await showTasksWhereTimeIsBetween(timerData, start, end).then((data) => {
+        taskTimerData = data;
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    console.log("taskTimerData");
+    console.log(taskTimerData);
+  };
+
+  const showTasksWhereTimeIsBetween = async (data, start, end) => {
+    console.log("showTasksWhereTimeIsBetween");
+    console.log(start);
+    console.log(end);
+    let tasksToShow = [];
+    data.forEach((task) => {
+      if (task.aloitus >= start && task.lopetus <= end) {
+        tasksToShow.push(task);
+      }
+    });
+    return tasksToShow;
   };
 
   return (
@@ -77,8 +149,8 @@ function TimeSearch() {
       <br />
       {time1}
       <br />
-      <h4> Eka {searchTime2}</h4>
-      <h4> Toka {searchTime1}</h4>
+      {/* <h4> Eka {searchTime2}</h4>
+      <h4> Toka {searchTime1}</h4> */}
     </div>
   );
 }

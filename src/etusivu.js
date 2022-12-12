@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { getdata } from "./data";
 import { Button, Dialog } from "@mui/material";
 import { TaskCard } from "./taskCard";
-import Selector from "./select";
+import Selector from "./selector";
 import { showCategory, orderData, shearchDataById } from "./myFunctions";
 import MuokkaaTaskia from "./muokkaaTaskia";
 import { useNavigate } from "react-router-dom";
@@ -48,6 +48,7 @@ function Etusivu() {
   };
 
   // Avataan tehtävä
+  // eslint-disable-next-line no-unused-vars
   const openTask = (task) => {
     navigate("/tehtava/" + task.id);
   };

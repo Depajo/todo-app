@@ -9,13 +9,12 @@ import { useState } from "react";
 import { getMyTime } from "./myFunctions";
 import { getdata } from "./data";
 import { convertTimeToSeconds, differenceBetween } from "./timerFunctions";
-import { all } from "axios";
+import TimeTaskCard from "./timeTaskCard";
 
 function TimeSearch() {
   const [timeChange, setTimeChange] = useState(false);
   const [time1, setTime1] = useState("");
   const [time2, setTime2] = useState("");
-  const [tasks, setTasks] = useState([]);
   const [timerData, setTimerData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [result, setResult] = useState(0);
@@ -34,10 +33,6 @@ function TimeSearch() {
       setTime2(getMyTime(true, false, false));
       setTime1(getMyTime(false, false, true));
     }
-
-    getdata("http://localhost:3010/tasks").then((data) => {
-      setTasks(data);
-    });
   }, [time1, time2, timeChange]);
 
   const handleTimeChange1 = (event) => {
@@ -56,8 +51,8 @@ function TimeSearch() {
 
     try {
       await convertTimeToSeconds(time1).then((data) => {
-        console.log("data1");
-        console.log(data);
+        // console.log("data1");
+        // console.log(data);
         end = data + 60; // Lisätään 60 sekuntia, jotta saadaan myös viimeinen sekunti mukaan.git
       });
     } catch (error) {
@@ -172,6 +167,7 @@ function TimeSearch() {
           ))}
         </h4>
       </Paper>
+      <TimeTaskCard taskResultId={taskResultId} />
     </div>
   );
 }

@@ -6,11 +6,11 @@
         "Kaikki",
         "Muuta"
       ],
-      "prioriteetti": 1,
+      "prioriteetti": 2,
       "luontipvm": "12.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 45,
+      "aikaalaskettuSec": 137,
       "ajanlaskentaAloitettu": 0,
       "id": 4
     },
@@ -32,7 +32,7 @@
       "kategoria": [
         "Kaikki"
       ],
-      "prioriteetti": 0,
+      "prioriteetti": 2,
       "luontipvm": "12.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
@@ -164,6 +164,12 @@
       "lopetus": 1670848021,
       "taskId": 5,
       "id": 33
+    },
+    {
+      "aloitus": 1670850891,
+      "lopetus": 1670850983,
+      "taskId": 4,
+      "id": 34
     }
   ]
 }

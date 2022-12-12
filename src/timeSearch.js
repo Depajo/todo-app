@@ -8,7 +8,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { getMyTime } from "./myFunctions";
 import { getdata } from "./data";
-import { convertTimeToSeconds } from "./timerFunctions";
+import { convertTimeToSeconds, differenceBetween } from "./timerFunctions";
 
 function TimeSearch() {
   const [timeChange, setTimeChange] = useState(false);
@@ -17,6 +17,7 @@ function TimeSearch() {
   const [tasks, setTasks] = useState([]);
   const [timerData, setTimerData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [result, setResult] = useState(0);
 
   useEffect(() => {
     getdata("http://localhost:3010/laskuriData").then((res) => {
@@ -95,6 +96,21 @@ function TimeSearch() {
 
     console.log("taskTimerData");
     console.log(taskTimerData);
+    plusArrayTime(taskTimerData);
+  };
+
+  const plusArrayTime = (array) => {
+    try {
+      let sum = 0;
+      array.forEach(async (element, i) => {
+        await differenceBetween(element.aloitus, element.lopetus, 0).then(
+          (data) => {
+            sum += data;
+            setResult(sum);
+          }
+        );
+      });
+    } catch (error) {}
   };
 
   // Tietokannan aikojen vertailu käyttäjän antamalta aikaväliltä.
@@ -130,18 +146,22 @@ function TimeSearch() {
         <br></br>
         <Button
           variant="outlined"
-          sx={{ alignItems: "center", justifyContent: "center", margin: 1 }}
+          sx={{
+            display: "flex",
+            margin: "auto",
+            paddingLeft: 5,
+            paddingRight: 5,
+          }}
           onClick={handleTimeConvert}
         >
           Hae
         </Button>
       </Paper>
-      {time2}
       <br />
-      {time1}
-      <br />
-      {/* <h4> Eka {searchTime2}</h4>
-      <h4> Toka {searchTime1}</h4> */}
+      <Paper sx={{ padding: 2 }}>
+        <h3 style={{ marginBottom: 0 }}>Yhteensä aikaa on käytetty:</h3>
+        <h4 style={{ marginTop: 7 }}>{(result / 60).toFixed(2)} minuuttia</h4>
+      </Paper>
     </div>
   );
 }

@@ -1,17 +1,18 @@
 {
   "tasks": [
     {
-      "tehtävä": "moi",
+      "tehtävä": "tereve",
       "kategoria": [
-        "Kaikki"
+        "Kaikki",
+        "Muuta"
       ],
-      "prioriteetti": 1,
-      "luontipvm": "11.12.2022",
+      "prioriteetti": 0,
+      "luontipvm": "12.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 122,
+      "aikaalaskettuSec": 45,
       "ajanlaskentaAloitettu": 0,
-      "id": 3
+      "id": 4
     }
   ],
   "kategoriat": [
@@ -26,88 +27,10 @@
   ],
   "laskuriData": [
     {
-      "aloitus": 1670830349,
-      "lopetus": 1670830407,
-      "taskId": 3,
-      "id": 6
-    },
-    {
-      "aloitus": 1670830412,
-      "lopetus": 1670830428,
-      "taskId": 3,
-      "id": 7
-    },
-    {
-      "aloitus": 1670837819,
-      "lopetus": 1670837820,
-      "taskId": 3,
-      "id": 13
-    },
-    {
-      "aloitus": 1670837821,
-      "lopetus": 1670837823,
-      "taskId": 3,
-      "id": 14
-    },
-    {
-      "aloitus": 1670837825,
-      "lopetus": 1670837840,
-      "taskId": 3,
-      "id": 15
-    },
-    {
-      "aloitus": 1670837930,
-      "lopetus": 1670837934,
-      "taskId": 3,
-      "id": 16
-    },
-    {
-      "aloitus": 1670837937,
-      "lopetus": 1670837940,
-      "taskId": 3,
-      "id": 17
-    },
-    {
-      "aloitus": 1670837941,
-      "lopetus": 1670837942,
-      "taskId": 3,
-      "id": 18
-    },
-    {
-      "aloitus": 1670838165,
-      "lopetus": 1670838165,
-      "taskId": 3,
-      "id": 19
-    },
-    {
-      "aloitus": 1670838167,
-      "lopetus": 1670838168,
-      "taskId": 3,
-      "id": 20
-    },
-    {
-      "aloitus": 1670838369,
-      "lopetus": 1670838373,
-      "taskId": 3,
-      "id": 21
-    },
-    {
-      "aloitus": 1670838407,
-      "lopetus": 1670838420,
-      "taskId": 3,
-      "id": 22
-    },
-    {
-      "aloitus": 1670838591,
-      "lopetus": 1670838593,
-      "taskId": 3,
-      "id": 23
-    },
-    {
-      "aloitus": 1670838782,
-      "lopetus": 1670838784,
-      "taskId": 3,
-      "id": 24
+      "aloitus": 1670845601,
+      "lopetus": 1670845646,
+      "taskId": 4,
+      "id": 26
     }
   ]
 }

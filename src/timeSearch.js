@@ -57,7 +57,7 @@ function TimeSearch() {
         .then((data) => {
           console.log("data1");
           console.log(data);
-          end = data;
+          end = data + 60; // Lisätään 60 sekuntia, jotta saadaan myös viimeinen sekunti mukaan.git
         })
         .then(() => {
           console.log("end");

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { getdata, patchdata, postdata } from "./data";
+import { differenceBetween, timeNowSecond } from "./timerFunctions";
 
 function TaskTimer(props) {
   const [timer, setTimer] = useState(0);
@@ -11,11 +12,6 @@ function TaskTimer(props) {
     setTimerStart(task.ajanlaskenta);
     setTimer(task.aikaalaskettuSec);
   }, [task.ajanlaskenta, task.aikaalaskettuSec]);
-
-  // Palauttaa tämän hetken ajan
-  const timeNowSecond = async () => {
-    return Math.floor(Date.now() / 1000);
-  };
 
   // Palauttaa ajan jolloin ajanlaskenta aloitettiin
   const timeCountStart = async (id) => {
@@ -32,12 +28,6 @@ function TaskTimer(props) {
       // console.log(res.data.aikaalaskettuSec);
       return res.data.aikaalaskettuSec;
     });
-  };
-
-  // Laskee ajan joka on kulunut ajanlaskennan aloittamisesta nykyhetkeen
-  // ja lisää sen aikaan joka on jo laskettu
-  const differenceBetween = async (timeNow, timeStarted, timeAlredy) => {
-    return timeStarted - timeNow + timeAlredy;
   };
 
   const startTimer = async (id) => {
@@ -126,7 +116,6 @@ function TaskTimer(props) {
               Käytetty aikaa: <br /> {timer} sekunttia
             </h4>
           )}
-          <p>{task.aikaalaskettuSec}</p>
         </div>
         <div className="timer-buttons">
           {timerStart ? (

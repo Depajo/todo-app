@@ -8,13 +8,12 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { getMyTime } from "./myFunctions";
 import { getdata } from "./data";
+import { convertTimeToSeconds } from "./timerFunctions";
 
 function TimeSearch() {
   const [timeChange, setTimeChange] = useState(false);
   const [time1, setTime1] = useState("");
   const [time2, setTime2] = useState("");
-  // const [searchTime1, setSearchTime1] = useState("");
-  // const [searchTime2, setSearchTime2] = useState("");
   const [tasks, setTasks] = useState([]);
   const [timerData, setTimerData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,13 +37,6 @@ function TimeSearch() {
       setTasks(data);
     });
   }, [time1, time2, timeChange]);
-
-  // Käyttäjän syöttämän ajan muuttaminen sekunneiksi.
-  const convertTimeToSeconds = async (times) => {
-    console.log("convertTimeToSeconds");
-    console.log(time1);
-    return (await Date.parse(times)) / 1000;
-  };
 
   const handleTimeChange1 = (event) => {
     setTimeChange(true);
@@ -105,10 +97,9 @@ function TimeSearch() {
     console.log(taskTimerData);
   };
 
+  // Tietokannan aikojen vertailu käyttäjän antamalta aikaväliltä.
+  // Palauttaa taulukon jossa on aikavälillä olevat tehtävät.
   const showTasksWhereTimeIsBetween = async (data, start, end) => {
-    console.log("showTasksWhereTimeIsBetween");
-    console.log(start);
-    console.log(end);
     let tasksToShow = [];
     data.forEach((task) => {
       if (task.aloitus >= start && task.lopetus <= end) {

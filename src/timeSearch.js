@@ -9,6 +9,7 @@ import { useState } from "react";
 import { getMyTime } from "./myFunctions";
 import { getdata } from "./data";
 import { convertTimeToSeconds, differenceBetween } from "./timerFunctions";
+import { all } from "axios";
 
 function TimeSearch() {
   const [timeChange, setTimeChange] = useState(false);
@@ -18,6 +19,7 @@ function TimeSearch() {
   const [timerData, setTimerData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [result, setResult] = useState(0);
+  const [taskResultId, setTaskResultId] = useState([]);
 
   useEffect(() => {
     getdata("http://localhost:3010/laskuriData").then((res) => {
@@ -25,7 +27,6 @@ function TimeSearch() {
       setLoading(false);
     });
 
-    console.log("useEffect");
     if (timeChange) {
       console.log("timeChange");
     } else {
@@ -54,32 +55,20 @@ function TimeSearch() {
     let end;
 
     try {
-      await convertTimeToSeconds(time1)
-        .then((data) => {
-          console.log("data1");
-          console.log(data);
-          end = data + 60; // Lisätään 60 sekuntia, jotta saadaan myös viimeinen sekunti mukaan.git
-        })
-        .then(() => {
-          console.log("end");
-          console.log(end);
-        });
+      await convertTimeToSeconds(time1).then((data) => {
+        console.log("data1");
+        console.log(data);
+        end = data + 60; // Lisätään 60 sekuntia, jotta saadaan myös viimeinen sekunti mukaan.git
+      });
     } catch (error) {
       console.log(error);
     }
 
     let start;
     try {
-      await convertTimeToSeconds(time2)
-        .then((data) => {
-          console.log("data2");
-          console.log(data);
-          start = data;
-        })
-        .then(() => {
-          console.log("start");
-          console.log(start);
-        });
+      await convertTimeToSeconds(time2).then((data) => {
+        start = data;
+      });
     } catch (error) {
       console.log(error);
     }
@@ -94,9 +83,24 @@ function TimeSearch() {
       console.log(error);
     }
 
-    console.log("taskTimerData");
-    console.log(taskTimerData);
+    try {
+      let allId = await getAllIdOnArray(taskTimerData).then((data) => data);
+      setTaskResultId(allId);
+    } catch (error) {}
+
     plusArrayTime(taskTimerData);
+  };
+
+  const getAllIdOnArray = async (array) => {
+    let allId = [];
+
+    array.forEach((element) => {
+      if (!allId.includes(element.taskId)) {
+        allId.push(element.taskId);
+      }
+    });
+
+    return allId;
   };
 
   const plusArrayTime = (array) => {
@@ -161,6 +165,12 @@ function TimeSearch() {
       <Paper sx={{ padding: 2 }}>
         <h3 style={{ marginBottom: 0 }}>Yhteensä aikaa on käytetty:</h3>
         <h4 style={{ marginTop: 7 }}>{(result / 60).toFixed(2)} minuuttia</h4>
+        <h4>
+          {" "}
+          {taskResultId.map((e, i) => (
+            <li key={i}>{e}</li>
+          ))}
+        </h4>
       </Paper>
     </div>
   );

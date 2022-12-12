@@ -93,6 +93,23 @@ function App() {
                 borderColor: "#fff",
               }}
               variant="outlined"
+              href="/time"
+            >
+              Yhteenveto
+            </Button>
+          </MenuItem>
+          <MenuItem sx={{ fontSize: 20 }}>
+            <Button
+              sx={{
+                color: "#fff",
+                padding: 2,
+                margin: "auto",
+                width: "100%",
+                textAlign: "left",
+                justifyContent: "left",
+                borderColor: "#fff",
+              }}
+              variant="outlined"
               href="/tietoa"
             >
               Tietoa
@@ -102,7 +119,7 @@ function App() {
       </AppBar>
       <Routes>
         <Route path="/" element={<Etusivu />} t />
-        <Route path="time" element={<TimeSearch />} />
+        <Route path="/time" element={<TimeSearch />} />
         <Route path="/tehtava/:id" element={<Tehtava />} />
         <Route path="/lisaa" element={<Lisaa />} />
         <Route path="/tietoa" element={<Tietoa />} />

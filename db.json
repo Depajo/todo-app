@@ -10,7 +10,7 @@
       "luontipvm": "12.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 137,
+      "aikaalaskettuSec": 145,
       "ajanlaskentaAloitettu": 0,
       "id": 4
     },
@@ -170,6 +170,12 @@
       "lopetus": 1670850983,
       "taskId": 4,
       "id": 34
+    },
+    {
+      "aloitus": 1670921162,
+      "lopetus": 1670921170,
+      "taskId": 4,
+      "id": 35
     }
   ]
 }

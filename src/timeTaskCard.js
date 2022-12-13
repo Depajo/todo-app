@@ -2,47 +2,54 @@ import React, { useEffect } from "react";
 import { Card } from "@mui/material";
 import { useState } from "react";
 import { getdata } from "./data";
-import { shearchDataById } from "./myFunctions";
 
 function TimeTaskCard(props) {
-  //   console.log(props);
   const [task, setTask] = useState();
-  const [chosenTask, setChosenTask] = useState();
   const [loading, setLoading] = useState(true);
+  const [time, setTime] = useState(0);
 
   useEffect(() => {
-    getdata("http://localhost:3010/tasks")
-      .then((res) => {
-        setTask(res.data);
+    console.log(props);
+    // getdata("http://localhost:3010/tasks/" + props.taskResultId).then((res) => {
+    //   setTask(res.data);
+    //   setLoading(false);
+    //   console.log(res.data);
+    // });
+
+    props.data.forEach((element) => {
+      console.log(element);
+      if (element.id === props.taskResultId) {
+        setTime(time + element.time);
         setLoading(false);
-      })
-      .then(() => {
-        try {
-          let result = [];
-          for (let i = 0; i < task.length; i++) {
-            result.push(shearchDataById(task, task[i]));
-          }
-          setChosenTask(result);
-        } catch (error) {
-          console.log(error);
-        }
-      });
-  }, []);
-  //   const SearchManyTasks = () => {
-  //     if (loading) {
-  //       return <p>loading</p>;
-  //     } else {
-  //       let result = [];
-  //       for (let i = 0; i < task.length; i++) {
-  //         result.push(shearchDataById(task, task[i]));
-  //       }
-  //       setChosenTask(result);
+      }
+    });
+  }, [props.taskResultId]);
 
-  //       return <Card sx={{ padding: 2, margin: 3 }}>jeee</Card>;
-  //     }
-  //   };
-
-  return <div>{/* <SearchManyTasks /> */}</div>;
+  if (loading || task.length === 0) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <div>
+        <Card sx={{ padding: 2, margin: 2 }}>
+          <div className="id">
+            <h3 className="tehtavakortti-otsikko">ID:</h3>
+            <p className="tehtavakortti-arvo">{task.id}</p>
+          </div>
+          <div className="tehtava">
+            <h3 className="tehtavakortti-otsikko">Tehtävä:</h3>
+            <p className="tehtavakortti-arvo">{task.tehtävä}</p>
+          </div>
+          <div className="ajanlaskenta">
+            <h3 className="tehtavakortti-otsikko">Ajanlaskenta:</h3>
+            <p className="tehtavakortti-arvo">
+              {" "}
+              {(task.aikaalaskettuSec / 60).toFixed(2)} minuuttia
+            </p>
+          </div>
+        </Card>
+      </div>
+    );
+  }
 }
 
 export default TimeTaskCard;

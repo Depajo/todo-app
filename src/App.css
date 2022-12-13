@@ -125,11 +125,13 @@ h1 {
   justify-content: center;
 }
 
+.timeTaskCard,
 .muiCheckboxGroup::-webkit-scrollbar {
   width: 8px;
   height: auto;
 }
 
+.timeTaskCard,
 .muiCheckboxGroup::-webkit-scrollbar-thumb {
   background: rgb(114, 114, 114);
   border-radius: 10px;

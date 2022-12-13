@@ -19,6 +19,7 @@ function TimeSearch() {
   const [loading, setLoading] = useState(true);
   const [result, setResult] = useState(0);
   const [taskResultId, setTaskResultId] = useState([]);
+  const [taskResult, setTaskResult] = useState([]);
 
   useEffect(() => {
     getdata("http://localhost:3010/laskuriData").then((res) => {
@@ -84,6 +85,14 @@ function TimeSearch() {
     } catch (error) {}
 
     plusArrayTime(taskTimerData);
+
+    try {
+      await plusArrayTimeOnOneId(taskTimerData).then((data) => {
+        setTaskResult(data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getAllIdOnArray = async (array) => {
@@ -96,6 +105,16 @@ function TimeSearch() {
     });
 
     return allId;
+  };
+
+  const plusArrayTimeOnOneId = async (array) => {
+    let plusTimeId = [];
+    array.forEach((element) => {
+      differenceBetween(element.aloitus, element.lopetus, 0).then((data) => {
+        plusTimeId.push({ id: element.taskId, time: data });
+      });
+    });
+    return plusTimeId;
   };
 
   const plusArrayTime = (array) => {
@@ -159,15 +178,34 @@ function TimeSearch() {
       <br />
       <Paper sx={{ padding: 2 }}>
         <h3 style={{ marginBottom: 0 }}>Yhteensä aikaa on käytetty:</h3>
-        <h4 style={{ marginTop: 7 }}>{(result / 60).toFixed(2)} minuuttia</h4>
-        <h4>
+
+        {taskResultId.length === 0 ? (
+          <div className="content">
+            <Paper sx={{ padding: 1 }}>Ei hakutuloksia</Paper>
+          </div>
+        ) : (
+          <h4 style={{ marginTop: 7 }}>{(result / 60).toFixed(2)} minuuttia</h4>
+        )}
+        {/* <h4>
           {" "}
           {taskResultId.map((e, i) => (
             <li key={i}>{e}</li>
           ))}
-        </h4>
+        </h4> */}
       </Paper>
-      <TimeTaskCard taskResultId={taskResultId} />
+      <div
+        style={{
+          maxWidth: 400,
+          maxHeight: 300,
+          overflow: "scroll",
+          display: "flex",
+          flexDirection: "Row",
+        }}
+      >
+        {taskResultId.map((e, i) => (
+          <TimeTaskCard key={i} taskResultId={e} data={taskResult} />
+        ))}
+      </div>
     </div>
   );
 }

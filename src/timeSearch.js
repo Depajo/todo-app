@@ -4,7 +4,7 @@ import {
   Paper,
   getAccordionDetailsUtilityClass,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { getMyTime } from "./myFunctions";
 import { getdata } from "./data";
@@ -20,6 +20,7 @@ function TimeSearch() {
   const [result, setResult] = useState(0);
   const [taskResultId, setTaskResultId] = useState([]);
   const [taskResult, setTaskResult] = useState([]);
+  // const taskResult = useRef([]);
 
   useEffect(() => {
     getdata("http://localhost:3010/laskuriData").then((res) => {
@@ -87,9 +88,14 @@ function TimeSearch() {
     plusArrayTime(taskTimerData);
 
     try {
-      await plusArrayTimeOnOneId(taskTimerData).then((data) => {
-        setTaskResult(data);
-      });
+      let tasks = [];
+      await plusArrayTimeOnOneId(taskTimerData)
+        .then((data) => {
+          tasks = data;
+        })
+        .then(() => {
+          setTaskResult(tasks);
+        });
     } catch (error) {
       console.log(error);
     }
@@ -143,6 +149,30 @@ function TimeSearch() {
     return tasksToShow;
   };
 
+  const TimeTaskCardShow = () => {
+    return (
+      <div>
+        {taskResultId.length === 0 ? (
+          <div>Ei ole tehtäviä</div>
+        ) : (
+          <div
+            style={{
+              maxWidth: 400,
+              maxHeight: 300,
+              overflow: "scroll",
+              display: "flex",
+              flexDirection: "Row",
+            }}
+          >
+            {taskResultId.map((e, i) => (
+              <TimeTaskCard key={i} taskResultId={e} taskResult={taskResult} />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className="content">
       <h3>Päivämäärä ja Aika</h3>
@@ -177,14 +207,17 @@ function TimeSearch() {
       </Paper>
       <br />
       <Paper sx={{ padding: 2 }}>
-        <h3 style={{ marginBottom: 0 }}>Yhteensä aikaa on käytetty:</h3>
-
-        {taskResultId.length === 0 ? (
+        {result === 0 || taskResultId.length === 0 ? (
           <div className="content">
-            <Paper sx={{ padding: 1 }}>Ei hakutuloksia</Paper>
+            <h1>Ei hakutuloksia</h1>
           </div>
         ) : (
-          <h4 style={{ marginTop: 7 }}>{(result / 60).toFixed(2)} minuuttia</h4>
+          <div>
+            <h3 style={{ marginBottom: 0 }}>Yhteensä aikaa on käytetty:</h3>
+            <h4 style={{ marginTop: 7 }}>
+              {(result / 60).toFixed(2)} minuuttia
+            </h4>
+          </div>
         )}
         {/* <h4>
           {" "}
@@ -193,19 +226,7 @@ function TimeSearch() {
           ))}
         </h4> */}
       </Paper>
-      <div
-        style={{
-          maxWidth: 400,
-          maxHeight: 300,
-          overflow: "scroll",
-          display: "flex",
-          flexDirection: "Row",
-        }}
-      >
-        {taskResultId.map((e, i) => (
-          <TimeTaskCard key={i} taskResultId={e} data={taskResult} />
-        ))}
-      </div>
+      <TimeTaskCardShow />
     </div>
   );
 }

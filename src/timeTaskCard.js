@@ -1,31 +1,46 @@
 import React, { useEffect } from "react";
 import { Card } from "@mui/material";
 import { useState } from "react";
+import { shearchDataById } from "./myFunctions";
 import { getdata } from "./data";
 
 function TimeTaskCard(props) {
-  const [task, setTask] = useState();
-  const [loading, setLoading] = useState(true);
+  const [task, setTask] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [time, setTime] = useState(0);
+  const [data] = useState(props.taskResult);
 
   useEffect(() => {
-    console.log(props);
-    // getdata("http://localhost:3010/tasks/" + props.taskResultId).then((res) => {
-    //   setTask(res.data);
-    //   setLoading(false);
-    //   console.log(res.data);
-    // });
-
-    props.data.forEach((element) => {
-      console.log(element);
+    getdata("http://localhost:3010/tasks/" + props.taskResultId).then((res) => {
+      setTask(res.data);
+      setLoading(false);
+      // console.log(res.data);
+    });
+    // console.log(props.taskResult);
+    data.forEach((element) => {
       if (element.id === props.taskResultId) {
-        setTime(time + element.time);
-        setLoading(false);
+        let alredy = time;
+        let newTime = element.time;
+        let sum = alredy + newTime;
+        console.log(
+          sum +
+            " valmiina: " +
+            alredy +
+            " lisättävä: " +
+            newTime +
+            " id: " +
+            sum +
+            " pitäs olla: " +
+            (time + element.time)
+        );
+
+        setTime(sum);
+        // setLoading(false);
       }
     });
-  }, [props.taskResultId]);
+  }, []);
 
-  if (loading || task.length === 0) {
+  if (loading) {
     return <div>Loading...</div>;
   } else {
     return (
@@ -41,10 +56,7 @@ function TimeTaskCard(props) {
           </div>
           <div className="ajanlaskenta">
             <h3 className="tehtavakortti-otsikko">Ajanlaskenta:</h3>
-            <p className="tehtavakortti-arvo">
-              {" "}
-              {(task.aikaalaskettuSec / 60).toFixed(2)} minuuttia
-            </p>
+            <p className="tehtavakortti-arvo"> {time} minuuttia</p>
           </div>
         </Card>
       </div>

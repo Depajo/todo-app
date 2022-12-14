@@ -13,13 +13,13 @@ h1 {
     margin-bottom: 20px;
 }
 
-.menuButton {
+/* .menuButton {
     display: block;
 }
 
 .menuButton:hover {
     background-color: rgb(86, 85, 85);
-}
+} */
 
 .content {
     display: flex;
@@ -85,14 +85,14 @@ h1 {
     display: block;
 }
 
-.tehtavaNappi {
+/* .tehtavaNappi {
     display: none;
     margin: 5px;
     padding: 10px;
     min-width: 50px;
     max-width: 50px;
     overflow: auto;
-}
+} */
 
 .tehtavakortti-arvo,
 .tehtavakortti-otsikko {

@@ -1,18 +1,43 @@
 {
   "tasks": [
     {
-      "tehtävä": "tereve",
+      "tehtävä": "g",
       "kategoria": [
-        "Kaikki",
-        "Muuta"
+        "Kaikki"
       ],
-      "prioriteetti": 2,
-      "luontipvm": "12.12.2022",
+      "prioriteetti": 0,
+      "luontipvm": "14.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 145,
+      "aikaalaskettuSec": 3,
       "ajanlaskentaAloitettu": 0,
       "id": 4
+    },
+    {
+      "tehtävä": "j",
+      "kategoria": [
+        "Kaikki"
+      ],
+      "prioriteetti": 2,
+      "luontipvm": "14.12.2022",
+      "valmis": false,
+      "ajanlaskenta": false,
+      "aikaalaskettuSec": 71,
+      "ajanlaskentaAloitettu": 0,
+      "id": 5
+    },
+    {
+      "tehtävä": "a",
+      "kategoria": [
+        "Muuta"
+      ],
+      "prioriteetti": 1,
+      "luontipvm": "14.12.2022",
+      "valmis": false,
+      "ajanlaskenta": false,
+      "aikaalaskettuSec": 0,
+      "ajanlaskentaAloitettu": 0,
+      "id": 6
     }
   ],
   "kategoriat": [
@@ -27,22 +52,28 @@
   ],
   "laskuriData": [
     {
-      "aloitus": 1670845601,
-      "lopetus": 1670845646,
-      "taskId": 4,
-      "id": 26
+      "aloitus": 1671018888,
+      "lopetus": 1671018896,
+      "taskId": 5,
+      "id": 7
     },
     {
-      "aloitus": 1670850891,
-      "lopetus": 1670850983,
+      "aloitus": 1671022985,
+      "lopetus": 1671022987,
       "taskId": 4,
-      "id": 34
+      "id": 8
     },
     {
-      "aloitus": 1670921162,
-      "lopetus": 1670921170,
+      "aloitus": 1671022990,
+      "lopetus": 1671022991,
       "taskId": 4,
-      "id": 35
+      "id": 9
+    },
+    {
+      "aloitus": 1671022929,
+      "lopetus": 1671022992,
+      "taskId": 5,
+      "id": 10
     }
   ]
 }

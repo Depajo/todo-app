@@ -9,108 +9,120 @@ import MuokkaaTaskia from "./muokkaaTaskia";
 import { useNavigate } from "react-router-dom";
 
 function Etusivu() {
-  const [categoryData, setCategoryData] = useState([]);
-  const [serverData, setServerData] = useState([]);
-  const [dataType, setDataType] = useState("");
-  const [order, setOrder] = useState("");
-  const [editingTask, setEditingTask] = useState(-1);
-  const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-  const [objTasks, setObjTasks] = useState([]);
+    const [categoryData, setCategoryData] = useState([]);
+    const [serverData, setServerData] = useState([]);
+    const [dataType, setDataType] = useState("");
+    const [order, setOrder] = useState("");
+    const [editingTask, setEditingTask] = useState(-1);
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+    const [objTasks, setObjTasks] = useState([]);
 
-  // Haetaan dataa
-  useEffect(() => {
-    // console.log("Etusivu useEffect");
-    // console.log("dataType: ", dataType);
-    getdata("http://localhost:3010/tasks")
-      .then((res) => {
-        setServerData(res.data);
-        // console.log("res.data: ", res.data);
-      })
-      .then(() => {
-        // console.log("serverData: ", serverData);
-        let obj = showCategory(dataType, serverData);
-        // console.log("obj: ", obj);
-        let objSorted = orderData(obj, order);
-        // console.log("objSorted: ", objSorted);
-        setObjTasks(objSorted);
-      })
-      .catch(() => console.error("Error"));
-  }, [dataType, order, categoryData, open]);
+    // Haetaan dataa
+    useEffect(() => {
+        getdata("http://localhost:3010/tasks")
+            .then((res) => {
+                setServerData(res.data);
+            })
+            .then(() => {
+                let obj = showCategory(dataType, serverData);
+                let objSorted = orderData(obj, order);
+                setObjTasks(objSorted);
+            })
+            .catch(() => console.error("Error"));
+    }, [dataType, order, categoryData, open]);
 
-  // Suljetaan muokkausikkuna
-  const closeEditing = () => setOpen(false);
+    // Suljetaan muokkausikkuna
+    const closeEditing = () => setOpen(false);
 
-  // Avataan muokkausikkuna
-  const editHandle = (task) => {
-    setOpen(true);
-    setEditingTask(task);
-  };
+    // Avataan muokkausikkuna
+    const editHandle = (task) => {
+        setOpen(true);
+        setEditingTask(task);
+    };
 
-  // Avataan tehtävä
-  // eslint-disable-next-line no-unused-vars
-  const openTask = (task) => {
-    navigate("/tehtava/" + task.id);
-  };
+    // Avataan tehtävä
+    // eslint-disable-next-line no-unused-vars
+    const openTask = (task) => {
+        navigate("/tehtava/" + task.id);
+    };
 
-  const ShearchTasksByIdAndShow = (props) => {
-    let tasks = [];
+    const ShearchTasksByIdAndShow = (props) => {
+        let tasks = [];
 
-    props.idNumbers.map((id, i) => {
-      let task = shearchDataById(serverData, props.idNumbers[i].id);
-      tasks.push(task);
-    });
+        props.idNumbers.map((id, i) => {
+            let task = shearchDataById(serverData, props.idNumbers[i].id);
+            tasks.push(task);
+        });
 
-    if (objTasks.length === 0) {
-      return (
-        <div>
-          <h3>Ei tehtäviä</h3>
-          <Button sx={{ color: "#35739E" }} variant="outlined" href="/lisaa">
-            Lisää tehtävä
-          </Button>
+        if (objTasks.length === 0) {
+            return (
+                <div>
+                    <h3>Ei tehtäviä</h3>
+                    <Button
+                        sx={{ color: "#35739E" }}
+                        variant="outlined"
+                        href="/lisaa"
+                    >
+                        Lisää tehtävä
+                    </Button>
+                </div>
+            );
+        } else {
+            return (
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        maxWidth: "1100px",
+                        flexWrap: "wrap",
+                        justifyContent: "center",
+                        itemAlign: "center",
+                        margin: "auto",
+                    }}
+                >
+                    {tasks.map((task, i) => (
+                        <TaskCard
+                            key={i}
+                            onetask={task}
+                            index={i}
+                            editHandle={editHandle}
+                            serverData={serverData}
+                            setDataType={setDataType}
+                            setServerData={setServerData}
+                            objTasks={objTasks}
+                        />
+                    ))}
+                </div>
+            );
+        }
+    };
+
+    return (
+        // Etusivu
+        <div className="content">
+            <Selector
+                setDataType={setDataType}
+                setOrder={setOrder}
+                setCategoryData={setCategoryData}
+                order={order}
+                dataType={dataType}
+                categoryData={categoryData}
+            />
+
+            <ShearchTasksByIdAndShow idNumbers={objTasks} />
+
+            <Dialog open={open}>
+                <MuokkaaTaskia
+                    editingTaskId={editingTask}
+                    closeEditing={closeEditing}
+                    setOpen={setOpen}
+                    setDataType={setDataType}
+                    categoryData={categoryData}
+                />
+            </Dialog>
         </div>
-      );
-    } else {
-      return tasks.map((task, i) => (
-        <TaskCard
-          key={i}
-          onetask={task}
-          index={i}
-          editHandle={editHandle}
-          serverData={serverData}
-          setDataType={setDataType}
-          setServerData={setServerData}
-          objTasks={objTasks}
-        />
-      ));
-    }
-  };
-
-  return (
-    // Etusivu
-    <div className="content">
-      <Selector
-        setDataType={setDataType}
-        setOrder={setOrder}
-        setCategoryData={setCategoryData}
-        order={order}
-        dataType={dataType}
-        categoryData={categoryData}
-      />
-
-      <ShearchTasksByIdAndShow idNumbers={objTasks} />
-
-      <Dialog open={open}>
-        <MuokkaaTaskia
-          editingTaskId={editingTask}
-          closeEditing={closeEditing}
-          setOpen={setOpen}
-          setDataType={setDataType}
-          categoryData={categoryData}
-        />
-      </Dialog>
-    </div>
-  );
+    );
 }
 
 export default Etusivu;

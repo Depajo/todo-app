@@ -119,10 +119,14 @@ function TimeSearch() {
 
     const plusArrayTimeOnOneId = async (array) => {
         let plusTimeId = [];
-        array.forEach((element) => {
+        array.forEach((element, i) => {
             differenceBetween(element.aloitus, element.lopetus, 0).then(
                 (data) => {
-                    plusTimeId.push({ id: element.taskId, time: data });
+                    plusTimeId.push({
+                        id: i,
+                        taskId: element.taskId,
+                        time: data,
+                    });
                 }
             );
         });
@@ -238,9 +242,7 @@ function TimeSearch() {
                         <h3 style={{ marginBottom: 0 }}>
                             Yhteensä aikaa on käytetty:
                         </h3>
-                        <h4 style={{ marginTop: 7 }}>
-                            {(result / 60).toFixed(2)} minuuttia
-                        </h4>
+                        <h4 style={{ marginTop: 7 }}>{result} sekunttia</h4>
                     </div>
                 )}
                 {/* <h4>

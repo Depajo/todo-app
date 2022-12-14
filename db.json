@@ -9,7 +9,7 @@
       "luontipvm": "14.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 3,
+      "aikaalaskettuSec": 13,
       "ajanlaskentaAloitettu": 0,
       "id": 4
     },
@@ -22,7 +22,7 @@
       "luontipvm": "14.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 71,
+      "aikaalaskettuSec": 84,
       "ajanlaskentaAloitettu": 0,
       "id": 5
     },
@@ -35,9 +35,22 @@
       "luontipvm": "14.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 0,
+      "aikaalaskettuSec": 8,
       "ajanlaskentaAloitettu": 0,
       "id": 6
+    },
+    {
+      "tehtävä": "moi",
+      "kategoria": [
+        "Kaikki"
+      ],
+      "prioriteetti": 0,
+      "luontipvm": "14.12.2022",
+      "valmis": false,
+      "ajanlaskenta": false,
+      "aikaalaskettuSec": 10,
+      "ajanlaskentaAloitettu": 0,
+      "id": 7
     }
   ],
   "kategoriat": [
@@ -70,6 +83,48 @@
       "lopetus": 1671022992,
       "taskId": 5,
       "id": 10
+    },
+    {
+      "aloitus": 1671027236,
+      "lopetus": 1671027241,
+      "taskId": 5,
+      "id": 11
+    },
+    {
+      "aloitus": 1671027379,
+      "lopetus": 1671027382,
+      "taskId": 7,
+      "id": 12
+    },
+    {
+      "aloitus": 1671027571,
+      "lopetus": 1671027579,
+      "taskId": 6,
+      "id": 13
+    },
+    {
+      "aloitus": 1671027572,
+      "lopetus": 1671027580,
+      "taskId": 4,
+      "id": 14
+    },
+    {
+      "aloitus": 1671027573,
+      "lopetus": 1671027581,
+      "taskId": 5,
+      "id": 15
+    },
+    {
+      "aloitus": 1671027575,
+      "lopetus": 1671027582,
+      "taskId": 7,
+      "id": 16
+    },
+    {
+      "aloitus": 1671027585,
+      "lopetus": 1671027587,
+      "taskId": 4,
+      "id": 17
     }
   ]
 }

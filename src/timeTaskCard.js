@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { Card } from "@mui/material";
 import { useState } from "react";
-import { shearchDataById } from "./myFunctions";
 import { getdata } from "./data";
+import { all } from "axios";
 
 function TimeTaskCard(props) {
     const [task, setTask] = useState([]);
     const [loading, setLoading] = useState(false);
     const time = useRef(0);
-    const [data] = useState(props.taskResult);
+    const [data, setData] = useState(props.taskResult);
 
     useEffect(() => {
         getdata("http://localhost:3010/tasks/" + props.taskResultId).then(
@@ -19,18 +19,20 @@ function TimeTaskCard(props) {
             }
         );
         // console.log(props.taskResult);
+
+        let allTime = [];
         data.forEach((element) => {
-            console.log(element);
-            if (element.id === props.taskResultId) {
-                let alredy = time.current;
-                console.log("alredy " + alredy);
-                let newTime = element.time;
-                console.log("newTime " + newTime);
-                let sum = alredy + newTime;
-                console.log("sum " + sum);
-                time.current = sum;
+            if (element.taskId === props.taskResultId) {
+                // if (!allTime.includes(element)) {
+                console.log("already included");
+                allTime.push(element);
                 setLoading(false);
+                // }
             }
+        });
+        console.log(allTime);
+        allTime.forEach((element) => {
+            time.current += element.time;
         });
     }, []);
 
@@ -40,19 +42,19 @@ function TimeTaskCard(props) {
         return (
             <div>
                 <Card sx={{ padding: 2, margin: 2 }}>
-                    <div className="id">
+                    <div className="id" style={{ display: "flex" }}>
                         <h3 className="tehtavakortti-otsikko">ID:</h3>
                         <p className="tehtavakortti-arvo">{task.id}</p>
                     </div>
                     <div className="tehtava">
-                        <h3 className="tehtavakortti-otsikko">Tehtävä:</h3>
+                        <h4 className="tehtavakortti-otsikko">Tehtävä:</h4>
                         <p className="tehtavakortti-arvo">{task.tehtävä}</p>
                     </div>
                     <div className="ajanlaskenta">
-                        <h3 className="tehtavakortti-otsikko">Ajanlaskenta:</h3>
+                        <h4 className="tehtavakortti-otsikko">Ajanlaskenta:</h4>
                         <p className="tehtavakortti-arvo">
                             {" "}
-                            {time.current} minuuttia
+                            {time.current / 2} sekunttia
                         </p>
                     </div>
                 </Card>

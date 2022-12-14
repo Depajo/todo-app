@@ -81,6 +81,28 @@ const shearchDataById = (data, id) => {
     return allTasksObj;
 };
 
+const shearchDataByCategory = (data, category) => {
+    let allTasksObj = [];
+    if (category === "") {
+        allTasksObj = data;
+    } else {
+        for (let index = 0; index < data.length; index++) {
+            let obj = data[index];
+            for (
+                let categoryIndex = 0;
+                categoryIndex < obj.kategoria.length;
+                categoryIndex++
+            ) {
+                if (obj.kategoria[categoryIndex] === category) {
+                    allTasksObj.push(obj);
+                }
+            }
+        }
+    }
+
+    return allTasksObj;
+};
+
 // Tarkastaa onko annettu arvo sama kuin tietty arvo
 // tai onko arvo tyhjä ja palauttaa true tai false
 const checkValueIsSame = (target, value) => {

@@ -5,7 +5,7 @@ import { Button, Dialog } from "@mui/material";
 import { TaskCard } from "./taskCard";
 import Selector from "./selector";
 import { showCategory, orderData, shearchDataById } from "./myFunctions";
-import MuokkaaTaskia from "./muokkaaTaskia";
+import MuokkaaTaskia from "./editTask";
 import { useNavigate } from "react-router-dom";
 
 function Etusivu() {

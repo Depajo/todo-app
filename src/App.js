@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Etusivu from "./etusivu.js";
+import Etusivu from "./mainPage";
 import ErrorSivu from "./errorSivu";
-import Tietoa from "./tietoa";
-import Lisaa from "./lisaa";
-import Tehtava from "./tehtava";
+import Tietoa from "./infoPage";
+import Lisaa from "./addPage";
+import Tehtava from "./taskPage";
 import { useState } from "react";
 import {
     AppBar,
@@ -48,7 +48,7 @@ function App() {
                     </Typography>
                 </Toolbar>
 
-                <menu style={{ display: menuBarShow }}>
+                <div style={{ display: menuBarShow }}>
                     <MenuItem>
                         <Button
                             sx={{
@@ -78,7 +78,7 @@ function App() {
                                 borderColor: "#fff",
                             }}
                             variant="outlined"
-                            href="/lisaa"
+                            href="/addPage"
                         >
                             Lisää
                         </Button>
@@ -112,19 +112,19 @@ function App() {
                                 borderColor: "#fff",
                             }}
                             variant="outlined"
-                            href="/tietoa"
+                            href="/infoPage"
                         >
                             Tietoa
                         </Button>
                     </MenuItem>
-                </menu>
+                </div>
             </AppBar>
             <Routes>
                 <Route path="/" element={<Etusivu />} t />
                 <Route path="/time" element={<TimeSearch />} />
                 <Route path="/tehtava/:id" element={<Tehtava />} />
-                <Route path="/lisaa" element={<Lisaa />} />
-                <Route path="/tietoa" element={<Tietoa />} />
+                <Route path="/addPage" element={<Lisaa />} />
+                <Route path="/infoPage" element={<Tietoa />} />
                 <Route path="*" element={<ErrorSivu />} />
             </Routes>
         </BrowserRouter>

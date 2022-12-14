@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, Button } from "@mui/material/";
 import TaskTimer from "./taskTimer.js";
-import { Prioriteetti } from "./prioriteetti.js";
+import { Prioriteetti } from "./priority.js";
 
 const TaskCard = (props) => {
     const [loading, setloading] = useState(true);

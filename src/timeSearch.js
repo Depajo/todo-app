@@ -189,20 +189,30 @@ function TimeSearch() {
         <div className="content">
             <h3>Päivämäärä ja Aika</h3>
             <Paper sx={{ padding: 1 }}>
-                <TextField
-                    variant="outlined"
-                    type="datetime-local"
-                    value={time2}
-                    onChange={handleTimeChange2}
-                    sx={{ width: 250, margin: 1 }}
-                />
-                <TextField
-                    variant="outlined"
-                    type="datetime-local"
-                    value={time1}
-                    onChange={handleTimeChange1}
-                    sx={{ width: 250, margin: 1 }}
-                />
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        flexWrap: "wrap",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    <TextField
+                        variant="outlined"
+                        type="datetime-local"
+                        value={time2}
+                        onChange={handleTimeChange2}
+                        sx={{ width: 250, margin: 1 }}
+                    />
+                    <TextField
+                        variant="outlined"
+                        type="datetime-local"
+                        value={time1}
+                        onChange={handleTimeChange1}
+                        sx={{ width: 250, margin: 1 }}
+                    />
+                </div>
                 <br></br>
                 <Button
                     variant="outlined"

@@ -114,11 +114,11 @@ function Tietoa() {
                             pysäytetty" tai "Lasketaan aikaa..." tekstit.
                             <br />
                             Jos näkyy "Ajanlaseknta pysäytetty" tekstin alla
-                            näkyy, "Start" nappia. Paineamalla "Start" nappia,
+                            näkyy, "Start" nappi. Paineamalla "Start" nappia,
                             ajanlaskenta alkaa.
                             <br />
                             Jos näkyy "Lasketaan aikaa..." teksti alla näkyy
-                            "Stop" nappia. Paineamalla "Stop" nappia,
+                            "Stop" nappi. Paineamalla "Stop" nappia,
                             ajanlaskenta pysähtyy.
                             <br />
                             Kun aika on pysäytetty ja tehtäväkortissa lukee
@@ -136,7 +136,7 @@ function Tietoa() {
                         <h4>Prioriteetti</h4>
                         <p>
                             Prioriteetin muuttaminen onnistuu tehtäväkortissa.
-                            Tehtäväkorttia voi scrollata alapöin jolloin tulee
+                            Tehtäväkorttia voi scrollata alapäin jolloin tulee
                             näkyviin "Oma Prioriteetti" otsikko. Sen alapuolella
                             näkyy numero joka on tehtävän prioriteetti. Voit
                             muuttaa prioriteettiä painamalla vieressä olevaa +
@@ -146,13 +146,15 @@ function Tietoa() {
                         <p>
                             Voit järjestää tehtävät omaan järjestykseesi. Kun
                             olet valinnut "Oma Prioriteetti" näkymän, näet
-                            tehtävät järjestyksessä jossa ne ovat. Voit siirtää
-                            tehtäviä tärkeämmäksi tai vähemmän tarkeämmäksi. Jos
-                            tehtävä on tarkeämpi. Nousee se tehtävälistassa
-                            ylemmäksi. Jos tehtävä on vähemmän tärkeä, se laskee
-                            tehtävälistassa alemmaksi. Jos tehtäviä on useampi
-                            vierekkäin näytöllä, tälöin tehtävä siirtyy
-                            vasemmalle omalla rivillä.
+                            tehtävät priotiyeetti numeron mukaisessa
+                            järjestyksessä. Voit siirtää tehtäviä tärkeämmäksi
+                            tai vähemmän tarkeämmäksi. Jos tehtävä on tarkeämpi.
+                            Nousee se tehtävälistassa ylemmäksi. Jos tehtävä on
+                            vähemmän tärkeä, se laskee tehtävälistassa
+                            alemmaksi. Jos tehtäviä on useampi vierekkäin
+                            yhdellä rivillä, tällöin tehtävä siirtyy vasemmalle
+                            omalla rivillä ja ylöspäin jos muut tehtävät
+                            prioriteetiltään ovat pienempiä.
                         </p>
 
                         <p>
@@ -177,18 +179,19 @@ function Tietoa() {
 
                         <p>
                             Muokataksesi tehtävää sinun tulee valita vähintään
-                            yksi kategoria ja antaa tehtävänkuvaus.
-                            Tekstikentässä "Muokkaa tehtävää:" otsikon
-                            alapuolella on tekstikenttä johon voit kirjoittaa
-                            tehtävänkuvauksen. Sinun tulee kirjottaa aina
-                            tehtävänkuvaus. Tekstikenttään voi kirjoittaa mitä
-                            tahansa. Tekstikentässä näkyy vanha tehtävän kuvaus.
-                            Tämän jälkeen tulee "Kategoriat" otsikko jonka
-                            alapuolella on kaksi ikkunaa vierekkäin. Vasemmassa
-                            ikkunassa näkyy kaikki kategoriat joita voit valita
-                            tehtävään ja oikeassa ikkunassa näkyy tehtävässä
-                            aikaisemmin valitut kategoriat. Oikean puoleissa
-                            ikkunassa ei voi valita kategorioita.
+                            yksi kategoria ja antaa tehtävänkuvaus. "Muokkaa
+                            tehtävää:" otsikon alapuolella on tekstikenttä johon
+                            voit kirjoittaa tehtävänkuvauksen. Sinun tulee
+                            kirjottaa aina tehtävänkuvaus. Tekstikenttään voi
+                            kirjoittaa mitä tahansa. Tekstikentässä näkyy vanha
+                            tehtävän kuvaus. Tämän jälkeen tulee "Kategoriat"
+                            otsikko jonka alapuolella on kaksi ikkunaa
+                            vierekkäin. Vasemmassa ikkunassa näkyy kaikki
+                            kategoriat joita voit valita tehtävään ja oikeassa
+                            ikkunassa näkyy tehtävässä aikaisemmin valitut
+                            kategoriat. Oikean puoleisessa ikkunassa ei voi
+                            valita kategorioita. Valitse uudet kategoriat
+                            vasemman muoleisessa ikkunassa.
                         </p>
                     </div>
                     <div>
@@ -217,9 +220,12 @@ function Tietoa() {
                     <div>
                         <h4>Kategorian poisto</h4>
                         <p>
-                            Kategorian poistaminen onnistuu kun olet valinnut
-                            kategorian valikosta ja tämän jälkeen painamalla
-                            "Poista kategoria" nappia valikon alhaalta.
+                            Kategorian poistaminen onnistuu etusivulla. Sinun
+                            tulee valita "Valitse näkymä" otsikon alapuoleisesta
+                            valikosta kategoria. Kun olet valinnut kategorian
+                            valikosta, tämän jälkeen painamalla "Poista
+                            kategoria" nappia valikon alhaalta poistat
+                            kategorian.
                         </p>
 
                         <p>Et voi poistaa "Kaikki" kategoriaa.</p>
@@ -249,13 +255,14 @@ function Tietoa() {
                             tehtäväkortissa "Muokkaa" nappia tehtäväkortin
                             alalaidassa vasemmalla. Tällöin aukeaa
                             muokkausikkuna. Muokkausikkunassa näkyy "Poista"
-                            nappi oikeassa kulmassa. Painamalla sitä poistat
+                            nappi oikeassa alakulmassa. Painamalla sitä poistat
                             tehtävän.
                         </p>
 
                         <p>
                             Kun olet poistanut tehtävän, täytyy sinun valita
-                            uudestaan kategoria joka näytetään.
+                            uudestaan kategoria joka näytetään, jotta näet
+                            jäljellä olevat tehtävät.
                         </p>
                     </div>
                 </div>

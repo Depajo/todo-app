@@ -62,7 +62,7 @@ function Etusivu() {
                     <Button
                         sx={{ color: "#35739E" }}
                         variant="outlined"
-                        href="/lisaa"
+                        href="/addPage"
                     >
                         Lisää tehtävä
                     </Button>

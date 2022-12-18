@@ -34,6 +34,12 @@ function Prioriteetti(props) {
             patchdata("http://localhost:3010/tasks/" + task.id, {
                 prioriteetti: task.prioriteetti,
             });
+        } else if (task.prioriteetti > props.serverData.length) {
+            task.prioriteetti = props.serverData.length;
+
+            patchdata("http://localhost:3010/tasks/" + task.id, {
+                prioriteetti: task.prioriteetti,
+            });
         }
 
         props.setDataType("");

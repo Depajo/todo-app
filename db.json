@@ -9,11 +9,11 @@
         "Työ",
         "Koti"
       ],
-      "prioriteetti": 2,
+      "prioriteetti": 1,
       "luontipvm": "18.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 22,
+      "aikaalaskettuSec": 141,
       "ajanlaskentaAloitettu": 0,
       "id": 1
     },
@@ -22,7 +22,7 @@
       "kategoria": [
         "Kaikki"
       ],
-      "prioriteetti": 3,
+      "prioriteetti": 2,
       "luontipvm": "18.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
@@ -89,6 +89,12 @@
       "lopetus": 1671371844,
       "taskId": 1,
       "id": 6
+    },
+    {
+      "aloitus": 1671388737,
+      "lopetus": 1671388856,
+      "taskId": 1,
+      "id": 7
     }
   ]
 }

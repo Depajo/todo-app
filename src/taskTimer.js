@@ -119,7 +119,8 @@ function TaskTimer(props) {
                         <></>
                     ) : (
                         <h4>
-                            Käytetty aikaa: <br /> {timer} sekunttia
+                            Käytetty aikaa: <br /> {(timer / 60).toFixed(2)}{" "}
+                            minuuttia
                         </h4>
                     )}
                 </div>

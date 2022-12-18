@@ -1,142 +1,73 @@
 {
   "tasks": [
     {
-      "tehtävä": "g",
+      "tehtävä": "Koodaa",
       "kategoria": [
         "Kaikki"
       ],
       "prioriteetti": 0,
-      "luontipvm": "14.12.2022",
+      "luontipvm": "18.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 13,
+      "aikaalaskettuSec": 17,
       "ajanlaskentaAloitettu": 0,
-      "id": 4
+      "id": 1
     },
     {
-      "tehtävä": "pöö",
+      "tehtävä": "Siivoa",
       "kategoria": [
-        "Kaikki"
+        "Koti"
       ],
-      "prioriteetti": 2,
-      "luontipvm": "14.12.2022",
+      "prioriteetti": 0,
+      "luontipvm": "18.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 108,
+      "aikaalaskettuSec": 0,
       "ajanlaskentaAloitettu": 0,
-      "id": 5
+      "id": 2
     },
     {
-      "tehtävä": "a",
+      "tehtävä": "Käy kaupassa",
       "kategoria": [
-        "Muuta"
+        "Koti"
       ],
       "prioriteetti": 1,
-      "luontipvm": "14.12.2022",
+      "luontipvm": "18.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 8,
+      "aikaalaskettuSec": 0,
       "ajanlaskentaAloitettu": 0,
-      "id": 6
-    },
-    {
-      "tehtävä": "moi",
-      "kategoria": [
-        "Kaikki"
-      ],
-      "prioriteetti": 0,
-      "luontipvm": "14.12.2022",
-      "valmis": false,
-      "ajanlaskenta": false,
-      "aikaalaskettuSec": 10,
-      "ajanlaskentaAloitettu": 0,
-      "id": 7
+      "id": 3
     }
   ],
   "kategoriat": [
     {
       "nimi": "Kaikki",
       "id": 1
+    },
+    {
+      "nimi": "Muuta",
+      "id": 2
+    },
+    {
+      "nimi": "Koulu",
+      "id": 3
+    },
+    {
+      "nimi": "Työ",
+      "id": 4
+    },
+    {
+      "nimi": "Koti",
+      "id": 5
     }
   ],
   "laskuriData": [
     {
-      "aloitus": 1671018888,
-      "lopetus": 1671018896,
-      "taskId": 5,
-      "id": 7
-    },
-    {
-      "aloitus": 1671022985,
-      "lopetus": 1671022987,
-      "taskId": 4,
-      "id": 8
-    },
-    {
-      "aloitus": 1671022990,
-      "lopetus": 1671022991,
-      "taskId": 4,
-      "id": 9
-    },
-    {
-      "aloitus": 1671022929,
-      "lopetus": 1671022992,
-      "taskId": 5,
-      "id": 10
-    },
-    {
-      "aloitus": 1671027236,
-      "lopetus": 1671027241,
-      "taskId": 5,
-      "id": 11
-    },
-    {
-      "aloitus": 1671027379,
-      "lopetus": 1671027382,
-      "taskId": 7,
-      "id": 12
-    },
-    {
-      "aloitus": 1671027571,
-      "lopetus": 1671027579,
-      "taskId": 6,
-      "id": 13
-    },
-    {
-      "aloitus": 1671027572,
-      "lopetus": 1671027580,
-      "taskId": 4,
-      "id": 14
-    },
-    {
-      "aloitus": 1671027573,
-      "lopetus": 1671027581,
-      "taskId": 5,
-      "id": 15
-    },
-    {
-      "aloitus": 1671027575,
-      "lopetus": 1671027582,
-      "taskId": 7,
-      "id": 16
-    },
-    {
-      "aloitus": 1671027585,
-      "lopetus": 1671027587,
-      "taskId": 4,
-      "id": 17
-    },
-    {
-      "aloitus": 1671036528,
-      "lopetus": 1671036543,
-      "taskId": 5,
-      "id": 18
-    },
-    {
-      "aloitus": 1671036545,
-      "lopetus": 1671036554,
-      "taskId": 5,
-      "id": 19
+      "aloitus": 1671365910,
+      "lopetus": 1671365927,
+      "taskId": 1,
+      "id": 1
     }
   ]
 }

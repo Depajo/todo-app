@@ -7,7 +7,6 @@ import { checkValueIsSame } from "./myFunctions";
 
 function Lisaa() {
     const [categoryData, setCategoryData] = useState([]);
-
     const [newCategory, setNewCategory] = useState("");
     const [newTaskCategory, setNewTaskCategory] = useState([]);
     const [newTaskName, setNewTaskName] = useState("");

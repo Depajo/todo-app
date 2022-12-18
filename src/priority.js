@@ -6,6 +6,10 @@ import { patchdata } from "./data.js";
 function Prioriteetti(props) {
     const [loading, setloading] = useState(false);
 
+    useEffect(() => {
+        setloading(true);
+    }, [props.onetask]);
+
     // Lisää prioriteetin tärkeyttä yhdellä
     const plusPriority = (task) => {
         if (task.prioriteetti < props.serverData.length) {
@@ -34,10 +38,6 @@ function Prioriteetti(props) {
 
         props.setDataType("");
     };
-
-    useEffect(() => {
-        setloading(true);
-    }, [props.onetask]);
 
     if (loading === false) {
         return <div>Loading...</div>;

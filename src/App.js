@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Etusivu from "./mainPage";
-import ErrorSivu from "./errorSivu";
+import ErrorSivu from "./errorPage";
 import Tietoa from "./infoPage";
 import Lisaa from "./addPage";
 import Tehtava from "./taskPage";

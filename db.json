@@ -3,21 +3,24 @@
     {
       "tehtävä": "Koodaa",
       "kategoria": [
+        "Kaikki",
+        "Muuta",
         "Koulu",
-        "Työ"
+        "Työ",
+        "Koti"
       ],
       "prioriteetti": 2,
       "luontipvm": "18.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 17,
+      "aikaalaskettuSec": 22,
       "ajanlaskentaAloitettu": 0,
       "id": 1
     },
     {
       "tehtävä": "Siivoa",
       "kategoria": [
-        "Koti"
+        "Kaikki"
       ],
       "prioriteetti": 3,
       "luontipvm": "18.12.2022",
@@ -26,19 +29,6 @@
       "aikaalaskettuSec": 228,
       "ajanlaskentaAloitettu": 0,
       "id": 2
-    },
-    {
-      "tehtävä": "Käy kaupassa",
-      "kategoria": [
-        "Koti"
-      ],
-      "prioriteetti": 1,
-      "luontipvm": "18.12.2022",
-      "valmis": false,
-      "ajanlaskenta": false,
-      "aikaalaskettuSec": 0,
-      "ajanlaskentaAloitettu": 0,
-      "id": 3
     }
   ],
   "kategoriat": [
@@ -75,6 +65,30 @@
       "lopetus": 1671367059,
       "taskId": 2,
       "id": 2
+    },
+    {
+      "aloitus": 1671371514,
+      "lopetus": 1671371516,
+      "taskId": 1,
+      "id": 3
+    },
+    {
+      "aloitus": 1671371609,
+      "lopetus": 1671371610,
+      "taskId": 1,
+      "id": 4
+    },
+    {
+      "aloitus": 1671371841,
+      "lopetus": 1671371842,
+      "taskId": 1,
+      "id": 5
+    },
+    {
+      "aloitus": 1671371843,
+      "lopetus": 1671371844,
+      "taskId": 1,
+      "id": 6
     }
   ]
 }

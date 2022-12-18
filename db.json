@@ -3,9 +3,10 @@
     {
       "tehtävä": "Koodaa",
       "kategoria": [
-        "Kaikki"
+        "Koulu",
+        "Työ"
       ],
-      "prioriteetti": 0,
+      "prioriteetti": 2,
       "luontipvm": "18.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
@@ -18,11 +19,11 @@
       "kategoria": [
         "Koti"
       ],
-      "prioriteetti": 0,
+      "prioriteetti": 3,
       "luontipvm": "18.12.2022",
       "valmis": false,
       "ajanlaskenta": false,
-      "aikaalaskettuSec": 0,
+      "aikaalaskettuSec": 228,
       "ajanlaskentaAloitettu": 0,
       "id": 2
     },
@@ -68,6 +69,12 @@
       "lopetus": 1671365927,
       "taskId": 1,
       "id": 1
+    },
+    {
+      "aloitus": 1671366831,
+      "lopetus": 1671367059,
+      "taskId": 2,
+      "id": 2
     }
   ]
 }

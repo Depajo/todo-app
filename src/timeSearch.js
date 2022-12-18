@@ -1,10 +1,5 @@
-import {
-    Button,
-    TextField,
-    Paper,
-    getAccordionDetailsUtilityClass,
-} from "@mui/material";
-import React, { useEffect, useRef } from "react";
+import { Button, TextField, Paper } from "@mui/material";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { getMyTime } from "./myFunctions";
 import { getdata } from "./data";
@@ -16,16 +11,13 @@ function TimeSearch() {
     const [time1, setTime1] = useState("");
     const [time2, setTime2] = useState("");
     const [timerData, setTimerData] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [result, setResult] = useState(0);
     const [taskResultId, setTaskResultId] = useState([]);
     const [taskResult, setTaskResult] = useState([]);
-    // const taskResult = useRef([]);
 
     useEffect(() => {
         getdata("http://localhost:3010/laskuriData").then((res) => {
             setTimerData(res.data);
-            setLoading(false);
         });
 
         if (timeChange) {

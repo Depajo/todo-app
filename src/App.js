@@ -15,7 +15,7 @@ import {
     MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import TimeSearch from "./timeSearch";
+// import TimeSearch from "./timeSearch";
 
 function App() {
     const [menuBarShow, setMenuBarShow] = useState("none");
@@ -83,7 +83,7 @@ function App() {
                             Lisää
                         </Button>
                     </MenuItem>
-                    <MenuItem sx={{ fontSize: 20 }}>
+                    {/* <MenuItem sx={{ fontSize: 20 }}>
                         <Button
                             sx={{
                                 color: "#fff",
@@ -99,7 +99,7 @@ function App() {
                         >
                             Yhteenveto
                         </Button>
-                    </MenuItem>
+                    </MenuItem> */}
                     <MenuItem sx={{ fontSize: 20 }}>
                         <Button
                             sx={{
@@ -121,7 +121,7 @@ function App() {
             </AppBar>
             <Routes>
                 <Route path="/" element={<Etusivu />} t />
-                <Route path="/time" element={<TimeSearch />} />
+                {/* <Route path="/time" element={<TimeSearch />} /> */}
                 <Route path="/tehtava/:id" element={<Tehtava />} />
                 <Route path="/addPage" element={<Lisaa />} />
                 <Route path="/infoPage" element={<Tietoa />} />

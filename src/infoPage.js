@@ -102,7 +102,7 @@ function Tietoa() {
                         </p>
 
                         <p style={{ color: "red" }}>
-                            Tehtävkorttia voi scrollata alapäin.
+                            Tehtävkorttia voi scrollata alaspäin.
                         </p>
                     </div>
 

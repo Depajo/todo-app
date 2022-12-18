@@ -12,9 +12,9 @@
       "prioriteetti": 1,
       "luontipvm": "18.12.2022",
       "valmis": false,
-      "ajanlaskenta": false,
+      "ajanlaskenta": true,
       "aikaalaskettuSec": 141,
-      "ajanlaskentaAloitettu": 0,
+      "ajanlaskentaAloitettu": 1671389779,
       "id": 1
     },
     {
@@ -22,7 +22,7 @@
       "kategoria": [
         "Kaikki"
       ],
-      "prioriteetti": 2,
+      "prioriteetti": 0,
       "luontipvm": "18.12.2022",
       "valmis": false,
       "ajanlaskenta": false,

@@ -18,9 +18,12 @@ function Prioriteetti(props) {
             patchdata("http://localhost:3010/tasks/" + task.id, {
                 prioriteetti: task.prioriteetti,
             });
+            props.setDataType("");
+        } else {
+            alert(
+                "Prioriteetti ei voi olla suurempi kuin " + task.prioriteetti
+            );
         }
-
-        props.setDataType("");
     };
 
     // Vähennä prioriteetin tärkeyttä yhdellä
@@ -34,15 +37,17 @@ function Prioriteetti(props) {
             patchdata("http://localhost:3010/tasks/" + task.id, {
                 prioriteetti: task.prioriteetti,
             });
+            props.setDataType("");
         } else if (task.prioriteetti > props.serverData.length) {
             task.prioriteetti = props.serverData.length;
 
             patchdata("http://localhost:3010/tasks/" + task.id, {
                 prioriteetti: task.prioriteetti,
             });
+            props.setDataType("");
+        } else {
+            alert("Prioriteetti ei voi olla negatiivinen");
         }
-
-        props.setDataType("");
     };
 
     if (loading === false) {

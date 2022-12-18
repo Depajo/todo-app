@@ -91,13 +91,13 @@ const TaskCard = (props) => {
                     >
                         Muokkaa
                     </Button>
-                    <Button
+                    {/* <Button
                         onClick={() => props.openTask(props.onetask)}
                         sx={{ color: "#35739E" }}
                         variant="text"
                     >
                         Avaa tehtävä
-                    </Button>
+                    </Button> */}
                 </Card>
             </div>
         );

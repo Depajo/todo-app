@@ -17,7 +17,7 @@ function MuokkaaTaskia(props) {
                 "Täytä kaikki kentät! Tehtävällä täytyy olla nimi ja kategoria."
             );
         } else {
-            patchdata("http://localhost:3010/tasks/" + task.id, {
+            patchdata("https://todo-api-n4pi.onrender.com/tasks/" + task.id, {
                 tehtävä: taskName,
                 kategoria: category,
             });
@@ -50,7 +50,7 @@ function MuokkaaTaskia(props) {
 
     // Poista tehtävä
     const deletTask = () => {
-        deletedata("http://localhost:3010/tasks/" + task.id);
+        deletedata("https://todo-api-n4pi.onrender.com/tasks/" + task.id);
         props.setOpen(false);
         props.setDataType("");
     };

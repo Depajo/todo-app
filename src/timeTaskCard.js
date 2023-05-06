@@ -11,13 +11,13 @@ function TimeTaskCard(props) {
     const [data, setData] = useState(props.taskResult);
 
     useEffect(() => {
-        getdata("http://localhost:3010/tasks/" + props.taskResultId).then(
-            (res) => {
-                setTask(res.data);
-                setLoading(false);
-                // console.log(res.data);
-            }
-        );
+        getdata(
+            "https://todo-api-n4pi.onrender.com/tasks/" + props.taskResultId
+        ).then((res) => {
+            setTask(res.data);
+            setLoading(false);
+            // console.log(res.data);
+        });
         // console.log(props.taskResult);
 
         let allTime = [];

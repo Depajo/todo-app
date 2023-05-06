@@ -16,9 +16,11 @@ function TimeSearch() {
     const [taskResult, setTaskResult] = useState([]);
 
     useEffect(() => {
-        getdata("http://localhost:3010/laskuriData").then((res) => {
-            setTimerData(res.data);
-        });
+        getdata("https://todo-api-n4pi.onrender.com/laskuriData").then(
+            (res) => {
+                setTimerData(res.data);
+            }
+        );
 
         if (timeChange) {
             console.log("timeChange");

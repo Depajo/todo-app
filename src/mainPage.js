@@ -20,7 +20,7 @@ function Etusivu() {
 
     // Haetaan dataa
     useEffect(() => {
-        getdata("http://localhost:3010/tasks")
+        getdata("https://todo-api-n4pi.onrender.com/tasks")
             .then((res) => {
                 setServerData(res.data);
             })

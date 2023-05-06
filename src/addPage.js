@@ -12,7 +12,7 @@ function Lisaa() {
     const [newTaskName, setNewTaskName] = useState("");
 
     useEffect(() => {
-        getdata("http://localhost:3010/kategoriat")
+        getdata("https://todo-api-n4pi.onrender.com/kategoriat")
             .then((res) => {
                 setCategoryData(res.data);
             })
@@ -36,7 +36,9 @@ function Lisaa() {
             }
         });
         if (addCategory) {
-            postdata("http://localhost:3010/kategoriat", { nimi: newCategory });
+            postdata("https://todo-api-n4pi.onrender.com/kategoriat", {
+                nimi: newCategory,
+            });
             alert("Kategoria lisätty");
             setNewCategory("");
         } else {
@@ -69,7 +71,7 @@ function Lisaa() {
         if (newTaskName === "" || newTaskCategory.length === 0) {
             alert("Tehtävä tai kategoria puuttuu.");
         } else {
-            postdata("http://localhost:3010/tasks/", {
+            postdata("https://todo-api-n4pi.onrender.com/tasks", {
                 tehtävä: newTaskName,
                 kategoria: newTaskCategory,
                 prioriteetti: 0,

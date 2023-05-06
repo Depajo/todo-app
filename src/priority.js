@@ -15,7 +15,7 @@ function Prioriteetti(props) {
         if (task.prioriteetti < props.serverData.length) {
             task.prioriteetti = task.prioriteetti + 1;
 
-            patchdata("http://localhost:3010/tasks/" + task.id, {
+            patchdata("https://todo-api-n4pi.onrender.com/tasks/" + task.id, {
                 prioriteetti: task.prioriteetti,
             });
             props.setDataType("");
@@ -34,14 +34,14 @@ function Prioriteetti(props) {
         ) {
             task.prioriteetti = task.prioriteetti - 1;
 
-            patchdata("http://localhost:3010/tasks/" + task.id, {
+            patchdata("https://todo-api-n4pi.onrender.com/tasks/" + task.id, {
                 prioriteetti: task.prioriteetti,
             });
             props.setDataType("");
         } else if (task.prioriteetti > props.serverData.length) {
             task.prioriteetti = props.serverData.length;
 
-            patchdata("http://localhost:3010/tasks/" + task.id, {
+            patchdata("https://todo-api-n4pi.onrender.com/tasks/" + task.id, {
                 prioriteetti: task.prioriteetti,
             });
             props.setDataType("");

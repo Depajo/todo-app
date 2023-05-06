@@ -15,23 +15,23 @@ function TaskTimer(props) {
 
     // Palauttaa ajan jolloin ajanlaskenta aloitettiin
     const timeCountStart = async (id) => {
-        return await getdata("http://localhost:3010/tasks/" + id).then(
-            (res) => {
-                // console.log("Tehtävä id: " + task.id);
-                // console.log(res.data.ajanlaskentaAloitettu);
-                return res.data.ajanlaskentaAloitettu;
-            }
-        );
+        return await getdata(
+            "https://todo-api-n4pi.onrender.com/tasks/" + id
+        ).then((res) => {
+            // console.log("Tehtävä id: " + task.id);
+            // console.log(res.data.ajanlaskentaAloitettu);
+            return res.data.ajanlaskentaAloitettu;
+        });
     };
 
     // Palauttaa ajan joka on jo laskettu
     const timeCounted = async (id) => {
-        return await getdata("http://localhost:3010/tasks/" + id).then(
-            (res) => {
-                // console.log(res.data.aikaalaskettuSec);
-                return res.data.aikaalaskettuSec;
-            }
-        );
+        return await getdata(
+            "https://todo-api-n4pi.onrender.com/tasks/" + id
+        ).then((res) => {
+            // console.log(res.data.aikaalaskettuSec);
+            return res.data.aikaalaskettuSec;
+        });
     };
 
     const startTimer = async (id) => {
@@ -80,7 +80,7 @@ function TaskTimer(props) {
         await differenceBetween(time1, time2, time3).then((res) => {
             // console.log("aikaalaskettu " + res);
 
-            postdata("http://localhost:3010/laskuriData/", {
+            postdata("https://todo-api-n4pi.onrender.com/laskuriData/", {
                 aloitus: time1,
                 lopetus: time2,
                 taskId: task.id,
@@ -92,7 +92,7 @@ function TaskTimer(props) {
 
     // Tallentaa ajan ja ajanlaskennan tilan
     const saveData = (aloitettu, difference, timerOn) => {
-        patchdata("http://localhost:3010/tasks/" + task.id, {
+        patchdata("https://todo-api-n4pi.onrender.com/tasks/" + task.id, {
             ajanlaskenta: timerOn,
             aikaalaskettuSec: difference,
             ajanlaskentaAloitettu: aloitettu,

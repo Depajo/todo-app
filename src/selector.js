@@ -16,7 +16,7 @@ function Selector(props) {
 
     // Haetaan kategoriat
     useEffect(() => {
-        getdata("http://localhost:3010/kategoriat").then((res) => {
+        getdata("https://todo-api-n4pi.onrender.com/kategoriat").then((res) => {
             // console.log("res.data: ", res.data);
             props.setCategoryData(res.data);
             setLoading(false);
@@ -41,7 +41,7 @@ function Selector(props) {
                     alert("Et voi poistaa tätä kategoriaa");
                 } else {
                     deletedata(
-                        "http://localhost:3010/kategoriat/" +
+                        "https://todo-api-n4pi.onrender.com/kategoriat" +
                             props.categoryData[i].id
                     );
                     props.setDataType("");

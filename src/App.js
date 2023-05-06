@@ -125,7 +125,7 @@ function App() {
                 <Route path="/tehtava/:id" element={<Tehtava />} />
                 <Route path="/addPage" element={<Lisaa />} />
                 <Route path="/infoPage" element={<Tietoa />} />
-                <Route path="*" element={<ErrorSivu />} />
+                {/* <Route path="*" element={<ErrorSivu />} /> */}
             </Routes>
         </BrowserRouter>
     );

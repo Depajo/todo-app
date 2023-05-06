@@ -9,7 +9,7 @@ function Tehtava() {
     const [errorMessages, setErrorMessage] = useState();
 
     useEffect(() => {
-        getdata("http://localhost:3010/tasks/" + id)
+        getdata("https://todo-api-n4pi.onrender.com/tasks" + id)
             .then((res) => {
                 setTask(res.data);
                 console.log(res.data);

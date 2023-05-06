@@ -41,7 +41,7 @@ function Selector(props) {
                     alert("Et voi poistaa tätä kategoriaa");
                 } else {
                     deletedata(
-                        "https://todo-api-n4pi.onrender.com/kategoriat" +
+                        "https://todo-api-n4pi.onrender.com/kategoriat/" +
                             props.categoryData[i].id
                     );
                     props.setDataType("");
